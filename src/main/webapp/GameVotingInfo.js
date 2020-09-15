@@ -51,7 +51,7 @@ GameVotingInfo = (function(){
 			var promptResults = getVotingResultsForPrompt(promptKey);
 			
 			for(var j = 0; j < gameUserKeys.length; j++) {
-				var userKey = gameUserKeys[i];
+				var userKey = gameUserKeys[j];
 				var votesArray = promptResults[userKey];
 				if(votesArray !== undefined) {
 					var currentScore = results[userKey]; 

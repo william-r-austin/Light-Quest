@@ -347,8 +347,6 @@ GameSetupManager = (function() {
 					else {
 						$("#roomCodeErrorDiv").text("Looks like you missed the boat. This game room (" + roomCodeInput + ") isn't open for new users to join anymore.").show();
 					}
-					
-					
 				}
 				else {
 					$("#roomCodeErrorDiv").text("Ooops, we couldn't find the room with a room code of " + roomCodeInput + ". Did you enter it correctly?").show();

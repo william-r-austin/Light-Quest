@@ -245,7 +245,7 @@ GameManager = (function() {
 	function populateVotingResultsFromLocal() {
 		var gameState = GameStateInfo.getGameState();
 		var prompts = GamePromptsInfo.getGamePromptsList();
-		var promptNumber = gameState.promptNumber; 
+		var promptNumber = gameState.promptNumber;
 		
 		var prompt = prompts[promptNumber];
 		var gameResponses = GameResponsesInfo.getGameResponseForPrompt(prompt.promptKey);

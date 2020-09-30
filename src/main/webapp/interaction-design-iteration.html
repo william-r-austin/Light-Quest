@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Welcome to the Light Quest Game Application</title>
+    <link rel="stylesheet" href="resources/interaction-design-iteration/LightQuest.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+
+  <body>
+    <div id="navigationBar">
+      <div class="logoWrapper">
+        <img class="logoImage" src="resources/interaction-design-iteration/LightQuestLogo.png" />
+      </div>
+      <div id="nameBox" style="display: none;">
+        <div id="navBarName" class="preserve-spaces align-right"></div>
+        <div id="changeNameLinkContainer" class="align-right">
+          <a href="#" id="changeNameLink">Change Name</a>
+        </div>
+        <div id="changeNameActionContainer" style="display: none;">
+          <div>
+            <form name="changeNameForm" id="changeNameForm">
+              <div id="changeNameInputContainer">
+	            <span>What would you like to change your name to?</span>
+	            <input type="text" id="changeNameInput" name="changeNameInput" class="nameInput" />
+	          </div>
+	          <div id="changeNameErrorDiv" class="align-right" style="display: none; color: FireBrick;"></div>
+	          <div id="changeNameOptionsContainer" class="align-right">
+	            <a href="#" id="changeNameCancelLink">Cancel</a>
+	            <button type="submit" id="changeNameSubmitButton" name="changeNameSubmitButton">Update my Name</button>
+	          </div>
+	          
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="gameContainer">
+    <div id="startPage">
+      <h2>Welcome to Light Quest!</h2>
+      <p>
+        This is a collaborative game that you can play with a group. You'll be presented with a series of prompts to answer
+        and then vote on who gave the best responses. The winner is the player that receives the most votes!
+      </p>
+      <h4 class="option-header">To get started, provide your name:</h4>
+	  <div>
+	    <form name="usernameInputForm" id="usernameInputForm">
+	      <input type="text" name="usernameInput" id="usernameInput" class="nameInput" />
+	      <button type="submit" id="usernameInputButton">Begin Light Quest!</button>
+        </form>
+	  </div>
+	  <div id="usernameErrorDiv" style="display: none; color: FireBrick;"></div>
+	</div>
+	<div id="lobbyPage" style="display: none;">
+	  <div id="lobbyUserMessageContainer" style="display: none;">
+	    <div id="lobbyUserMessage"></div>
+	    <div id="lobbyUserDismissLinkDiv"><a href="#" id="lobbyUserMessageDismissLink">Dismiss</a></div>
+	  </div>
+	  <h2 id="lobbyWelcomeBanner">
+	    Welcome to the Lobby <span class="preserve-spaces" id="lobbyBannerUsername"></span>! 
+	    Choose one of the options below to begin.
+	  </h2>
+	  <div>
+	    <h4 class="option-header">Option 1: Create a new room to play Light Quest with your group.</h4>
+	    <button type="button" id="createRoomButton">Create Game Room</button>
+	  </div>
+	  <div>
+	  	<h4 class="option-header">Option 2: Join an existing room. Enter the room code to begin.</h4>
+	  	<form name="roomCodeInputForm" id="roomCodeInputForm">
+	  	  <input type="text" name="roomCodeInput" id="roomCodeInput">
+	  	  <button type="submit" id="joinRoomButton">Join Existing Room</button>
+	  	</form>
+	  </div>
+	  <div id="roomCodeErrorDiv" style="display: none; color: FireBrick;"></div>
+	</div>
+	<div id="gameRoomSetupPage" style="display: none;">
+	  <h2 id="gameRoomSetupBanner">
+	    Welcome to the Game Room <span id="gameRoomSetupUserName" class="preserve-spaces"></span>.
+	    The room code is: <span id="gameRoomSetupRoomCode"></span>
+	  </h2>
+	  <h4 id="gameRoomSetupMessage">
+	    Share the code above with your friends to allow them to join. Once everyone has joined, the 
+		host (<span id="gameRoomSetupHostName" class="preserve-spaces"></span>) can start the game. At least three participants
+		must join the room before the game can be started.
+	  </h4>
+	  <div>
+	  	<h4 class="option-header">Here are the users that have already joined!</h4>
+	      <ul class="collapsed-list" id="gameRoomSetupUsersList"></ul>
+	  </div>
+	  <div id="gameSetupStatusContainer">
+	    <h3 id="gameStatusSetupMessage" class="option-header"></h3>
+	  </div>
+	  <div id="gameSetupLeaveContainer">
+	    <div id="leaveGameRoomMessage" class="option-header"></div>
+	    <div><button id="leaveGameRoomButton" type="button">Exit Game Room</button></div>
+	  </div>
+	</div>
+	<div id="gamePage" style="display: none;">
+	  <h2 id="gamePageBanner">Alright <span id="gamePageBannerUserName" class="preserve-spaces"></span>, it's game time!</h2>
+	  <div id="gamePromptsSection">
+	    <h4 id="gamePromptsInstructions">Enter your responses below. When everyone is done, you can vote for the best answers. Good luck!</h4>
+	    <div id="gamePromptsDiv"></div>
+	    <div id="gamePromptsSubmitContainer">
+	      <div class="option-header"><button type="button" id="submitResponsesButton">Submit Your Answers</button></div>
+	      <h4 id="submitResponseErrorMessage" class="collapsed-list" style="display: none; color: FireBrick;"></h4>
+	    </div>
+	  </div>
+	  <div id="responseWaitingSection" style="display: none;">
+	    <h4 id="responseWaitingBanner"></h4>
+	    <div id="editPromptResponsesContainer" style="display: none;">
+	      <div id="editPromptResponsesMessage"></div>
+	      <div><button id="editPromptResponsesButton" type="button">Edit Responses</button></div>
+	    </div>
+	  </div>
+	  <div id="votingSection" style="display: none;">
+	    <div id="votingInstructions"></div>
+	    <h4 id="votingPrompt"></h4>
+	    <div id="votingChoicesDiv"></div>
+	  </div>
+	  <div id="resultsSection" style="display: none;">
+	    <div id="resultsBanner"></div>
+	    <div id="resultsContentDiv"></div>
+	  </div>
+	  <div id="gameUserStatusSection">
+	  	<h4 id="userStatusWorkingHeader" class="option-header">Who's still working?</h4>
+	    <ul id="userStatusWorkingList"></ul>
+	    <h4 id="userStatusFinishedHeader" class="option-header">Finished users!</h4>
+	    <ul id="userStatusFinishedList"></ul>
+	  </div>
+	</div>
+	<div id="finalGameSummaryPage" style="display: none;">
+	  <h2 id="finalGameSummaryBanner"></h2>
+	  <div id="finalGameSummaryDetails"></div>
+	  <!-- <div id="finalGameSummaryNavDiv"></div> -->
+	  <!--   -->
+	</div>
+	<div id="reviewPhaseNavContainer" style="display: none;">
+	  <h4 class="option-header">Navigate through the voting results and final scores to see who did the best.</h4>
+	  <div id="reviewPhaseNavDiv"></div>
+	  <h4 class="option-header">When you're done reviewing, either head back to the lobby or start another round!</h4>
+	  <div id="returnToLobbyDiv">
+	    <button type="button" id="returnToLobbyButton" class="review-nav-button">Return to the Lobby</button>
+	  </div>
+	</div>
+	</div>
+  </body>
+
+<!-- Include the jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+<!-- The Firebase Authentication JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+
+<!-- The Firebase Realtime Database JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+<script src="resources/interaction-design-iteration/PromptsLibrary.js"></script>
+<script src="resources/interaction-design-iteration/AppSetup.js"></script>
+<script src="resources/interaction-design-iteration/UserInfo.js"></script>
+<script src="resources/interaction-design-iteration/RoomInfo.js"></script>
+<script src="resources/interaction-design-iteration/GameUsersInfo.js"></script>
+<script src="resources/interaction-design-iteration/GameStateInfo.js"></script>
+<script src="resources/interaction-design-iteration/GameReviewStateInfo.js"></script>
+<script src="resources/interaction-design-iteration/GamePromptsInfo.js"></script>
+<script src="resources/interaction-design-iteration/GameResponsesInfo.js"></script>
+<script src="resources/interaction-design-iteration/GameVotingInfo.js"></script>
+<script src="resources/interaction-design-iteration/AddUserManager.js"></script>
+<script src="resources/interaction-design-iteration/LobbyManager.js"></script>
+<script src="resources/interaction-design-iteration/GameSetupManager.js"></script>
+<script src="resources/interaction-design-iteration/GameManager.js"></script>
+<script src="resources/interaction-design-iteration/DisplayManager.js"></script>
+
+<script>
+  $(window).on("load", function() {
+	console.log("DOM is ready.");
+	AddUserManager.setupListener();
+  });
+</script>
+  
+</html>

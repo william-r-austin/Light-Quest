@@ -1,0 +1,98 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#navigationBar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #cccccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#navigationBar > div {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.logoWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nameInput{
+	width: 200px;
+}
+
+#nameBox {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#navBarName, #changeNameLinkContainer {
+	text-align: right;
+}
+
+.preserve-spaces {
+	white-space: pre-wrap;
+}
+
+.option-header {
+	margin-bottom: 5px;
+}
+
+.collapsed-list {
+	margin-top: 5px;
+}
+
+#navBarName {
+	font-size: xx-large;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#changeNameOptionsContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#gameContainer {
+  padding: 5px;
+}
+
+#gameSetupLeaveContainer {
+	margin-top: 50px;
+}
+
+#lobbyUserMessageContainer {
+	margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: lightskyblue;
+    width: 500px;
+}
+
+#resultsNavDiv, #finalGameSummaryNavDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+.logoImage {
+  max-width: 300px;
+  height: auto;
+}
+
+#changeNameSubmitButton, #changeNameInput {
+	margin-left: 10px;
+}

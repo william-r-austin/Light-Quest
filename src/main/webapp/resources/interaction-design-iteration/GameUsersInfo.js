@@ -2,6 +2,15 @@ GameUsersInfo = (function() {
 	var gameUsersList = [];
 	var gameUsersMap = {};
 	var gameUsersStatusMap = {};
+	var gameUsersRawData = {};
+	
+	function setGameUsersRawData(newGameUsersRawData) {
+		gameUsersRawData = newGameUsersRawData;
+	}
+	
+	function getGameUsersRawData() {
+		return gameUsersRawData;
+	}
 	
 	function setGameUsersList(newGameUsersList) {
 		gameUsersList = newGameUsersList;
@@ -11,7 +20,15 @@ GameUsersInfo = (function() {
 		for(var i = 0; i < gameUsersList.length; i++) {
 			var gameUser = gameUsersList[i];
 			newGameUsersMap[gameUser.userKey] = gameUser.userName;
-			newGameUsersStatusMap[gameUser.userKey] = false;
+			
+			// Need to copy from the old one.
+			var existingValue = gameUsersStatusMap[gameUser.userKey];
+			var newUserStatus = false;
+			if(existingValue) {
+				newUserStatus = true;
+			}
+			newGameUsersStatusMap[gameUser.userKey] = newUserStatus;
+			
 		}
 		
 		gameUsersMap = newGameUsersMap;
@@ -48,12 +65,15 @@ GameUsersInfo = (function() {
 	}
 	
 	function clear() {
+		gameUsersRawData = {};
 		gameUsersList = [];
 		gameUsersMap = {};
 		gameUsersStatusMap = {};
 	}
 	
 	return {
+		setGameUsersRawData: setGameUsersRawData,
+		getGameUsersRawData: getGameUsersRawData,
 		setGameUsersList: setGameUsersList,
 		getGameUsersList: getGameUsersList,
 		getGameUsersMap: getGameUsersMap,
@@ -63,3 +83,4 @@ GameUsersInfo = (function() {
 		clear: clear
 	};
 })();
+

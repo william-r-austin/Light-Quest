@@ -95,7 +95,7 @@ GameManager = (function() {
 			$("#gamePageBanner").html(gamePageBannerMarkup);
 			$("#gamePageBannerUserName").text(UserInfo.getUserName());
 			$("#responseWaitingBanner").text("Hang in there while we collect the votes from everybody else.");
-			$("editPromptResponsesContainer").hide();
+			$("#editPromptResponsesContainer").hide();
 			$("#editPromptResponsesMessage").empty();
 		}
 		

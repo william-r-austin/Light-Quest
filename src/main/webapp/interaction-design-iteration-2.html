@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Welcome to the Light Quest Game Application</title>
+    <link rel="stylesheet" href="resources/interaction-design-iteration-2/LightQuest.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="resources/interaction-design-iteration-2/jquery-ui-1.12.1/jquery-ui.min.css">
+  </head>
+
+  <body>
+    <div id="navigationBar">
+      <div class="logoWrapper">
+        <img class="logoImage" src="resources/interaction-design-iteration-2/LightQuestLogo.png" />
+      </div>
+      <div id="nameBox" style="display: none;">
+        <div id="navBarName" class="preserve-spaces align-right"></div>
+        <div id="changeNameLinkContainer" class="align-right">
+          <a href="#" id="changeNameLink">Change Name</a>
+        </div>
+        <div id="changeNameActionContainer" style="display: none;">
+          <div>
+            <form name="changeNameForm" id="changeNameForm">
+              <div id="changeNameInputContainer">
+	            <span>What would you like to change your name to?</span>
+	            <input type="text" id="changeNameInput" name="changeNameInput" maxlength="30" class="nameInput" />
+	          </div>
+	          <div id="changeNameErrorDiv" class="align-right" style="display: none; color: FireBrick;"></div>
+	          <div id="changeNameOptionsContainer" class="align-right">
+	            <a href="#" id="changeNameCancelLink">Cancel</a>
+	            <button type="submit" id="changeNameSubmitButton" name="changeNameSubmitButton">Update my Name</button>
+	          </div>
+	          
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="transitionMessage" style="display: none;"></div>
+    <div id="contentContainer">
+    <div id="startPage" class="pageContainer sixtyPercent">
+      <h1>Welcome to Light Quest!</h1>
+      <p>
+        This is a collaborative game that you can play with a group. You'll be presented with a series of prompts to answer
+        and then vote on who gave the best responses. The winner is the player that receives the most votes!
+      </p>
+      <div class="instructions startPageInstructions">
+      To get started, provide your name:
+      </div>
+      
+	  <div>
+	    <form name="usernameInputForm" id="usernameInputForm">
+	      <div class="startPageFormContainer">
+	      <div>
+	        <input type="text" name="usernameInput" id="usernameInput" class="nameInput" maxlength="30" placeholder="Enter your name"/>
+	      </div>
+	      <div id="usernameErrorDiv" style="display: none; margin-bottom: 1em; font-weight: bold; color: FireBrick;"></div>
+	      <div>
+	        <button type="submit" id="usernameInputButton">Begin Light Quest!</button>
+	      </div>
+	      </div>
+        </form>
+	  </div>
+	</div>
+	<div id="lobbyPage" class="pageContainer eightyPercent" style="display: none;">
+	  <h1 id="lobbyWelcomeBanner">
+	    Welcome to the Lobby, <span class="preserve-spaces" id="lobbyBannerUsername"></span>!
+	  </h1>
+	  <div id="lobbyUserMessageContainer" style="display: none;">
+	    <div id="lobbyUserMessage"></div>
+	    <div id="lobbyUserDismissLinkDiv"><a href="#" id="lobbyUserMessageDismissLink">Dismiss Message</a></div>
+	  </div>
+	  <h4 class="lobbyPageInstructions">Choose one of the options below to begin.</h4>
+	  <div class="lobbyOptionsContainer">
+	  <div class="lobbyOptionCard">
+	    <div class="optionCardTitle">Create New Game</div>
+	    <div>Create a new room to play Light Quest with your group. You will be the host for the game.</div>
+	    <div style="text-align: center;">
+	      <button type="button" id="createRoomButton">Create New Game Room</button>
+	    </div>
+	  </div>
+	  <div class="lobbyOptionCard">
+	  <div class="optionCardTitle">Join Existing Game</div>
+	  	<div>Join an existing game room. You will need the five-digit room code from the host to begin.</div>
+	  	<form name="roomCodeInputForm" id="roomCodeInputForm">
+	  	  <div style="text-align: center;">
+	  	    <input type="text" name="roomCodeInput" id="roomCodeInput" placeholder="Enter room code" style="width: 12em;">
+	  	  </div>
+	  	  <div id="roomCodeErrorDiv" style="display: none; margin-bottom: 1em; font-weight: bold; color: FireBrick; width: 20em; margin-left: auto; margin-right: auto;"></div>
+	  	  <div style="text-align: center;">
+	  	    <button type="submit" id="joinRoomButton">Join Existing Game Room</button>
+	  	  </div>
+	  	</form>
+	  </div>
+	  </div>
+	</div>
+	<div id="gameContainer" class="pageContainer eightyPercent" style="display: none;">
+	<div id="gameRoomSetupPage" style="display: none;">
+	  <h1 id="gameRoomSetupBanner">
+	    Welcome to the Game Room, <span id="gameRoomSetupUserName" class="preserve-spaces"></span>
+	  </h1>
+	  <div class="gameSetupOptionsContainer">
+	  <div class="gameSetupOptionsSection" style="margin-right: 10px;">
+	  <div class="gameSetupOptionsCard">
+	  <div class="instructions">Here's the room code:</div>
+	  <div id="roomCodeDisplay">
+	    <span id="gameRoomSetupRoomCode"></span>
+	  </div>
+	  
+	  <div id="gameRoomSetupMessage">
+	    Share the code above with your friends to allow them to join. Once everyone has joined, the 
+		host (<span id="gameRoomSetupHostName" class="preserve-spaces"></span>) can start the game. At least three participants
+		must join the room before the game can be started.
+	  </div>
+	  </div>
+	  <div class="gameSetupOptionsCard" style="margin-top: 1em;">
+	  <div class="instructions" >These are the users that have already joined</div>
+	  <div>
+	      <ul class="userList" id="gameRoomSetupUsersList"></ul>
+	  </div>
+	  </div>
+	  </div>
+	  
+
+	  
+	  
+	  <div class="gameSetupOptionsSection"  style="margin-left: 10px;">
+	  <div class="gameSetupOptionsCard" style="display: flex; flex-direction: column; flex-basis: 100%">
+	  <div class="instructions" >Room updates</div>
+	  <div id="gameSetupStatusContainer">
+	    <!--<h3 id="gameStatusSetupMessage"></h3> -->
+	  </div>
+	  </div>
+	  </div>
+	  </div>
+	  
+	  <div class="gameSetupOptionsCard" style="margin-top: 2em; width: 60%; margin-left: auto; margin-right: auto;">
+	    <div id="gameStatusCardContainer">
+	      <div class="instructions" >Game status</div>
+	      <div id="gameStatusSetupMessage"></div>
+	    </div>
+	    <div style="text-align: center;"><img src="resources/interaction-design-iteration-2/LoadingDots3.gif"></div>
+	  </div>
+	  
+	  
+	  <div id="gameSetupLeaveContainer">
+	    <div id="leaveGameRoomMessage" class="option-header"></div>
+	    <div><button id="leaveGameRoomButton" type="button">Exit Game Room</button></div>
+	  </div>
+	</div>
+	<div id="gamePage" style="display: none;">
+	  <h1 id="gamePageBanner">Alright, <span id="gamePageBannerUserName" class="preserve-spaces"></span>, it's game time!</h1>
+	  <div id="gamePromptsSection">
+	    <h4 id="gamePromptsInstructions">Enter your responses for the prompts below. When everyone is done, you can vote for the best answers. Good luck!</h4>
+	    <div id="gamePromptsDiv"></div>
+	    <div id="gamePromptsSubmitContainer" style="text-align: center;">
+	      <button type="button" id="submitResponsesButton">Submit Your Answers</button>
+	      <h4 id="submitResponseErrorMessage" class="collapsed-list" style="display: none; color: FireBrick;"></h4>
+	    </div>
+	  </div>
+	  <div id="responseWaitingSection" style="display: none;" class="basicCard sixtyPercent">
+	    <div id="responseWaitingBanner"></div>
+	    <div id="editPromptResponsesContainer" style="display: none;">
+	      <div id="editPromptResponsesMessage"></div>
+	      <div style="text-align: center;"><button id="editPromptResponsesButton" type="button">Edit Responses</button></div>
+	    </div>
+	    <div style="text-align: center;">
+	      <img src="resources/interaction-design-iteration-2/LoadingDots3.gif">
+	    </div>
+	  </div>
+	  <div id="votingSection" style="display: none;" class="basicCard eightyPercent">
+	    <div id="votingTitle" class="instructions"></div>
+	    <div id="votingInstructions"></div>
+	    <div id="votingPrompt" class="prompt"></div>
+	    <div id="votingChoicesContainer">
+	      <div class="votingSubtitle instructions">Your answer was:</div>
+	      <div id="myAnswer"></div>
+	      <div class="votingSubtitle instructions">Now, select another player's answer that you like:</div>
+	      <div id="votingChoicesDiv"></div>
+	    </div>
+	  </div>
+
+	  <div class="gameUserStatusSection">
+	    <div class="gameUserStatusCard" style="margin-right: 10px;">
+	  	  <div id="userStatusWorkingHeader" class="instructions">Who's still working?</div>
+	  	  <div id="userStatusWorkingEmpty" style="display: none;">Everyone is done!</div>
+	      <ul id="userStatusWorkingList" class="userList"></ul>
+	    </div>
+	    <div class="gameUserStatusCard" style="margin-left: 10px;">
+	      <div id="userStatusFinishedHeader" class="instructions">Finished users!</div>
+	      <div id="userStatusFinishedEmpty">Nobody is finished yet.</div>
+	      <ul id="userStatusFinishedList" style="display: none;" class="userList"></ul>
+	    </div>
+	  </div>
+	</div>
+	<div id="gameScoresPage" style="display: none;">
+	  <h1 id="gameScoresPageBanner"></h1>
+	  <div class="basicCard eightyPercent">
+	    <div id="resultsSection" style="display: none;">
+	      <div id="resultsBanner">
+	        <div id="resultsTitle" class="instructions"></div>
+	        <div id="resultsPrompt" class="prompt"></div>
+	      </div> 
+	      <div id="resultsContentDiv"></div>
+	    </div>
+	    <div id="finalGameSummaryPage" style="display: none;">
+	      <div id="finalGameSummaryBanner" class="instructions"></div>
+	      <div id="finalGameSummaryDetails"></div>
+	      <!-- <div id="finalGameSummaryNavDiv"></div> -->
+	      <!--   -->
+	    </div>
+	    <div id="reviewPhaseNavContainer" style="display: none;">
+          <div>Navigate through the voting results and final scores to see who did the best.</div>
+	      <div id="reviewPhaseNavDiv"></div>
+	    </div>
+	  </div>
+	  <div id="returnToLobbyContainer" class="basicCard eightyPercent">
+	    <div id="returnToLobbyMessage">When you're done reviewing, head back to the lobby. From there, you can create or join a new game and play another round!</div>
+	    <div id="returnToLobbyDiv">
+	      <button type="button" id="returnToLobbyButton" class="review-nav-button">Return to the Lobby</button>
+	    </div>
+	  </div>
+	</div>
+	
+	</div>
+	</div>
+  </body>
+
+<!-- Include the jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+<script src="resources/interaction-design-iteration-2/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script src="resources/interaction-design-iteration-2/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+<!-- The Firebase Authentication JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+
+<!-- The Firebase Realtime Database JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+<script src="resources/interaction-design-iteration-2/Constants.js"></script>
+<script src="resources/interaction-design-iteration-2/PromptsLibrary.js"></script>
+<script src="resources/interaction-design-iteration-2/AppSetup.js"></script>
+<script src="resources/interaction-design-iteration-2/UserInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/RoomInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GameUsersInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GameStateInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GameReviewStateInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GamePromptsInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GameResponsesInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/GameVotingInfo.js"></script>
+<script src="resources/interaction-design-iteration-2/AddUserManager.js"></script>
+<script src="resources/interaction-design-iteration-2/LobbyManager.js"></script>
+<script src="resources/interaction-design-iteration-2/GameSetupManager.js"></script>
+<script src="resources/interaction-design-iteration-2/GameManager.js"></script>
+<script src="resources/interaction-design-iteration-2/DisplayManager.js"></script>
+
+<script>
+  $(window).on("load", function() {
+	console.log("DOM is ready.");
+	AddUserManager.setupListener();
+  });
+</script>
+  
+</html>

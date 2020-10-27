@@ -1,0 +1,663 @@
+* {
+	font-family: Candara, Constantia, Corbel, Tahoma, Verdana, Arial, sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: white; /*#C5C5C5;*/
+  overflow-x: hidden;
+}
+
+#navigationBar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: #888888; */
+  background-image: linear-gradient(to bottom, #585858, #828282 35%, #b5b5b5 80%, #a0a0a0);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: 2px solid black;
+}
+
+#navigationBar > div {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+#transitionMessage {
+	font-weight: bold;
+	margin-top: 3em;
+	font-size: 4em;
+	text-align: center;
+	color: MediumBlue;
+}
+
+input[type=text] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-size: 1.1em;
+  font-family: "Lucida Console", sans-serif;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  /* ox-shadow: 3px 3px #828282; */
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  /*background-color: MediumBlue; */
+  background: linear-gradient(to bottom, #1133ff 5%, #0000cd 100%);
+  color: white;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+	background: linear-gradient(to bottom, #215aff 5%, #0F2FFF 100%);
+	cursor: pointer;
+}
+
+.sixtyPercent {
+	width: 60%;
+}
+
+.eightyPercent {
+	width: 80%;
+}
+
+.pageContainer {
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	background: #ffe566; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+	box-shadow: 5px 5px #888888;
+}
+
+#gameContainer.pageContainer {
+	background: #a1d79d; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+}
+
+#roomCodeDisplay {
+	text-align: center;
+	margin: 1em;
+}
+
+#gameRoomSetupRoomCode {
+    background: darkgreen;
+    padding: 0.15em .4em;
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 5px 5px #585858; */
+    font-weight: bold;
+    color: white;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 2.5em;
+    letter-spacing: 0.1em;
+}
+
+.pageContainer h1 {
+	text-align: center;
+	margin-top: 0px;
+}
+
+.startPageFormContainer {
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.instructions {
+	font-size: 1.5em;
+	color: MediumBlue;
+	font-weight: bold;
+}
+
+.startPageInstructions {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.lobbyPageInstructions {
+	margin-top: 0.75em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+#gamePromptsInstructions {
+	text-align: center;
+}
+
+.lobbyOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+	justify-content: space-evenly;
+}
+
+.lobbyOptionCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin-left: 1.5em; 
+	margin-right: 1.5em; 
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+.gameSetupOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+.gameSetupOptionsSection {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	/*background: #dcdcdc; /*#a2a2a2;*/
+	/*margin-left: auto; 
+	margin-right: auto;*/ 
+	/*padding: 10px;
+	border-radius: 10px;*/
+	/*border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;*/
+}
+
+.gameSetupOptionsCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+#responseWaitingBanner {
+	text-align: center;
+    color: MediumBlue;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#votingTitle {
+	margin-bottom: 0.5em;
+}
+
+.prompt {
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: bold;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+}
+
+.instructions.votingSubtitle {
+	font-size: 1.25em;
+	margin-bottom: 0.25em;
+}
+
+.resultsSectionDiv .instructions {
+    font-size: 1.25em;
+    color: black;
+}
+
+#votingChoicesContainer {
+	margin: 0 auto;
+	width: 90%;
+}
+
+#myAnswer {
+	font-family: consolas;
+    color: white;
+    font-size: 1.5em;
+    margin-top: 0.25em;
+    margin-bottom: 2em;
+    text-align: center;
+    font-weight: bold;
+    background: #808080;
+    padding: 0.25em;
+    border-radius: 15px;
+    border: 1px solid black;
+    white-space: pre-wrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#votingChoicesDiv {
+	margin: 0;
+	padding: 0;
+}
+
+button.vote-button {
+	display: block;
+	background: linear-gradient(to bottom, #678eff 5%, #0000cd 100%);
+    padding: 0.5em;
+    text-align: center;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+    margin-right: auto;
+    font-size: 1.5em;
+    border-radius: 25px;
+    font-family: Consolas;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    white-space: pre-wrap;
+}
+
+button.vote-button:hover {
+	background: linear-gradient(to bottom, #4275ee 5%, #0000aa 100%);
+}
+
+.gameSetupOptionsCard .instructions, 
+.gameUserStatusCard .instructions, 
+#finalGameSummaryBanner {
+	text-align: center;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+#gameSetupStatusContainer {
+	display: block;
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: auto;	
+	overflow-y: scroll;
+	border-radius: 5px;
+	font-family: "Lucida Console", monospace;
+	background: white;
+	border: 1px solid #464646;
+	padding: 10px;
+}
+
+.roomUpdateMessage {
+	padding: 0.5em;
+	border-radius: 5px;
+	font-family: monospace;
+	margin-bottom: 0.5em;
+	background: skyblue;
+}
+
+.roomUpdateMessage:last-child {
+	font-weight: bold;
+}
+
+.roomUpdateMessage .preserve-spaces {
+	font-family: monospace;
+}
+
+.optionCardTitle {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	/*text-decoration: underline;*/
+		
+	
+	color: MediumBlue;
+	margin-bottom: 0.5em;
+	
+}
+
+#gamePromptsDiv {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.promptNumberDiv {
+	font-weight: bold;
+	font-size: 1.25em;
+	color: MediumBlue;
+	/*text-decoration: underline;*/
+}
+
+.promptTextDiv {
+	font-size: 1.5em;
+	/*color: MediumBlue;*/
+	font-weight: bold;
+	margin-top: 0.5em;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.promptResponseDiv {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	text-align: center;
+}
+
+input.promptResponse {
+	width: 100%;
+}
+
+.gamePromptSectionCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+	margin-bottom: 2em;
+}
+
+.gameUserStatusSection {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 80%;
+	justify-content: space-evenly;
+	margin-top: 3em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.basicCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin: 1em auto; 
+	padding: 1em;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+.gameUserStatusCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin-left: 1.5em; 
+	margin-right: 1.5em; 
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+#userStatusWorkingEmpty, #userStatusFinishedEmpty {
+	margin-top: 0.5em;
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #353535;
+}
+
+.logoWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nameInput{
+	width: 100%;
+}
+
+#usernameInputButton {
+	width: 100%;
+}
+
+#nameBox {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#navBarName, #changeNameLinkContainer {
+	text-align: right;
+}
+
+.preserve-spaces {
+	white-space: pre-wrap;
+}
+
+.option-header {
+	margin-bottom: 5px;
+}
+
+.collapsed-list {
+	margin-top: 5px;
+}
+
+.userList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	
+		    
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
+.userList li, 
+table.finalScoresTable td.playerName div {
+    display: inline-block;
+    background: mediumturquoise;
+    font-size: 1.25em;
+    font-family: tahoma;
+    font-weight: normal;
+    padding: 0.5em 1em;
+    margin: 0.25em 0.5em;
+    border-radius: 5px;
+    border: 3px solid #353535;
+    color: #353535;
+}
+
+#completeGameSetupDiv {
+	text-align: center;
+}
+
+#completeGameSetupButton {
+	font-size: 1.25em;
+}
+
+button.disabled-waiting, button.disabled-waiting:hover {
+	background: #555555;
+    color: #cdcdcd;
+    cursor: default;
+}
+
+#navBarName {
+	font-size: xx-large;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#changeNameOptionsContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#gameSetupLeaveContainer {
+	margin-top: 50px;
+}
+
+#lobbyUserMessageContainer {
+	margin: 1em auto;
+    border: 1px solid black;
+    padding: 1em;
+    background-color: LightSkyBlue;
+    width: 40%;
+    box-shadow: 5px 5px #888888;
+    border-radius: 5px;
+}
+
+#lobbyUserMessage {
+	text-align: center;
+}
+
+#lobbyUserDismissLinkDiv {
+	text-align: center;
+	margin-top: 1em;
+}
+
+#resultsNavDiv, #finalGameSummaryNavDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+.logoImage {
+  max-width: 300px;
+  height: auto;
+}
+
+#changeNameSubmitButton, #changeNameInput {
+	margin-left: 10px;
+}
+
+.noVotes {
+	text-align: center;
+    margin: 0.5em 0.5em;
+}
+
+.noVotes span {
+	font-size: 1.25em;
+    font-family: tahoma;
+    color: Black;
+}
+
+.resultsSectionDiv {
+    width: 90%;
+    background: #b1d5ff;
+    border-radius: 10px;
+    box-shadow: 5px 5px #888888;
+    margin: 2em auto;
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.resultAnswer {
+    font-weight: bold;
+    text-align: center;
+    /* width: 80%; */
+    font-family: Consolas;
+    background: #5f5f5f;
+    color: white;
+    margin: 0.25em auto;
+    border-radius: 15px;
+    font-size: 1.5em;
+    padding: 0.5em;
+}
+
+#gameScoresPage .userList li, 
+#gameScoresPage .userList li span {
+	font-size: 1.25em;
+	font-weight: normal;
+}
+
+#returnToLobbyDiv {
+	text-align: center;
+}
+
+#reviewPhaseNavDiv {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+#reviewPhaseNavDiv.oneLeftButton {
+	justify-content: flex-start;
+}
+
+#reviewPhaseNavDiv.oneRightButton {
+	justify-content: flex-end;
+}
+
+#reviewPhaseNavDiv.twoButtons {
+	justify-content: space-between;
+}
+
+table.finalScoresTable {
+	width: 60%;
+    margin: 1em auto;
+    border-collapse: collapse;
+    /* border: 2px solid #575757; */
+    
+}
+
+table.finalScoresTable td {
+	background-color: #b1d5ff;
+}
+
+table.finalScoresTable th {
+	background-color: #a1a1a1;
+	font-size: 1.75em;
+    font-weight: bold;
+}
+
+table.finalScoresTable td, 
+table.finalScoresTable th {
+    border: 2px solid #575757;
+    padding: 0.25em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.finalScoresTable td.playerName div {
+    border: 2px solid #575757;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+table.finalScoresTable td.playerScore div {
+    font-size: 1.75em;
+    font-weight: normal;
+}
+
+/*
+button.review-nav-button.reviewPrevious {
+	margin-left: 1em;
+	margin-right: auto;
+}
+
+button.review-nav-button.reviewNext {
+	margin-left: auto;
+	margin-right: 1em;
+}
+*/

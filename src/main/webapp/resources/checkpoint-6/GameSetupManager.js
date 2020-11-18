@@ -391,10 +391,14 @@ GameSetupManager = (function() {
 							GameManager.clearAllLocalData();
 							
 							// 4. Reset the chat mode
+							removeGameChatListener();
 							ChatManager.setChatMode("no-chat");
 							
+							// 4a. Remove beforeunload handler - refreshing the page from the lobby is ok.
+							removeBeforeUnloadHandler();
+							
 							// 5. Go back to the lobby.
-							AddUserManager.enterLobby(false);
+							AddUserManager.enterLobby(false, "GAME");
 						});
 					});
 				});
@@ -529,10 +533,14 @@ GameSetupManager = (function() {
 									GameManager.clearAllLocalData();
 									
 									// 4. Reset the chat mode
+									removeGameChatListener();
 									ChatManager.setChatMode("no-chat");
 									
+									// 4a. Remove beforeunload handler - refreshing the page from the lobby is ok.
+									removeBeforeUnloadHandler();
+									
 									// 5. Go back to the lobby.
-									AddUserManager.enterLobby(false);								
+									AddUserManager.enterLobby(false, "GAME");								
 								});
 							}, 1000);
 						});
@@ -552,6 +560,60 @@ GameSetupManager = (function() {
 			.addClass("futureState");
 		
 		$("span.statusBarRoomCode").text("");
+	}
+	
+	function addChatEntry(chatObj) {
+		var db = App.getDatabase();
+  		var chatRef = db.ref("rooms/" + RoomInfo.getRoomKey()).child("chat");
+		var chatEntryRef = chatRef.push(chatObj);
+		console.log("Added chat entry with key: " + chatEntryRef.key);
+	}
+	
+	function initializeChatMessageForm() {
+		// Remove existing listeners, if they are attached.
+		$("#userChatMessageForm").off("submit");
+		
+		// Add the submit handler
+		$("#userChatMessageForm").on("submit", function(submitEvent) {
+			submitEvent.preventDefault();
+			submitEvent.returnValue = false;
+			
+			var message = "";
+			
+			var messageSrc = $("#userChatInput").val();
+			if(messageSrc) {
+				message = messageSrc.trim();
+			}
+			
+			if(message) {
+				var chatObj = {
+					"chatType": "USER",
+					"message": message,
+					"chatUserName": UserInfo.getUserName(),
+					"chatUserKey": UserInfo.getUserKey()
+				}
+				
+				addChatEntry(chatObj);
+			}
+			
+			$("#userChatInput").val("").focus();
+			
+			return false;
+		});
+	}
+	
+	function beforeUnloadHandler(event) {
+		event.preventDefault();
+	 	event.returnValue = "";
+		return "";
+	}
+	
+	function addBeforeUnloadHandler() {
+		 window.addEventListener("beforeunload", beforeUnloadHandler);
+	}
+	
+	function removeBeforeUnloadHandler() {
+		 window.removeEventListener("beforeunload", beforeUnloadHandler);
 	}
 	
 	function getGameUrl() {
@@ -586,8 +648,17 @@ GameSetupManager = (function() {
 		$("#statusBar").slideDown(500, function() {
 			NavBarManager.refreshForGame();
 			
+			// Handler to allow the user to cancel if they navigate away from the page
+			addBeforeUnloadHandler();
+			
+			// Clear the chat
+			$("#chatHistoryArea").empty();
+			
 			// Start the chat mode!
 			ChatManager.setChatMode("small-chat");
+			
+			// Setup chat form handler
+			initializeChatMessageForm();
 			
 			$("#gameRoomSetupPage").show();
 			
@@ -696,6 +767,61 @@ GameSetupManager = (function() {
 		console.log("Unregistered Room Setup State Listener");
 	}
 	
+	function addGameChatListener() {
+		var db = App.getDatabase();
+  		var chatRef = db.ref("rooms/" + RoomInfo.getRoomKey()).child("chat");
+		chatRef.on("child_added", onChatMessage);
+		console.log("Unregistered Game Chat Listener");
+	}
+	
+	function removeGameChatListener() {
+		var db = App.getDatabase();
+  		var chatRef = db.ref("rooms/" + RoomInfo.getRoomKey()).child("chat");
+		chatRef.off("child_added");
+		console.log("Unregistered Game Chat Listener");
+	}
+	
+	function onChatMessage(dataSnapshot) {
+		if(dataSnapshot.exists()) {
+			var chatObj = dataSnapshot.val();
+			var chatType = chatObj.chatType;
+			var message = chatObj.message;
+			var entry = $("<div>");
+							
+			if(chatType == "SYSTEM") {
+				entry.addClass("roomUpdateMessage").text(message);
+			}
+			else if(chatType == "USER") {
+				var chatUserName = chatObj.chatUserName;
+				var chatUserKey = chatObj.chatUserKey;
+				
+				
+				entry.addClass("userChatDiv");
+				
+				if(chatUserKey == UserInfo.getUserKey()) {
+					entry.addClass("mine");	
+				}
+				
+				var nameDiv = $("<div>").addClass("userChatName").text(chatUserName);
+				var messageDiv = $("<div>").addClass("userChatMessage").text(message);
+				
+				entry.append(nameDiv);
+				entry.append($("<br >"));
+				entry.append(messageDiv);
+			}
+			
+			$("#chatHistoryArea").append(entry);
+			
+			// Scroll to the bottom
+			/*var div = document.getElementById("chatHistoryArea");
+			div.scrollTop = div.scrollHeight - div.clientHeight;
+			*/
+			$('#chatHistoryArea').stop().animate({
+  				scrollTop: $('#chatHistoryArea')[0].scrollHeight
+			}, 800);
+		}
+	}
+	
 	function insertSelfAsRoomUser() {
 		var db = App.getDatabase();
   		var roomUsersRef = db.ref().child("rooms/" + RoomInfo.getRoomKey() + "/users");
@@ -760,15 +886,21 @@ GameSetupManager = (function() {
 		
 		// Add listener for the Room Setup State
 		listenToRoomSetupState();
+		
+		// Start listener for the chat
+		addGameChatListener();
 	}
 	
-	function tryJoinExistingGameRoom(roomCodeInput) {
+	function tryJoinExistingGameRoom(roomCodeInput, sourceLocation) {
 		var db = App.getDatabase();
 		
 		var roomRef = db.ref("rooms");
 		var result = roomRef.orderByChild("roomCode").equalTo(roomCodeInput).limitToLast(1).once('value')
 			.then(function (dataSnapshot) {
 				console.log("Got data snapshot");
+				var isRoomCodeValid = false;
+				var errorMessage = "Room not found";
+				
 				if(dataSnapshot.exists()) {
 					console.log("Success!");
 					var roomKey = null;
@@ -784,12 +916,28 @@ GameSetupManager = (function() {
 					var roomSetupState = roomData.roomSetupState;
 					
 					if(roomSetupState == "WAITING") {
+						isRoomCodeValid = true;
 						RoomInfo.setRoomKey(roomKey);
 						RoomInfo.setRoomCode(roomCodeInput);
 						RoomInfo.setRoomOwnerKey(roomData.roomOwnerKey);
 						RoomInfo.setRoomOwnerName(roomData.roomOwnerName);
 						RoomInfo.setRoomSetupState(roomData.roomSetupState);
 						
+						
+					}
+					else {
+						errorMessage = "Looks like you missed the boat. This game room (" + roomCodeInput + ") isn't open for new users to join anymore.";
+						//$("#roomCodeErrorDiv").text("Looks like you missed the boat. This game room (" + roomCodeInput + ") isn't open for new users to join anymore.").show();
+					}
+				}
+				else {
+					errorMessage = "Ooops, we couldn't find the room with a room code of " + roomCodeInput + ". Did you enter it correctly?"
+					//$("#roomCodeErrorDiv").text("Ooops, we couldn't find the room with a room code of " + roomCodeInput + ". Did you enter it correctly?").show();
+					console.log("No room exists");
+				}
+				
+				if(isRoomCodeValid) {
+					if(sourceLocation == "LOBBY") {
 						$("#lobbyPage").hide("slide", {direction: "up"}, "slow", function() {
 							$("#roomCodeErrorDiv").empty().hide();
 							$("#roomCodeInput").val("");
@@ -804,14 +952,64 @@ GameSetupManager = (function() {
 							});
 						});
 					}
+					else if(sourceLocation == "WELCOME") {
+						
+						$("#startPage").hide("slide", {direction: "left"}, "slow", function() {
+							// Clean up the welcome page
+							AddUserManager.resetStartPage();
+							
+							$("#transitionMessage").text("Joining Light Quest Game "  + roomCodeInput + " ...");
+							$("#transitionMessage").show("fade", {}, "slow", function() {
+								setTimeout(function() {
+									$("#transitionMessage").hide("fade", {}, "slow", function() {
+										joinValidGameRoom();
+									});
+								}, 1000);
+							});
+						});
+					}
+					else if(sourceLocation == "LOAD") {
+						joinValidGameRoom();
+					}
 					else {
-						$("#roomCodeErrorDiv").text("Looks like you missed the boat. This game room (" + roomCodeInput + ") isn't open for new users to join anymore.").show();
+						console.log("Big Problem. Invalid Source: " + sourceLocation);
 					}
 				}
+				
+				// Invalid Room Code
 				else {
-					$("#roomCodeErrorDiv").text("Ooops, we couldn't find the room with a room code of " + roomCodeInput + ". Did you enter it correctly?").show();
-					console.log("No room exists");
+					if(sourceLocation == "LOBBY") {
+						$("#roomCodeErrorDiv").text(errorMessage).show();
+					}
+					else if(sourceLocation == "WELCOME") {
+						
+						$("#startPage").hide("slide", {direction: "left"}, "slow", function() {
+							// Clean up the welcome page
+							resetStartPage();
+							
+							$("#transitionMessage").text("Joining Light Quest Game "  + roomCodeInput + " ...");
+							$("#transitionMessage").show("fade", {}, "slow", function() {
+								setTimeout(function() {
+									$("#transitionMessage").hide("fade", {}, "slow", function() {
+										LobbyManager.enterLobbyValid(true);
+										$("#roomCodeErrorDiv").text(errorMessage).show();
+										$("#roomCodeInput").val(roomCodeInput);
+									});
+								}, 1000);
+							});
+						});
+					}
+					else if(sourceLocation == "LOAD") {
+						// We have the user's info already - go straight to the lobby.
+						LobbyManager.enterLobbyValid(true);
+						$("#roomCodeErrorDiv").text(errorMessage).show();
+						$("#roomCodeInput").val(roomCodeInput);
+					}
+					else {
+						console.log("Big Problem. Invalid Source: " + sourceLocation);
+					}
 				}
+				
 			});
 	}
 	
@@ -880,6 +1078,10 @@ GameSetupManager = (function() {
 		refreshGameSetupUI: refreshGameSetupUI,
 		stopListeningToRoomUsers: stopListeningToRoomUsers,
 		copyGameUrlClicked: copyGameUrlClicked,
-		copyRoomCodeClicked: copyRoomCodeClicked
+		copyRoomCodeClicked: copyRoomCodeClicked,
+		addBeforeUnloadHandler: addBeforeUnloadHandler, 
+		removeBeforeUnloadHandler: removeBeforeUnloadHandler,
+		addGameChatListener: addGameChatListener,
+		removeGameChatListener: removeGameChatListener
 	};
 })();

@@ -27,7 +27,7 @@
                 <label for="navUsernameInput">New Light Quest Name</label>
               </div>
               <div>
-                <input type="text" name="navUsernameInput" id="navUsernameInput" class="fullWidth" maxlength="30" placeholder="Enter your new name"/>
+                <input type="text" name="navUsernameInput" id="navUsernameInput" class="fullWidth" maxlength="40" placeholder="Enter your new name"/>
               </div>
               <div id="navUsernameErrorDiv" class="overlayErrorDiv" style="display: none;"></div>
             </div>
@@ -63,7 +63,7 @@
                 <label>New Light Quest Email (Optional)</label>
               </div>
               <div id="navEmailInputDiv">
-                <input type="text" name="navEmailInput" id="navEmailInput" class="fullWidth" maxlength="30" placeholder="Enter your new email"/>
+                <input type="text" name="navEmailInput" id="navEmailInput" class="fullWidth" maxlength="50" placeholder="Enter your new email"/>
               </div>
               <div>
 	            <input type="checkbox" name="navSkipEmailInput" id="navSkipEmailInput" />
@@ -108,7 +108,7 @@
     <div id="headerContent">
       <div id="navigationBar">
         <div class="logoWrapper">
-          <img class="logoImage" src="resources/checkpoint-6/LightQuestLogo.png" />
+          <img class="logoImage" src="resources/checkpoint-6/LightQuestLogo.png" alt="Light Quest logo, with light bulb"/>
         </div>
         <div id="navTools" style="display: none;">
           <div id="navAccountContainer" class="navContainer">
@@ -116,42 +116,15 @@
             <div id="navBarEmail">This is the user email.</div>
           </div>
           <div id="navChangeNameContainer" class="navContainer navButtonContainer">
-            <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/user.png" /><br/>Change Name</button>
+            <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/user.png" alt="Change Name Icon"/><br/>Change Name</button>
           </div>
           <div id="navChangeEmailContainer" class="navContainer navButtonContainer">
-            <button id="navShowChangeEmailCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/email.png" /><br/>Change Email</button>
+            <button id="navShowChangeEmailCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/email.png" alt="Change Email Icon" /><br/>Change Email</button>
           </div>
           <div id="navLogoutContainer" class="navContainer navButtonContainer">
-            <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/exit.png" /><br/>Logout</button>
+            <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/checkpoint-6/exit.png" alt="Logout Icon" /><br/>Logout</button>
           </div>
         </div>
-        
-        
-        <!-- 
-        <div id="nameBox" style="display: none;">
-          <div id="navBarName" class="preserve-spaces align-right"></div>
-          <div id="changeNameLinkContainer" class="align-right">
-            <a href="#" id="changeNameLink">Change Name</a>
-          </div>
-          <div id="changeNameActionContainer" style="display: none;">
-            <div>
-              <form name="changeNameForm" id="changeNameForm">
-                <div id="changeNameInputContainer">
-	              <span>What would you like to change your name to?</span>
-	              <input type="text" id="changeNameInput" name="changeNameInput" maxlength="30" class="nameInput" />
-	            </div>
-	            <div id="changeNameErrorDiv" class="align-right" style="display: none; color: FireBrick;"></div>
-	            <div id="changeNameOptionsContainer" class="align-right">
-	              <a href="#" id="changeNameCancelLink">Cancel</a>
-	              <button type="submit" id="changeNameSubmitButton" name="changeNameSubmitButton">Update my Name</button>
-	            </div>
-	          
-              </form>
-            </div>
-          </div>
-        </div>
-        
-        -->
       </div>
       <div id="statusBar" style="display: none;">
          <div id="statusBarContainer">
@@ -161,15 +134,15 @@
            </div>
            <div class="statusBarSection statusBarCenter">
               <span id="setupState" class="statusBarGameState completedState">Game Setup</span>
-              <img class="separator" src="resources/checkpoint-6/separator.png" />
+              <img class="separator" src="resources/checkpoint-6/separator.png" alt="Game status separator" />
               <span id="promptsState" class="statusBarGameState completedState">Answer Prompts</span>
-              <img class="separator" src="resources/checkpoint-6/separator.png" /> 
+              <img class="separator" src="resources/checkpoint-6/separator.png" alt="Game status separator" /> 
               <span id="votingState1" class="statusBarGameState activeState">Voting Round #1</span>
-              <img class="separator" src="resources/checkpoint-6/separator.png" /> 
+              <img class="separator" src="resources/checkpoint-6/separator.png" alt="Game status separator" /> 
               <span id="votingState2" class="statusBarGameState futureState">Voting Round #2</span>
-              <img class="separator" src="resources/checkpoint-6/separator.png" /> 
+              <img class="separator" src="resources/checkpoint-6/separator.png" alt="Game status separator" /> 
               <span id="votingState3" class="statusBarGameState futureState">Voting Round #3</span>
-              <img class="separator" src="resources/checkpoint-6/separator.png" /> 
+              <img class="separator" src="resources/checkpoint-6/separator.png" alt="Game status separator" /> 
               <span id="resultsState" class="statusBarGameState futureState">Review Results</span>
            </div>
            <div class="statusBarSection statusBarRight"></div>
@@ -191,9 +164,13 @@
 		  <div style="margin-top: 1em;">
 		    Use the box below to send a message to the other players 
 		  </div>
-		  <div style="margin-top: 0.25em; display: flex; align-items: center; wrap: nowrap; justify-content: space-between;">
-		    <input type="text" style="flex-grow: 1; margin-bottom: 0; margin-top: 0;" />
-		    <button type="button" style="margin-left: auto; margin-bottom: 0; margin-top: 0; margin-left: 1em;">Send</button>
+		  <div style="margin-top: 0.25em;">
+		    <form id="userChatMessageForm" name="userChatMessageForm">
+		      <div style="display: flex; align-items: center; flex-wrap: nowrap; justify-content: space-between;">
+		        <input type="text" id="userChatInput" name="userChatInput" style="flex-grow: 1; margin-bottom: 0; margin-top: 0;" />
+		        <button type="submit" id="userChatSubmitButton" style="flex-grow: 0; margin-left: auto; margin-bottom: 0; margin-top: 0; margin-left: 1em;">Send</button>
+  			  </div>
+		    </form>
 		  </div>
 		  <!-- 
 		  <div id="sendChatDiv">
@@ -255,7 +232,7 @@
 	          <label for="usernameInput">Name:</label>
 	        </div>
 	        <div>
-  	          <input type="text" name="usernameInput" id="usernameInput" class="fullWidth" maxlength="30" placeholder="Enter your name"/>
+  	          <input type="text" name="usernameInput" id="usernameInput" class="fullWidth" maxlength="40" placeholder="Enter your name"/>
 	        </div>
 	      </div>
 	      <div class="welcomeFormSection">
@@ -371,7 +348,7 @@
 	      <div class="instructions" >Game Status</div>
 	      <div id="gameStatusSetupMessage"></div>
 	    </div>
-	    <div style="text-align: center;"><img src="resources/checkpoint-6/LoadingDots3.gif"></div>
+	    <div style="text-align: center;"><img src="resources/checkpoint-6/LoadingDots3.gif" alt="GIF with three dots, for waiting pages"></div>
 	  </div>
 	  
 	  
@@ -397,7 +374,7 @@
 	      <div style="text-align: center;"><button id="editPromptResponsesButton" type="button">Edit Responses</button></div>
 	    </div>
 	    <div style="text-align: center;">
-	      <img src="resources/checkpoint-6/LoadingDots3.gif">
+	      <img src="resources/checkpoint-6/LoadingDots3.gif" alt="GIF with three dots, for waiting pages" />
 	    </div>
 	  </div>
 	  <div id="votingSection" style="display: none;" class="basicCard eightyPercent">
@@ -529,7 +506,7 @@
   				
   				// We have the user's info already - go straight to the lobby.
   				$("#startPage").hide();
-  				AddUserManager.enterLobby(true);
+  				AddUserManager.enterLobby(true, "LOAD");
   			}
   			else {
   				window.localStorage.removeItem("LightQuestUserKey");

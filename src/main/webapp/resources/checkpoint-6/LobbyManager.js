@@ -2,6 +2,17 @@ LobbyManager = (function() {
 
 	var initialized = false;
 	
+	function enterLobbyValid(isFromStartPage) {
+		// Populate the title bar
+		//$("#nameTools").show();
+		//$("#navBarName").text(userName);
+		NavBarManager.refreshForLobby();
+
+		refreshLobbyUI();
+		setupListener();
+		slideInLobbyUI(isFromStartPage);
+	}
+	
 	function slideInLobbyUI(isFromStartPage) {
 		// 1. Slide in the lobby component
 		var slideDirection = isFromStartPage == true ? "right" : "up";
@@ -167,7 +178,7 @@ LobbyManager = (function() {
 				
 				var trimmedRoomCode = roomCodeInput.trim().toUpperCase();
 				if(trimmedRoomCode.length == 5) {
-					GameSetupManager.tryJoinExistingGameRoom(trimmedRoomCode);					
+					GameSetupManager.tryJoinExistingGameRoom(trimmedRoomCode, "LOBBY");					
 				}
 				else {
 					$("#roomCodeErrorDiv").text("Please provide a five-digit room code.").show();
@@ -197,6 +208,7 @@ LobbyManager = (function() {
 	return {
 		setupListener: setupListener,
 		refreshLobbyUI: refreshLobbyUI,
-		slideInLobbyUI: slideInLobbyUI
+		slideInLobbyUI: slideInLobbyUI,
+		enterLobbyValid: enterLobbyValid
 	};
 })();

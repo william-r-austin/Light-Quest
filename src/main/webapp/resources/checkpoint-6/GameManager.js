@@ -842,10 +842,14 @@ GameManager = (function() {
 							$("#transitionMessage").hide("fade", {}, "slow", function() {
 								
 								// Reset the chat mode
+								GameSetupManager.removeGameChatListener();
 								ChatManager.setChatMode("no-chat");
+								
+								// 4a. Remove beforeunload handler - refreshing the page from the lobby is ok.
+								GameSetupManager.removeBeforeUnloadHandler();
 	
 								// 5. Go back to the lobby.
-								AddUserManager.enterLobby(false);
+								AddUserManager.enterLobby(false, "GAME");
 							});
 						}, 1000);
 					});

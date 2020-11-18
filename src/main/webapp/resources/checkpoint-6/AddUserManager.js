@@ -8,17 +8,33 @@ AddUserManager = (function() {
 	}
 	*/
 		
-	function enterLobby(isFromStartPage) {
+	function enterLobby(isFromStartPage, sourceLocation) {
 		//var userName = UserInfo.getUserName();
-        
-		// Populate the title bar
-		//$("#nameTools").show();
-		//$("#navBarName").text(userName);
-		NavBarManager.refreshForLobby();
-
-		LobbyManager.refreshLobbyUI();
-		LobbyManager.setupListener();
-		LobbyManager.slideInLobbyUI(isFromStartPage);
+		
+		var tryJoinGame = false;
+		var roomCode = "";
+		
+		if("GAME" != sourceLocation) {
+			var urlString = window.location.href;
+			var url = new URL(urlString);
+			var roomCode = url.searchParams.get("roomCode");
+			
+			if(roomCode != null) {
+				tryJoinGame = true;
+			}
+			
+			var baseUrl = urlString.split("?")[0];
+			if(baseUrl != urlString) {
+				window.history.pushState({},"", baseUrl);
+			}
+		}
+		
+		if(tryJoinGame) {
+			GameSetupManager.tryJoinExistingGameRoom(roomCode, sourceLocation);
+		}
+		else {
+			LobbyManager.enterLobbyValid(isFromStartPage);
+		}
 	}
 	
 	function startLobbyTransition() {
@@ -35,7 +51,7 @@ AddUserManager = (function() {
 			$("#transitionMessage").show("fade", {}, "slow", function() {
 				setTimeout(function() {
 					$("#transitionMessage").hide("fade", {}, "slow", function() {
-						enterLobby(true);
+						enterLobby(true, "WELCOME");
 					});
 				}, 1000);
 			});

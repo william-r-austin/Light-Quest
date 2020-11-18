@@ -6,9 +6,14 @@
   box-sizing: border-box;
 }
 
+html {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   background-color: white; /*#C5C5C5;*/
   overflow-x: hidden;
 }
@@ -135,6 +140,8 @@ img.separator {
 	font-size: 2.5em;
 	text-align: center;
 	color: MediumBlue;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 input[type=text] {
@@ -232,7 +239,8 @@ button:hover {
 	margin-bottom: 0.25em;
 }
 
-#copyToClipboardContainer button {
+#copyToClipboardContainer button,
+#sendChatDiv button {
 	padding: 0.5em 1em;
 	font-size: 1em;
 }
@@ -318,6 +326,16 @@ button:hover {
 	border-radius: 10px;
 	border: 2px solid #464646;
 	box-shadow: 5px 5px #888888;
+}
+
+#roomCodeErrorDiv {
+	margin-bottom: 1em;
+	font-weight: bold;
+	color: FireBrick;
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
 #overlay {
@@ -524,14 +542,38 @@ button.vote-button:hover {
 .roomUpdateMessage {
 	padding: 0.5em;
 	border-radius: 5px;
-	font-family: monospace;
+	/*font-family: monospace;*/
 	margin-bottom: 0.5em;
-	background: skyblue;
+	background: #b0b0b0;
 }
 
+.userChatDiv {
+	text-align: left;
+	margin-bottom: 0.5em;
+}
+
+.userChatDiv.mine {
+	text-align: right;
+}
+
+.userChatName {
+	display: inline-block;
+	font-size: 0.8em;
+}
+
+.userChatMessage {
+	margin-top: 0.1em;
+	padding: 0.5em;
+    border-radius: 5px;
+    background: skyblue;
+    display: inline-block;
+}
+
+
+/*
 .roomUpdateMessage:last-child {
 	font-weight: bold;
-}
+}*/
 
 .roomUpdateMessage .preserve-spaces {
 	font-family: monospace;
@@ -906,14 +948,66 @@ table.finalScoresTable td.playerScore div {
     font-weight: normal;
 }
 
-#chatContainer {
-	position: fixed;
-	top: 120px;
-	right: 0;
+#outerChatContainer {
+	width: 0;
+	flex-grow: 1;
+	/*
+	position: relative;
+	top: 30px;
+	left: 0;
 	height: 500px;
-	background: red;
+	background: #a1d79d;
+	width: 100%;
+	*/
 }
 
+#contentContainer {
+	flex-grow: 1;
+}
+
+#smallChatContainerDiv {
+	position: fixed;
+	background: #a1d79d;
+	border-radius: 0 10px 10px 0;
+	border-top: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	padding: 20px;
+}
+
+#sendChatDiv {
+	margin-top: 0.25em;
+}
+
+#chatHistoryArea {
+	flex-grow: 1;
+	background: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	overflow-y: scroll;
+	padding: 5px;
+}
+
+#smallChatContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: stretch;
+	width: 100%;
+	height: 100%;
+}
+
+#bodyContent {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	flex-direction: rows;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+/*
 #bodyContent.no-chat #chatContainer {
 	display: none;
 }
@@ -931,6 +1025,27 @@ table.finalScoresTable td.playerScore div {
 #bodyContent.small-chat #contentContainer {
 	display: block;
 	width: 65%;
+}
+*/
+
+#minChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	width: 5%;
+}
+
+#minChatContainer {
+	
+}
+
+#smallChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	
 }
 
 /*

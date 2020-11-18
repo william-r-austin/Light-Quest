@@ -840,6 +840,9 @@ GameManager = (function() {
 					$("#transitionMessage").show("fade", {}, "slow", function() {
 						setTimeout(function() {
 							$("#transitionMessage").hide("fade", {}, "slow", function() {
+								
+								// Reset the chat mode
+								ChatManager.setChatMode("no-chat");
 	
 								// 5. Go back to the lobby.
 								AddUserManager.enterLobby(false);

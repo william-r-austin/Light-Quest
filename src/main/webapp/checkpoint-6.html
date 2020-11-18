@@ -177,7 +177,32 @@
       </div>
     </div>
     
-    <div id="bodyContent" class="no-chat">
+   	<div id="minChatSection" style="display: none;">
+	  <div id="minChatContainer">
+	  </div>
+	</div>
+    
+    <div id="bodyContent">
+    <div id="outerChatContainer" style="display: none;">
+	  <div id="smallChatContainerDiv" style="display: none;">
+		<div id="smallChatContainer">
+		  <h1 style="text-align: center; margin-top: 0;">Game Chat</h1>
+		  <div id="chatHistoryArea"></div>
+		  <div style="margin-top: 1em;">
+		    Use the box below to send a message to the other players 
+		  </div>
+		  <div style="margin-top: 0.25em; display: flex; align-items: center; wrap: nowrap; justify-content: space-between;">
+		    <input type="text" style="flex-grow: 1; margin-bottom: 0; margin-top: 0;" />
+		    <button type="button" style="margin-left: auto; margin-bottom: 0; margin-top: 0; margin-left: 1em;">Send</button>
+		  </div>
+		  <!-- 
+		  <div id="sendChatDiv">
+		    <button type="button" style="margin-left: auto; margin-bottom: 0; margin-top: 0;"">Send</button>
+		  </div>
+		  -->
+		</div>
+	  </div>
+	</div>
     <div id="contentContainer">
     <div id="transitionMessage" style="display: none;"></div>
     <div id="startPage" class="pageContainer sixtyPercent" style="display: none;">
@@ -280,7 +305,7 @@
 	  	  <div style="text-align: center;">
 	  	    <input type="text" name="roomCodeInput" id="roomCodeInput" placeholder="Enter room code" style="width: 12em;">
 	  	  </div>
-	  	  <div id="roomCodeErrorDiv" style="display: none; margin-bottom: 1em; font-weight: bold; color: FireBrick; width: 20em; margin-left: auto; margin-right: auto;"></div>
+	  	  <div id="roomCodeErrorDiv" style="display: none;"></div>
 	  	  <div style="text-align: center;">
 	  	    <button type="submit" id="joinRoomButton">Join Existing Game Room</button>
 	  	  </div>
@@ -309,7 +334,7 @@
 	  </div>
 	  <div id="copyToClipboardContainer">
 	    <button type="button" id="copyGameUrlButton" onclick="GameSetupManager.copyGameUrlClicked()">Copy Game URL</button>
-	    <button type="button" id="copyRoomCodeButton">Copy Room Code</button>
+	    <button type="button" id="copyRoomCodeButton" onclick="GameSetupManager.copyRoomCodeClicked()">Copy Room Code</button>
 	  </div>
 	  <div id="copyResultsContainer" class="centeredContent">
 	  	<input type="text" id="dummyInputForCopy" style="position: fixed; left: -1000px; top: -1000px;" />
@@ -331,7 +356,7 @@
 
 	  
 	  
-	  <div class="gameSetupOptionsSection"  style="margin-left: 10px;">
+	  <div class="gameSetupOptionsSection"  style="margin-left: 10px; display: none;">
 	  <div class="gameSetupOptionsCard" style="display: flex; flex-direction: column; flex-basis: 100%">
 	  <div class="instructions" >Room Updates</div>
 	  <div id="gameSetupStatusContainer">
@@ -432,9 +457,7 @@
 	</div>
 	
 	</div>
-	<div id="chatContainer">
-	  <span>This is some text.</span>
-	</div>
+
 	</div>
   </body>
 
@@ -474,6 +497,8 @@
 <script src="resources/checkpoint-6/GameSetupManager.js"></script>
 <script src="resources/checkpoint-6/GameManager.js"></script>
 <script src="resources/checkpoint-6/DisplayManager.js"></script>
+<script src="resources/checkpoint-6/ChatManager.js"></script>
+
 
 <script>
   $(window).on("load", function() {

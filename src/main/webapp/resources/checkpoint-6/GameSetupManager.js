@@ -222,7 +222,7 @@ GameSetupManager = (function() {
 				tempDiv.append(".");
 			}
 			
-			$("#gameSetupStatusContainer").append(tempDiv);
+			$("#chatHistoryArea").append(tempDiv);
 		}
 		
 		var tempDiv2 = $("<div>");
@@ -390,6 +390,9 @@ GameSetupManager = (function() {
 							// 3. Clear the local data
 							GameManager.clearAllLocalData();
 							
+							// 4. Reset the chat mode
+							ChatManager.setChatMode("no-chat");
+							
 							// 5. Go back to the lobby.
 							AddUserManager.enterLobby(false);
 						});
@@ -428,17 +431,11 @@ GameSetupManager = (function() {
 	}
 	
 	function copyGameUrlClicked() {
-		// Remove any existing click handlers
-		// $("#copyGameUrlButton").off("click");
-		
-		// Add the new click handler
-		//$("#copyGameUrlButton").on("click", function(clickEvent) {
-		//	clickEvent.preventDefault();
-		//	clickEvent.returnValue = false;
-			
 		// Set the data in a dummy input
-		$("#dummyInputForCopy").val(getGameUrl());
+		var gameUrlString = getGameUrl();
+		$("#dummyInputForCopy").val(gameUrlString);
 		
+		// Perform the copy
 		var copyText = document.getElementById("dummyInputForCopy");
 		copyText.select();
 		copyText.setSelectionRange(0, 99999);
@@ -454,29 +451,37 @@ GameSetupManager = (function() {
 		}
 		
 		// Show the copy results			
-		buildAndShowResultMessage(success, getGameUrl(), "Game URL", false);
+		buildAndShowResultMessage(success, gameUrlString, "Game URL", false);
 		
 		// Clear the dummy input
 		$("#dummyInputForCopy").val("");
-			
-			//return false;
-		//});
-		
 	}
 	
-	function setupCopyRoomCodeButton() {
-		// Remove any existing click handlers
-		$("#copyRoomCodeButton").off("click");
+	function copyRoomCodeClicked() {
+		// Set the data in a dummy input
+		var roomCodeString = RoomInfo.getRoomCode();
+		$("#dummyInputForCopy").val(roomCodeString);
 		
-		// Add the new click handler
-		$("#copyRoomCodeButton").on("click", function(clickEvent) {
-			clickEvent.preventDefault();
-			clickEvent.returnValue = false;
-			
-			// Do the copy			
-			//performCopy(RoomInfo.getRoomCode(), "Room Code", true);
-			return false;
-		});
+		// Perform the copy
+		var copyText = document.getElementById("dummyInputForCopy");
+		copyText.select();
+		copyText.setSelectionRange(0, 99999);
+		var success;
+		try {
+			success = document.execCommand("copy");
+			console.log("Copy result was: " + success);	
+		}
+		catch(e) {
+			success = false;
+			console.log("Copy failed!! Error below:");
+			console.log(e);
+		}
+		
+		// Show the copy results			
+		buildAndShowResultMessage(success, roomCodeString, "Room Code", true);
+		
+		// Clear the dummy input
+		$("#dummyInputForCopy").val("");
 	}
 		
 	
@@ -522,6 +527,9 @@ GameSetupManager = (function() {
 																
 									// 3. Clear the local data
 									GameManager.clearAllLocalData();
+									
+									// 4. Reset the chat mode
+									ChatManager.setChatMode("no-chat");
 									
 									// 5. Go back to the lobby.
 									AddUserManager.enterLobby(false);								
@@ -578,8 +586,8 @@ GameSetupManager = (function() {
 		$("#statusBar").slideDown(500, function() {
 			NavBarManager.refreshForGame();
 			
-			
-			
+			// Start the chat mode!
+			ChatManager.setChatMode("small-chat");
 			
 			$("#gameRoomSetupPage").show();
 			
@@ -615,7 +623,8 @@ GameSetupManager = (function() {
 		
 		// Other fields
 		$("#gameStatusSetupMessage").empty();
-		$("#gameSetupStatusContainer").empty();
+		//$("#gameSetupStatusContainer").empty();
+		$("#chatHistoryArea").empty();
 		$("#leaveGameRoomMessage").empty();
 		$("#gameRoomSetupUsersList").empty();
 		$("#completeGameSetupDiv").remove();
@@ -870,6 +879,7 @@ GameSetupManager = (function() {
 		tryJoinExistingGameRoom: tryJoinExistingGameRoom,
 		refreshGameSetupUI: refreshGameSetupUI,
 		stopListeningToRoomUsers: stopListeningToRoomUsers,
-		copyGameUrlClicked: copyGameUrlClicked
+		copyGameUrlClicked: copyGameUrlClicked,
+		copyRoomCodeClicked: copyRoomCodeClicked
 	};
 })();

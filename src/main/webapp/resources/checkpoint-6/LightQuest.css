@@ -550,10 +550,19 @@ button.vote-button:hover {
 .userChatDiv {
 	text-align: left;
 	margin-bottom: 0.5em;
+	margin-right: 20%;
+	margin-left: 0%;
 }
 
 .userChatDiv.mine {
 	text-align: right;
+	margin-left: 20%;
+	margin-right: 0%;
+}
+
+.messageText {
+	display: inline-block;
+	text-align: left;
 }
 
 .userChatName {

@@ -695,7 +695,7 @@ GameSetupManager = (function() {
 		// Other fields
 		$("#gameStatusSetupMessage").empty();
 		//$("#gameSetupStatusContainer").empty();
-		$("#chatHistoryArea").empty();
+		//$("#chatHistoryArea").empty();
 		$("#leaveGameRoomMessage").empty();
 		$("#gameRoomSetupUsersList").empty();
 		$("#completeGameSetupDiv").remove();
@@ -803,7 +803,8 @@ GameSetupManager = (function() {
 				}
 				
 				var nameDiv = $("<div>").addClass("userChatName").text(chatUserName);
-				var messageDiv = $("<div>").addClass("userChatMessage").text(message);
+				var textDiv = $("<div>").addClass("messageText").text(message);
+				var messageDiv = $("<div>").addClass("userChatMessage").append(textDiv);
 				
 				entry.append(nameDiv);
 				entry.append($("<br >"));

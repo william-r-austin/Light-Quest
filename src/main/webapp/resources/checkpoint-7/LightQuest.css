@@ -1,0 +1,1108 @@
+* {
+	font-family: Candara, Constantia, Corbel, Tahoma, Verdana, Arial, sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white; /*#C5C5C5;*/
+  overflow-x: hidden;
+}
+
+#headerContent {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#navigationBar {
+  width: 100%;
+  /* background-color: #888888; */
+  background-image: linear-gradient(to bottom, #585858, #828282 35%, #b5b5b5 80%, #a0a0a0);
+  /*background-image: linear-gradient(to bottom, #585858, #a0a0a0 100%);*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: 1px solid #585858;
+  margin: 0;
+  z-index: 10;
+}
+
+#statusBar {
+	width: 100%;
+	background: #c0d0e0; /*#c5c5c5; /*#dcdcdc; #b5b5b5; #a1d79d;*/ /*#dcdcdc;*/
+	padding: 0;
+	border-bottom: 1px solid #585858;
+}
+
+#statusBarContainer {
+	display: flex;
+	align-items: stretch;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.statusBarSection {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+}
+
+.statusBarRoomCode {
+	background: RebeccaPurple; /*darkgreen;*/
+    padding: 0.15em .4em;
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 5px 5px #585858; */
+    font-weight: bold;
+    color: white;
+    font-family: Consolas, "Courier New", monospace;
+    /*font-size: 1em;*/
+    letter-spacing: 0.1em;
+}
+
+.statusBarSection > span {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	font-size: 1em;
+}
+
+.statusBarCenter {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.statusBarLeft {
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+/*
+.statusBarRight, .statusBarLeft {
+	width: 15%;
+}
+
+.statusBarLeft {
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.statusBarCenter {
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+*/
+
+.statusBarRoomCodeLabel {
+	font-weight: bold;
+	/*margin-left: 0.25em;*/
+	margin-right: 0.75em;
+}
+
+.statusBarGameState {
+	padding: 0.25em 0.5em;
+	border-radius: 5px;
+	/*font-size: 1.1em;*/
+}
+
+.statusBarGameState.completedState {
+	background: #a1d79d; /* palegreen; */
+	border: 1px solid black;
+}
+
+.statusBarGameState.activeState {
+	background: DarkGreen;
+    font-weight: bold;
+    color: white;
+    border: 2px solid black;
+}
+
+.statusBarGameState.futureState {
+	background: #b5b5b5;
+	color: #585858;
+	border: 1px solid #585858;
+}
+
+
+
+img.separator {
+	width: 0.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+/*
+.statusBarCenter {
+	width: 65%;
+}
+*/
+
+#navigationBar > div {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+#transitionMessage {
+	font-weight: bold;
+	margin-top: 3em;
+	font-size: 2.5em;
+	text-align: center;
+	color: MediumBlue;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type=text] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  font-size: 1.1em;
+  font-family: "Lucida Console", sans-serif;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  /* ox-shadow: 3px 3px #828282; */
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  /*background-color: MediumBlue; */
+  background: linear-gradient(to bottom, #1133ff 5%, #0000cd 100%);
+  color: white;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+	background: linear-gradient(to bottom, #215aff 5%, #0F2FFF 100%);
+	cursor: pointer;
+}
+
+.sixtyPercent {
+	width: 60%;
+}
+
+.eightyPercent {
+	width: 80%;
+}
+
+.ninetyPercent {
+	width: 90%;
+}
+
+.pageContainer {
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 10px;
+	background: #ffe566; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+	box-shadow: 5px 5px #888888;
+}
+
+#gameContainer.pageContainer {
+	background: #a1d79d; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+}
+
+#roomCodeDisplay, #gameUrlDisplay {
+	text-align: center;
+	margin: 1em;
+}
+
+#gameUrlDisplay {
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+#gameRoomSetupRoomCode {
+    background: RebeccaPurple; /*darkgreen;*/
+    padding: 0.15em .4em;
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 5px 5px #585858; */
+    font-weight: bold;
+    color: white;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1.75em;
+    letter-spacing: 0.1em;
+}
+
+#copyToClipboardContainer {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+#copyToClipboardContainer button {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+#copyToClipboardContainer button,
+#sendChatDiv button {
+	padding: 0.5em 1em;
+	font-size: 1em;
+}
+
+#copyResultsContainer {
+	height: 2.5em;
+}
+
+#copyResults {
+	background: skyblue;
+	border-radius: 0.5em;
+	font-size: 1.1em;
+	padding: 0.25em 0.75em;
+	font-weight: bold;
+}
+
+.pageContainer h1 {
+	text-align: center;
+	margin-top: 0px;
+}
+
+.welcomeFormSection {
+	margin-top: 1em;
+}
+
+.welcomeFormSection label {
+	font-weight: bold;
+}
+
+#skipEmailLabel {
+	font-weight: normal;
+}
+
+.welcomeFormSection input[type=text] {
+	min-width: 10em;
+}
+
+.startPageFormContainer {
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.instructions {
+	font-size: 1.5em;
+	color: MediumBlue;
+	font-weight: bold;
+}
+
+.startPageInstructions {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.lobbyPageInstructions {
+	margin-top: 0.75em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+#gamePromptsInstructions {
+	text-align: center;
+}
+
+.lobbyOptionsContainer, .welcomeOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-evenly;
+}
+
+.lobbyOptionCard, .welcomeOptionCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	background: #dcdcdc; /*#a2a2a2;*/
+	/*margin-left: 1.5em; 
+	margin-right: 1.5em;*/
+	margin: 1.5em; 
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+#roomCodeErrorDiv {
+	margin-bottom: 1em;
+	font-weight: bold;
+	color: FireBrick;
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(30, 30, 30, 0.85);
+	z-index: 20;
+}
+
+.overlayCard {
+	width: 45em;
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin-top: 10%;
+	margin-bottom: 15%; 
+	padding: 1em;
+	border-radius: 1.5em;
+	border: 2px solid black;
+	/*box-shadow: 5px 5px #888888;*/
+}
+
+.overlayBottomCell {
+	display: flex;
+	width: 25%; 
+	flex-direction: column; 
+	justify-content: center;
+}
+
+.leftRightCell {
+	width: 25%;
+}
+
+.centerCell {
+	width: 40%;
+}
+
+.rightCell {
+	align-items: flex-end;
+}
+
+.overlayBottomContainer {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+a.overlayCancelLink, a.overlayCancelLink:visited {
+	color: MediumBlue;
+	font-size: 1.25em;
+}
+
+.overlayErrorDiv {
+	color: FireBrick;
+}
+
+.gameSetupOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*width: 100%;*/
+	justify-content: space-between;
+	align-items: stretch;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.centeredContent {
+	text-align: center;
+}
+
+
+.gameSetupOptionsSection {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	/*background: #dcdcdc; /*#a2a2a2;*/
+	/*margin-left: auto; 
+	margin-right: auto;*/ 
+	/*padding: 10px;
+	border-radius: 10px;*/
+	/*border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;*/
+}
+
+
+.gameSetupOptionsCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 1em;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+#responseWaitingBanner {
+	text-align: center;
+    color: MediumBlue;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#votingTitle {
+	margin-bottom: 0.5em;
+}
+
+.prompt {
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: bold;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+}
+
+.instructions.votingSubtitle {
+	font-size: 1.25em;
+	margin-bottom: 0.25em;
+}
+
+.resultsSectionDiv .instructions {
+    font-size: 1.25em;
+    color: black;
+}
+
+#votingChoicesContainer {
+	margin: 0 auto;
+	width: 90%;
+}
+
+#myAnswer {
+	font-family: consolas;
+    color: white;
+    font-size: 1.5em;
+    margin-top: 0.25em;
+    margin-bottom: 2em;
+    text-align: center;
+    font-weight: bold;
+    background: #808080;
+    padding: 0.25em;
+    border-radius: 15px;
+    border: 1px solid black;
+    white-space: pre-wrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#votingChoicesDiv {
+	margin: 0;
+	padding: 0;
+}
+
+button.vote-button {
+	display: block;
+	background: linear-gradient(to bottom, #678eff 5%, #0000cd 100%);
+    padding: 0.5em;
+    text-align: center;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+    margin-right: auto;
+    font-size: 1.5em;
+    border-radius: 25px;
+    font-family: Consolas;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    white-space: pre-wrap;
+}
+
+button.vote-button:hover {
+	background: linear-gradient(to bottom, #4275ee 5%, #0000aa 100%);
+}
+
+.gameSetupOptionsCard .instructions, 
+.gameUserStatusCard .instructions, 
+#finalGameSummaryBanner {
+	text-align: center;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+#gameSetupStatusContainer {
+	display: block;
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: auto;	
+	overflow-y: scroll;
+	border-radius: 5px;
+	font-family: "Lucida Console", monospace;
+	background: white;
+	border: 1px solid #464646;
+	padding: 10px;
+}
+
+.roomUpdateMessage {
+	padding: 0.5em;
+	border-radius: 5px;
+	/*font-family: monospace;*/
+	margin-bottom: 0.5em;
+	background: #b0b0b0;
+}
+
+.userChatDiv {
+	text-align: left;
+	margin-bottom: 0.5em;
+	margin-right: 20%;
+	margin-left: 0%;
+}
+
+.userChatDiv.mine {
+	text-align: right;
+	margin-left: 20%;
+	margin-right: 0%;
+}
+
+.messageText {
+	display: inline-block;
+	text-align: left;
+}
+
+.userChatName {
+	display: inline-block;
+	font-size: 0.8em;
+}
+
+.userChatMessage {
+	margin-top: 0.1em;
+	padding: 0.5em;
+    border-radius: 5px;
+    background: skyblue;
+    display: inline-block;
+}
+
+
+/*
+.roomUpdateMessage:last-child {
+	font-weight: bold;
+}*/
+
+.roomUpdateMessage .preserve-spaces {
+	font-family: monospace;
+}
+
+.optionCardTitle {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	/*text-decoration: underline;*/
+		
+	
+	color: MediumBlue;
+	margin-bottom: 0.5em;
+	
+}
+
+#gamePromptsDiv {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.promptNumberDiv {
+	font-weight: bold;
+	font-size: 1.25em;
+	color: MediumBlue;
+	/*text-decoration: underline;*/
+}
+
+.promptTextDiv {
+	font-size: 1.5em;
+	/*color: MediumBlue;*/
+	font-weight: bold;
+	margin-top: 0.5em;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+.promptResponseDiv {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	text-align: center;
+}
+
+input.promptResponse {
+	width: 100%;
+}
+
+.gamePromptSectionCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+	margin-bottom: 2em;
+}
+
+.gameUserStatusSection {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 80%;
+	justify-content: space-evenly;
+	margin-top: 3em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.basicCard {
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin: 1em auto; 
+	padding: 1em;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+.gameUserStatusCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	background: #dcdcdc; /*#a2a2a2;*/
+	margin-left: 1.5em; 
+	margin-right: 1.5em; 
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;
+}
+
+#userStatusWorkingEmpty, #userStatusFinishedEmpty {
+	margin-top: 0.5em;
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #353535;
+}
+
+.logoWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+#nameBox {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#navBarName, #changeNameLinkContainer {
+	text-align: right;
+}
+
+.preserve-spaces {
+	white-space: pre-wrap;
+}
+
+.option-header {
+	margin-bottom: 5px;
+}
+
+.collapsed-list {
+	margin-top: 5px;
+}
+
+.userList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	
+		    
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
+.userList li, 
+table.finalScoresTable td.playerName div {
+    display: inline-block;
+    background: mediumturquoise;
+    font-size: 1.25em;
+    font-family: tahoma;
+    font-weight: normal;
+    padding: 0.5em 1em;
+    margin: 0.25em 0.5em;
+    border-radius: 5px;
+    border: 3px solid #353535;
+    color: #353535;
+}
+
+#completeGameSetupDiv {
+	text-align: center;
+}
+
+#completeGameSetupButton {
+	font-size: 1.25em;
+}
+
+button.disabled-waiting, button.disabled-waiting:hover {
+	background: #555555;
+    color: #cdcdcd;
+    cursor: default;
+}
+
+#navBarName {
+	font-weight: bold;
+	font-size: 2.25em;
+	
+	/*
+	font-size: xx-large;
+	font-weight: bold;
+	margin-bottom: 10px;
+	*/
+}
+
+#navBarEmail {
+	font-size: 1.25em;
+}
+
+#navTools {
+	display: flex;
+	justify-content: flex-end;
+	align-items: stretch;
+	padding: 0.25em;
+}
+
+#navAccountContainer {
+	align-items: flex-end;
+	justify-content: center;
+	margin-right: 1em;
+}
+
+.navContainer {
+	display:flex;
+	height: 100%;
+	flex-direction: column;
+}
+
+.navButtonContainer {
+	align-items: center;
+	justify-content: space-evenly;
+	margin-left: 0.75em;
+}
+
+button.navButton {
+	padding: 0.75em;
+	font-size: 0.75em;
+}
+
+button.navButton img {
+	width: 40px;
+}
+
+#changeNameOptionsContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#gameSetupLeaveContainer {
+	margin-top: 50px;
+}
+
+#lobbyUserMessageContainer {
+	margin: 1em auto;
+    border: 1px solid black;
+    padding: 1em;
+    background-color: LightSkyBlue;
+    width: 40%;
+    box-shadow: 5px 5px #888888;
+    border-radius: 5px;
+}
+
+#lobbyUserMessage {
+	text-align: center;
+}
+
+#lobbyUserDismissLinkDiv {
+	text-align: center;
+	margin-top: 1em;
+}
+
+#resultsNavDiv, #finalGameSummaryNavDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+.logoImage {
+  max-width: 300px;
+  height: auto;
+}
+
+#changeNameSubmitButton, #changeNameInput {
+	margin-left: 10px;
+}
+
+.noVotes {
+	text-align: center;
+    margin: 0.5em 0.5em;
+}
+
+.noVotes span {
+	font-size: 1.25em;
+    font-family: tahoma;
+    color: Black;
+}
+
+.resultsSectionDiv {
+    width: 90%;
+    background: #b1d5ff;
+    border-radius: 10px;
+    box-shadow: 5px 5px #888888;
+    margin: 2em auto;
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.resultAnswer {
+    font-weight: bold;
+    text-align: center;
+    /* width: 80%; */
+    font-family: Consolas;
+    background: #5f5f5f;
+    color: white;
+    margin: 0.25em auto;
+    border-radius: 15px;
+    font-size: 1.5em;
+    padding: 0.5em;
+}
+
+#gameScoresPage .userList li, 
+#gameScoresPage .userList li span {
+	font-size: 1.25em;
+	font-weight: normal;
+}
+
+#returnToLobbyDiv {
+	text-align: center;
+}
+
+#reviewPhaseNavDiv {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+#reviewPhaseNavDiv.oneLeftButton {
+	justify-content: flex-start;
+}
+
+#reviewPhaseNavDiv.oneRightButton {
+	justify-content: flex-end;
+}
+
+#reviewPhaseNavDiv.twoButtons {
+	justify-content: space-between;
+}
+
+table.finalScoresTable {
+	width: 60%;
+    margin: 1em auto;
+    border-collapse: collapse;
+    /* border: 2px solid #575757; */
+    
+}
+
+table.finalScoresTable td {
+	background-color: #b1d5ff;
+}
+
+table.finalScoresTable th {
+	background-color: #a1a1a1;
+	font-size: 1.75em;
+    font-weight: bold;
+}
+
+table.finalScoresTable td, 
+table.finalScoresTable th {
+    border: 2px solid #575757;
+    padding: 0.25em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.finalScoresTable td.playerName div {
+    border: 2px solid #575757;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+table.finalScoresTable td.playerScore div {
+    font-size: 1.75em;
+    font-weight: normal;
+}
+
+#outerChatContainer {
+	width: 0;
+	flex-grow: 1;
+	/*
+	position: relative;
+	top: 30px;
+	left: 0;
+	height: 500px;
+	background: #a1d79d;
+	width: 100%;
+	*/
+}
+
+#contentContainer {
+	flex-grow: 1;
+}
+
+#smallChatContainerDiv {
+	position: fixed;
+	background: #a1d79d;
+	border-radius: 0 10px 10px 0;
+	border-top: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	padding: 20px;
+}
+
+#sendChatDiv {
+	margin-top: 0.25em;
+}
+
+#chatHistoryArea {
+	flex-grow: 1;
+	background: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	overflow-y: scroll;
+	padding: 5px;
+}
+
+#smallChatContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: stretch;
+	width: 100%;
+	height: 100%;
+}
+
+#bodyContent {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	flex-direction: rows;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+/*
+#bodyContent.no-chat #chatContainer {
+	display: none;
+}
+
+#bodyContent.no-chat #contentContainer {
+	display: block;
+	width: 100%;
+}
+
+#bodyContent.small-chat #chatContainer {
+	display: block;
+	width: 35%;
+}
+
+#bodyContent.small-chat #contentContainer {
+	display: block;
+	width: 65%;
+}
+*/
+
+#minChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	width: 5%;
+}
+
+#minChatContainer {
+	
+}
+
+#smallChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	
+}
+
+/*
+button.review-nav-button.reviewPrevious {
+	margin-left: 1em;
+	margin-right: auto;
+}
+
+button.review-nav-button.reviewNext {
+	margin-left: auto;
+	margin-right: 1em;
+}
+*/

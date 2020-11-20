@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-    name = "Checkpoint6Servlet",
-    urlPatterns = {"/checkpoint-6", "/interaction-design-critique-and-iteration"}
+    name = "Checkpoint7Servlet",
+    urlPatterns = {"/checkpoint-7", "/visual-design-critique-and-iteration"}
 )
-public class Checkpoint6Servlet extends HttpServlet {
+public class Checkpoint7Servlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7159545361601340339L;
 
@@ -22,7 +22,7 @@ public class Checkpoint6Servlet extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		System.out.println("The request URI is: " + requestURI);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/checkpoint-6.html");
+		RequestDispatcher view = request.getRequestDispatcher("/checkpoint-7.html");
 		view.forward(request, response);
 	}
 	

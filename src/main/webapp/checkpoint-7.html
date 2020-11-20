@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Welcome to the Light Quest Game Application</title>
+    <link rel="stylesheet" href="resources/checkpoint-7/LightQuest.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.css">
+  </head>
+
+  <body>
+    <div id="overlay" style="display: none;">
+    
+      <div id="overlayChangeNameCard" class="overlayCard centered" style="display: none;">
+        <div class="instructions centeredContent">Change Name</div>
+        <p>
+          This form allows you to change your name that is displayed in Light Quest. It will be updated in all places where
+          you see your name in the site. In addition, other players will be notified that you've updated your name.   
+        </p>
+        <p>
+          Enter your name in the form below to change it or click Cancel to return to Light Quest.
+        </p>
+        <form id="navChangeNameForm" name="navChangeNameForm">
+          <div class="eightyPercent">
+            <div class="welcomeFormSection">
+              <div>
+                <label for="navUsernameInput">New Light Quest Name</label>
+              </div>
+              <div>
+                <input type="text" name="navUsernameInput" id="navUsernameInput" class="fullWidth" maxlength="40" placeholder="Enter your new name"/>
+              </div>
+              <div id="navUsernameErrorDiv" class="overlayErrorDiv" style="display: none;"></div>
+            </div>
+          </div>
+          <div class="overlayBottomContainer welcomeFormSection">
+            <div class="overlayBottomCell leftRightCell"></div>
+            <div class="overlayBottomCell centerCell">
+              <button type="submit" id="navChangeNameButton" name="navChangeNameButton">Change Name</button>
+            </div>
+            <div class="overlayBottomCell leftRightCell rightCell">
+              <a href="#" class="overlayCancelLink">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div id="overlayChangeEmailCard" class="overlayCard centered" style="display: none;">
+        <div class="instructions centeredContent">Change Email</div>
+        <p>
+          This form allows you to add or change the email for your Light Quest account. This email is not shared
+          with any other players. It is only used for login identification.
+        <p>
+          You can also remove an email that is currently associated with your account by selecting the checkbox
+          or leaving the email field blank. 
+        </p>
+        <p>
+          Enter your email in the form below to change it or click Cancel to return to Light Quest.
+        </p>
+        <form id="navChangeEmailForm" name="navChangeEmailForm">
+          <div class="eightyPercent">
+            <div class="welcomeFormSection">
+              <div>
+                <label>New Light Quest Email (Optional)</label>
+              </div>
+              <div id="navEmailInputDiv">
+                <input type="text" name="navEmailInput" id="navEmailInput" class="fullWidth" maxlength="50" placeholder="Enter your new email"/>
+              </div>
+              <div>
+	            <input type="checkbox" name="navSkipEmailInput" id="navSkipEmailInput" />
+	            <label id="navSkipEmailLabel" for="navSkipEmailInput">Click here to remove the email from your account.</label>
+	          </div>
+              <div id="navEmailErrorDiv" class="overlayErrorDiv" style="display: none;"></div>
+            </div>
+          </div>
+          <div class="overlayBottomContainer welcomeFormSection">
+            <div class="overlayBottomCell leftRightCell"></div>
+            <div class="overlayBottomCell centerCell">
+              <button type="submit" id="navChangeEmailButton" name="navChangeEmailButton">Change Email</button>
+            </div>
+            <div class="overlayBottomCell leftRightCell rightCell">
+              <a href="#" class="overlayCancelLink">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div id="overlayLogoutCard" class="overlayCard centered" style="display: none;">
+        <div class="instructions centeredContent">Logout?</div>
+        <p>
+          Are you sure that you want to log out? If you have not saved an email address with your account, you will not be able to log back in. 
+        </p>
+        <p>
+          Click the button below to complete the logout, or Cancel to return to LightQuest.
+        </p>
+        <form id="navLogoutForm" name="navLogoutForm">
+          <div class="overlayBottomContainer welcomeFormSection">
+            <div class="overlayBottomCell leftRightCell"></div>
+            <div class="overlayBottomCell centerCell">
+              <button type="submit" id="overlayLogoutButton" name="overlayLogoutButton">Complete Logout</button>
+            </div>
+            <div class="overlayBottomCell leftRightCell rightCell">
+              <a href="#" class="overlayCancelLink">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="headerContent">
+      <div id="navigationBar">
+        <div class="logoWrapper">
+          <img class="logoImage" src="resources/checkpoint-7/LightQuestLogo.png" alt="Light Quest logo, with light bulb"/>
+        </div>
+        <div id="navTools" style="display: none;">
+          <div id="navAccountContainer" class="navContainer">
+            <div id="navBarName" class="preserve-spaces"></div>
+            <div id="navBarEmail">This is the user email.</div>
+          </div>
+          <div id="navChangeNameContainer" class="navContainer navButtonContainer">
+            <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/user.png" alt="Change Name Icon"/><br/>Change Name</button>
+          </div>
+          <div id="navChangeEmailContainer" class="navContainer navButtonContainer">
+            <button id="navShowChangeEmailCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/email.png" alt="Change Email Icon" /><br/>Change Email</button>
+          </div>
+          <div id="navLogoutContainer" class="navContainer navButtonContainer">
+            <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/exit.png" alt="Logout Icon" /><br/>Logout</button>
+          </div>
+        </div>
+      </div>
+      <div id="statusBar" style="display: none;">
+         <div id="statusBarContainer">
+           <div class="statusBarSection statusBarLeft">
+             <span class="statusBarRoomCodeLabel">Room Code:</span>
+             <span class="statusBarRoomCode"></span>
+           </div>
+           <div class="statusBarSection statusBarCenter">
+              <span class="statusBarRoomCodeLabel">Game Progress:</span>
+              <span id="setupState" class="statusBarGameState completedState">Setup</span>
+              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" />
+              <span id="promptsState" class="statusBarGameState completedState">Answer Prompts</span>
+              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <span id="votingState1" class="statusBarGameState activeState">Voting Round #1</span>
+              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <span id="votingState2" class="statusBarGameState futureState">Voting Round #2</span>
+              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <span id="votingState3" class="statusBarGameState futureState">Voting Round #3</span>
+              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <span id="resultsState" class="statusBarGameState futureState">Review Results</span>
+           </div>
+           <!-- <div class="statusBarSection statusBarRight"></div>-->
+         </div>
+      </div>
+    </div>
+    
+   	<div id="minChatSection" style="display: none;">
+	  <div id="minChatContainer">
+	  </div>
+	</div>
+    
+    <div id="bodyContent">
+    <div id="outerChatContainer" style="display: none;">
+	  <div id="smallChatContainerDiv" style="display: none;">
+		<div id="smallChatContainer">
+		  <h1 style="text-align: center; margin-top: 0;">Game Chat</h1>
+		  <div id="chatHistoryArea"></div>
+		  <div style="margin-top: 1em;">
+		    Use the box below to send a message to the other players 
+		  </div>
+		  <div style="margin-top: 0.25em;">
+		    <form id="userChatMessageForm" name="userChatMessageForm">
+		      <div style="display: flex; align-items: center; flex-wrap: nowrap; justify-content: space-between;">
+		        <input type="text" id="userChatInput" name="userChatInput" size="1" style="flex-grow: 1; margin-bottom: 0; margin-top: 0;" />
+		        <button type="submit" id="userChatSubmitButton" style="flex-grow: 0; margin-left: auto; margin-bottom: 0; margin-top: 0; margin-left: 1em;">Send</button>
+  			  </div>
+		    </form>
+		  </div>
+		  <!-- 
+		  <div id="sendChatDiv">
+		    <button type="button" style="margin-left: auto; margin-bottom: 0; margin-top: 0;"">Send</button>
+		  </div>
+		  -->
+		</div>
+	  </div>
+	</div>
+    <div id="contentContainer">
+    <div id="transitionMessage" style="display: none;"></div>
+    <div id="startPage" class="pageContainer sixtyPercent" style="display: none;">
+      <h1>Welcome to Light Quest!</h1>
+      <p>
+        This is a collaborative game that you can play with a group. You'll be presented with a series of prompts to answer
+        and then vote on who gave the best responses. The winner is the player that receives the most votes!
+      </p>
+      <p>
+        To get started, either enter the email associated with an existing account or create a new one. 
+      </p>
+      
+      <div class="welcomeOptionsContainer">
+	    <div class="welcomeOptionCard">
+	      <div class="optionCardTitle">Returning Users</div>
+	      <div>If you have already set up a Light Quest account with your email, enter it here to log back into your account.</div>
+	      
+	      <div class="ninetyPercent centered">
+	        <form name="returningUsersForm" id="returningUsersForm">
+	          <div class="welcomeFormSection">
+	            <div>
+	              <label for="returningUserEmail">Light Quest Email:</label>
+	            </div>
+	            <div>
+	              <input type="text" name="returningUserEmail" id="returningUserEmail" class="fullWidth" maxlength="50" placeholder="Enter your email"/>
+	            </div>
+	          </div>
+	          <div class="welcomeFormSection centeredContent">
+	            <button type="submit" id="returningUserButton">Sign In!</button>
+	          </div>
+	          <div class="welcomeFormSection" id="returningUserErrorDiv" style="display: none; margin-bottom: 1em; font-weight: bold; color: FireBrick;"></div>
+	        </form>
+	      </div>
+	    </div>
+      <!-- 
+      <div class="instructions startPageInstructions">
+      To get started, provide your name:
+      </div>
+       -->
+	  <div class="welcomeOptionCard">
+	    <div class="optionCardTitle">New Users</div>
+	    <div>
+	      Fill out this form to create a new Light Quest account. You can optionally associate an email with your account
+	      so you can sign back in later.
+	    </div>
+	    <form name="usernameInputForm" id="usernameInputForm">
+	      <div class="ninetyPercent centered">
+	      <div class="welcomeFormSection">
+	        <div>
+	          <label for="usernameInput">Name:</label>
+	        </div>
+	        <div>
+  	          <input type="text" name="usernameInput" id="usernameInput" class="fullWidth" maxlength="40" placeholder="Enter your name"/>
+	        </div>
+	      </div>
+	      <div class="welcomeFormSection">
+	        <div>
+	          <label for="userEmailInput">Email (Optional):</label>
+	        </div>
+	        <div id="userEmailInputDiv">
+	          <input type="text" name="userEmailInput" id="userEmailInput" class="fullWidth" maxlength="50" placeholder="Enter your email"/>
+	        </div>
+	        <div>
+	          <input type="checkbox" name="skipEmailInput" id="skipEmailInput" />
+	          <label id="skipEmailLabel" for="skipEmailInput">Click here to create a guest account without an email.</label>
+	        </div>
+	      </div>
+	      
+	      <div class="welcomeFormSection centeredContent">
+	        <button type="submit" id="usernameInputButton">Begin Light Quest!</button>
+	      </div>
+	      
+	      <div class="welcomeFormSection" id="usernameErrorDiv" style="display: none; margin-bottom: 1em; font-weight: bold; color: FireBrick;"></div>
+	      </div>
+        </form>
+	  </div>
+	  </div>
+	</div>
+	<div id="lobbyPage" class="pageContainer eightyPercent" style="display: none;">
+	  <h1 id="lobbyWelcomeBanner">
+	    Welcome to the Lobby, <span class="preserve-spaces" id="lobbyBannerUsername"></span>!
+	  </h1>
+	  <div id="lobbyUserMessageContainer" style="display: none;">
+	    <div id="lobbyUserMessage"></div>
+	    <div id="lobbyUserDismissLinkDiv"><a href="#" id="lobbyUserMessageDismissLink">Dismiss Message</a></div>
+	  </div>
+	  <h4 class="lobbyPageInstructions">Choose one of the options below to begin.</h4>
+	  <div class="lobbyOptionsContainer">
+	  <div class="lobbyOptionCard">
+	    <div class="optionCardTitle">Create New Game</div>
+	    <div>Create a new room to play Light Quest with your group. You will be the host for the game.</div>
+	    <div style="text-align: center;">
+	      <button type="button" id="createRoomButton">Create New Game Room</button>
+	    </div>
+	  </div>
+	  <div class="lobbyOptionCard">
+	  <div class="optionCardTitle">Join Existing Game</div>
+	  	<div>Join an existing game room. You will need the five-digit room code from the host to begin.</div>
+	  	<form name="roomCodeInputForm" id="roomCodeInputForm">
+	  	  <div style="text-align: center;">
+	  	    <input type="text" name="roomCodeInput" id="roomCodeInput" placeholder="Enter room code" style="width: 12em;">
+	  	  </div>
+	  	  <div id="roomCodeErrorDiv" style="display: none;"></div>
+	  	  <div style="text-align: center;">
+	  	    <button type="submit" id="joinRoomButton">Join Existing Game Room</button>
+	  	  </div>
+	  	</form>
+	  </div>
+	  </div>
+	</div>
+	<div id="gameContainer" class="pageContainer eightyPercent" style="display: none;">
+	<div id="gameRoomSetupPage" style="display: none;">
+	  <h1 id="gameRoomSetupBanner">
+	    Welcome to the Game Room, <span id="gameRoomSetupUserName" class="preserve-spaces"></span>
+	  </h1>
+	  <div class="gameSetupOptionsContainer">
+	  <!--  <div class="gameSetupOptionsSection"> -->
+	  <div class="gameSetupOptionsCard">
+	  <div class="instructions">Here's the Room Code and Game URL:</div>
+	  <div id="roomCodeDisplay">
+	    <span id="gameRoomSetupRoomCode"></span>
+	  </div>
+	  <div id="gameUrlDisplay"></div>
+	  
+	  <div id="gameRoomSetupMessage">
+	    Share the Room Code or Game URL above with the other players to allow them to join. If they visit the Game URL,
+	    they will join automatically. Otherwise, they will need to paste in the Room Code manually once they access the lobby.
+	    Use the buttons below to copy this information to your clipboard so you can share it easily.   
+	  </div>
+	  <div id="copyToClipboardContainer">
+	    <button type="button" id="copyGameUrlButton" onclick="GameSetupManager.copyGameUrlClicked()">Copy Game URL</button>
+	    <button type="button" id="copyRoomCodeButton" onclick="GameSetupManager.copyRoomCodeClicked()">Copy Room Code</button>
+	  </div>
+	  <div id="copyResultsContainer" class="centeredContent">
+	  	<input type="text" id="dummyInputForCopy" style="position: fixed; left: -1000px; top: -1000px;" />
+	  	<span id="copyResults" style="display: none;"></span>
+	  </div>
+	  <div>
+	    Once everyone has joined, the host (<span id="gameRoomSetupHostName" class="preserve-spaces"></span>) can start 
+	    the game. At least three participants must join the room before the game can be started.
+	  </div>
+	  </div>
+	  <div class="gameSetupOptionsCard"> <!--  style="margin-top: 2em; width: 60%; margin-left: auto; margin-right: auto;"> -->
+	    <div id="gameStatusCardContainer">
+	      <div class="instructions" >Game Status</div>
+	      <div id="gameStatusSetupMessage"></div>
+	    </div>
+	    <div style="text-align: center;"><img src="resources/checkpoint-7/LoadingDots3.gif" alt="GIF with three dots, for waiting pages"></div>
+	  </div>
+	  <div class="gameSetupOptionsCard"> <!-- style="margin-top: 1em;"> -->
+	  <div class="instructions" >These are the users that have already joined</div>
+	  <div>
+	      <ul class="userList" id="gameRoomSetupUsersList"></ul>
+	  </div>
+	  </div>
+	  
+	  
+	  
+	  <!-- </div> -->
+	  
+
+	  
+	  <!-- 
+	  <div class="gameSetupOptionsSection"  style="margin-left: 10px; display: none;">
+	  <div class="gameSetupOptionsCard" style="display: flex; flex-direction: column; flex-basis: 100%">
+	  <div class="instructions" >Room Updates</div>
+	  <div id="gameSetupStatusContainer">
+	    <h3 id="gameStatusSetupMessage"></h3>
+	  </div>
+	  </div>
+	  </div>-->
+	  </div>
+	  
+
+	  
+	  
+	  <div id="gameSetupLeaveContainer">
+	    <div id="leaveGameRoomMessage" class="option-header"></div>
+	    <div><button id="leaveGameRoomButton" type="button">Exit Game Room</button></div>
+	  </div>
+	</div>
+	<div id="gamePage" style="display: none;">
+	  <h1 id="gamePageBanner">Alright, <span id="gamePageBannerUserName" class="preserve-spaces"></span>, it's game time!</h1>
+	  <div id="gamePromptsSection">
+	    <h4 id="gamePromptsInstructions">Enter your responses for the prompts below. When everyone is done, you can vote for the best answers. Good luck!</h4>
+	    <div id="gamePromptsDiv"></div>
+	    <div id="gamePromptsSubmitContainer" style="text-align: center;">
+	      <button type="button" id="submitResponsesButton">Submit Your Answers</button>
+	      <h4 id="submitResponseErrorMessage" class="collapsed-list" style="display: none; color: FireBrick;"></h4>
+	    </div>
+	  </div>
+	  <div id="responseWaitingSection" style="display: none;" class="basicCard sixtyPercent">
+	    <div id="responseWaitingBanner"></div>
+	    <div id="editPromptResponsesContainer" style="display: none;">
+	      <div id="editPromptResponsesMessage"></div>
+	      <div style="text-align: center;"><button id="editPromptResponsesButton" type="button">Edit Responses</button></div>
+	    </div>
+	    <div style="text-align: center;">
+	      <img src="resources/checkpoint-7/LoadingDots3.gif" alt="GIF with three dots, for waiting pages" />
+	    </div>
+	  </div>
+	  <div id="votingSection" style="display: none;" class="basicCard eightyPercent">
+	    <div id="votingTitle" class="instructions"></div>
+	    <div id="votingInstructions"></div>
+	    <div id="votingPrompt" class="prompt"></div>
+	    <div id="votingChoicesContainer">
+	      <div class="votingSubtitle instructions">Your answer was:</div>
+	      <div id="myAnswer"></div>
+	      <div class="votingSubtitle instructions">Now, select another player's answer that you like:</div>
+	      <div id="votingChoicesDiv"></div>
+	    </div>
+	  </div>
+
+	  <div class="gameUserStatusSection">
+	    <div class="gameUserStatusCard" style="margin-right: 10px;">
+	  	  <div id="userStatusWorkingHeader" class="instructions">Who's still working?</div>
+	  	  <div id="userStatusWorkingEmpty" style="display: none;">Everyone is done!</div>
+	      <ul id="userStatusWorkingList" class="userList"></ul>
+	    </div>
+	    <div class="gameUserStatusCard" style="margin-left: 10px;">
+	      <div id="userStatusFinishedHeader" class="instructions">Finished users!</div>
+	      <div id="userStatusFinishedEmpty">Nobody is finished yet.</div>
+	      <ul id="userStatusFinishedList" style="display: none;" class="userList"></ul>
+	    </div>
+	  </div>
+	</div>
+	<div id="gameScoresPage" style="display: none;">
+	  <h1 id="gameScoresPageBanner"></h1>
+	  <div class="basicCard eightyPercent">
+	    <div id="resultsSection" style="display: none;">
+	      <div id="resultsBanner">
+	        <div id="resultsTitle" class="instructions"></div>
+	        <div id="resultsPrompt" class="prompt"></div>
+	      </div> 
+	      <div id="resultsContentDiv"></div>
+	    </div>
+	    <div id="finalGameSummaryPage" style="display: none;">
+	      <div id="finalGameSummaryBanner" class="instructions"></div>
+	      <div id="finalGameSummaryDetails"></div>
+	      <!-- <div id="finalGameSummaryNavDiv"></div> -->
+	      <!--   -->
+	    </div>
+	    <div id="reviewPhaseNavContainer" style="display: none;">
+          <div>Navigate through the voting results and final scores to see who did the best.</div>
+	      <div id="reviewPhaseNavDiv"></div>
+	    </div>
+	  </div>
+	  <div id="returnToLobbyContainer" class="basicCard eightyPercent">
+	    <div id="returnToLobbyMessage">When you're done reviewing, head back to the lobby. From there, you can create or join a new game and play another round!</div>
+	    <div id="returnToLobbyDiv">
+	      <button type="button" id="returnToLobbyButton" class="review-nav-button">Return to the Lobby</button>
+	    </div>
+	  </div>
+	</div>
+	
+	</div>
+	
+	</div>
+
+	</div>
+  </body>
+
+<!-- Include the jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+<script src="resources/checkpoint-7/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script src="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+<!-- The Firebase Authentication JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+
+<!-- The Firebase Realtime Database JS SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+<script src="resources/checkpoint-7/Constants.js"></script>
+<script src="resources/checkpoint-7/Util.js"></script>
+<script src="resources/checkpoint-7/PromptsLibrary.js"></script>
+<script src="resources/checkpoint-7/AppSetup.js"></script>
+<script src="resources/checkpoint-7/UserInfo.js"></script>
+<script src="resources/checkpoint-7/RoomInfo.js"></script>
+<script src="resources/checkpoint-7/GameUsersInfo.js"></script>
+<script src="resources/checkpoint-7/GameStateInfo.js"></script>
+<script src="resources/checkpoint-7/GameReviewStateInfo.js"></script>
+<script src="resources/checkpoint-7/GamePromptsInfo.js"></script>
+<script src="resources/checkpoint-7/GameResponsesInfo.js"></script>
+<script src="resources/checkpoint-7/GameVotingInfo.js"></script>
+<script src="resources/checkpoint-7/NavBarManager.js"></script>
+<script src="resources/checkpoint-7/AddUserManager.js"></script>
+<script src="resources/checkpoint-7/LobbyManager.js"></script>
+<script src="resources/checkpoint-7/GameSetupManager.js"></script>
+<script src="resources/checkpoint-7/GameManager.js"></script>
+<script src="resources/checkpoint-7/DisplayManager.js"></script>
+<script src="resources/checkpoint-7/ChatManager.js"></script>
+
+
+<script>
+  $(window).on("load", function() {
+	//console.log("DOM is ready.");
+	
+	// Set up the nav bar handlers
+	NavBarManager.initialize();
+	
+	var storedUserKey = window.localStorage.getItem("LightQuestUserKey");
+	if(storedUserKey) {
+		console.log("Light Quest user key found: " + storedUserKey);
+		var db = App.getDatabase();
+  		var storedUserRef = db.ref("users").child(storedUserKey);
+  		storedUserRef.once("value").then(function(snapshot) {
+  			if(snapshot.val()) {
+  				var userData = snapshot.val();
+  				UserInfo.setUserKey(storedUserKey);
+  				UserInfo.setUserName(userData.userName);
+  				
+  				if(userData.userEmail && userData.userEmailLowercase) {
+  					UserInfo.setUserEmail(userData.userEmail);
+  					UserInfo.setUserEmailLowercase(userData.userEmailLowercase);
+  				}
+  				else {
+  					UserInfo.setUserEmail(null);
+  					UserInfo.setUserEmailLowercase(null);
+  				}
+  				
+  				// We have the user's info already - go straight to the lobby.
+  				$("#startPage").hide();
+  				AddUserManager.enterLobby(true, "LOAD");
+  			}
+  			else {
+  				window.localStorage.removeItem("LightQuestUserKey");
+  				
+  				NavBarManager.refreshForWelcome();
+  				AddUserManager.setupListener();
+  				AddUserManager.resetStartPage();
+  				$("#startPage").show();
+  			}
+  		});
+	}
+	else {
+		NavBarManager.refreshForWelcome();
+		AddUserManager.setupListener();
+		AddUserManager.resetStartPage();
+		$("#startPage").show();
+	}
+  });
+</script>
+  
+</html>

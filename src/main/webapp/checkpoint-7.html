@@ -4,13 +4,13 @@
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>Welcome to the Light Quest Game Application</title>
     <link rel="stylesheet" href="resources/checkpoint-7/LightQuest.css">
+    <link rel="stylesheet" href="resources/checkpoint-7/LightQuest2.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 	<link rel="stylesheet" href="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.css">
   </head>
 
-  <body>
+  <body class="checkpoint7-theme">
     <div id="overlay" style="display: none;">
-    
       <div id="overlayChangeNameCard" class="overlayCard centered" style="display: none;">
         <div class="instructions centeredContent">Change Name</div>
         <p>
@@ -104,17 +104,94 @@
           </div>
         </form>
       </div>
+      
+      <div id="overlayStatisticsCard" class="overlayCard centered" style="display: none;">
+        <div class="instructions centeredContent">Your Light Quest Statistics</div>
+        
+        <p>
+          This page shows your performance in the different Light Quest games that you've participated in. 
+        </p>
+        
+        <div>
+          <canvas id="bar-chart" width="640" height="360"></canvas>
+        
+        </div>
+     
+        <div class="overlayBottomContainer welcomeFormSection">
+          <div class="overlayBottomCell leftRightCell"></div>
+          <div class="overlayBottomCell centerCell"></div>
+          <div class="overlayBottomCell leftRightCell rightCell">
+            <a href="#" class="overlayCancelLink">Close Statistics</a>
+          </div>
+        </div>
+      </div>
+      
+      <div id="overlaySwitchThemeCard" class="overlayCard centered" style="display: none;">
+        <div class="instructions centeredContent">Switch Light Quest Theme</div>
+        
+        <p>
+          The available themes are listed below:
+        </p>
+        
+        <div>
+          <div>
+            <input type="radio" id="modernThemeOption" name="themeOptionInput" value="checkpoint7-theme" />
+            <label for="modernThemeOption">Modern Theme</label>
+          </div>
+        </div>
+        <div>
+          <div>
+            <input type="radio" id="classicThemeOption" name="themeOptionInput" value="classic-theme" />
+            <label for="classicnThemeOption">Classic Theme</label>
+          </div>
+        </div>
+        
+        <div class="overlayBottomContainer welcomeFormSection">
+          <div class="overlayBottomCell leftRightCell"></div>
+          <div class="overlayBottomCell centerCell"></div>
+          <div class="overlayBottomCell leftRightCell rightCell">
+            <a href="#" class="overlayCancelLink">Close Theme Switcher</a>
+          </div>
+        </div>
+      </div>
+      
+      <div id="overlayHamburgerMenu">
+        <div id="hamburgerMenuContent">
+           <div id="hamburgerChangeNameContainer" class="hamburgerItem">
+            <img src="resources/checkpoint-7/user.png" alt="Change Name Icon" class="hamburgerMenuItemIcon" />
+            <div class="hamburgerMenuItemLabel">Change Name</div>
+          </div>
+          <div id="hamburgerChangeEmailContainer" class="hamburgerItem">
+            <img src="resources/checkpoint-7/email.png" alt="Change Email Icon" class="hamburgerMenuItemIcon" />
+            <div class="hamburgerMenuItemLabel">Change Email</div>
+          </div>
+          <div id="hamburgerViewStatisticsContainer" class="hamburgerItem">
+            <img src="resources/checkpoint-7/statistics.png" alt="View Statistics Icon" class="hamburgerMenuItemIcon" />
+            <div class="hamburgerMenuItemLabel">View Statistics</div>
+          </div>
+          <div id="hamburgerSwitchThemesContainer" class="hamburgerItem">
+            <img src="resources/checkpoint-7/themeSwitcher.png" alt="Switch Themes Icon" class="hamburgerMenuItemIcon" />
+            <div class="hamburgerMenuItemLabel">Switch Themes</div>
+          </div>
+          <div id="hamburgerLogoutContainer" class="hamburgerItem">
+            <img src="resources/checkpoint-7/exit.png" alt="Logout Icon" class="hamburgerMenuItemIcon" />
+            <div class="hamburgerMenuItemLabel">Logout</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="headerContent">
       <div id="navigationBar">
         <div class="logoWrapper">
-          <img class="logoImage" src="resources/checkpoint-7/LightQuestLogo.png" alt="Light Quest logo, with light bulb"/>
+          <img class="logoImage" id="logo1" src="resources/checkpoint-7/LightQuestLogo.png" alt=" Original Light Quest logo, with light bulb" />
+          <img class="logoImage" id="logo2" src="resources/checkpoint-7/Logo2.png" alt="Updated Light Quest logo, with light bulb" />
         </div>
-        <div id="navTools" style="display: none;">
+        <div id="navTools">
           <div id="navAccountContainer" class="navContainer">
             <div id="navBarName" class="preserve-spaces"></div>
-            <div id="navBarEmail">This is the user email.</div>
+            <div id="navBarEmail"></div>
           </div>
+          <!-- 
           <div id="navChangeNameContainer" class="navContainer navButtonContainer">
             <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/user.png" alt="Change Name Icon"/><br/>Change Name</button>
           </div>
@@ -123,6 +200,17 @@
           </div>
           <div id="navLogoutContainer" class="navContainer navButtonContainer">
             <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/exit.png" alt="Logout Icon" /><br/>Logout</button>
+          </div>
+          -->
+          <div id="navHamburgerContainer" class="navContainer navButtonContainer">
+            <button id="navShowHamburgerMenuButton" class="navButton" type="button"><img src="resources/checkpoint-7/hamburger.png" alt="Hamburger Icon"/></button>
+            <!-- 
+            <div id="hamburgerMenuContainer" style="position: relative; width: 0; height: 0; display: none;">
+              <div id="hamburgerContent" style="position: absolute; display: block; top: 0; right: 0; background: red; width: 200px; height: 200px; z-index: 40;">
+                This is the text
+              </div>
+            </div>
+            -->
           </div>
         </div>
       </div>
@@ -160,7 +248,7 @@
     <div id="outerChatContainer" style="display: none;">
 	  <div id="smallChatContainerDiv" style="display: none;">
 		<div id="smallChatContainer">
-		  <h1 style="text-align: center; margin-top: 0;">Game Chat</h1>
+		  <h1>Game Chat</h1>
 		  <div id="chatHistoryArea"></div>
 		  <div style="margin-top: 1em;">
 		    Use the box below to send a message to the other players 
@@ -198,7 +286,7 @@
 	      <div class="optionCardTitle">Returning Users</div>
 	      <div>If you have already set up a Light Quest account with your email, enter it here to log back into your account.</div>
 	      
-	      <div class="ninetyPercent centered">
+	      <div class="welcomeFormContainer">
 	        <form name="returningUsersForm" id="returningUsersForm">
 	          <div class="welcomeFormSection">
 	            <div>
@@ -227,7 +315,7 @@
 	      so you can sign back in later.
 	    </div>
 	    <form name="usernameInputForm" id="usernameInputForm">
-	      <div class="ninetyPercent centered">
+	      <div class="welcomeFormContainer">
 	      <div class="welcomeFormSection">
 	        <div>
 	          <label for="usernameInput">Name:</label>
@@ -259,7 +347,7 @@
 	  </div>
 	  </div>
 	</div>
-	<div id="lobbyPage" class="pageContainer eightyPercent" style="display: none;">
+	<div id="lobbyPage" class="pageContainer" style="display: none;">
 	  <h1 id="lobbyWelcomeBanner">
 	    Welcome to the Lobby, <span class="preserve-spaces" id="lobbyBannerUsername"></span>!
 	  </h1>
@@ -268,6 +356,7 @@
 	    <div id="lobbyUserDismissLinkDiv"><a href="#" id="lobbyUserMessageDismissLink">Dismiss Message</a></div>
 	  </div>
 	  <h4 class="lobbyPageInstructions">Choose one of the options below to begin.</h4>
+	  <p class="lobbyPageInstructions2">You can create or join a Light Quest game from this page. Choose one of the options below to begin.</p> 
 	  <div class="lobbyOptionsContainer">
 	  <div class="lobbyOptionCard">
 	    <div class="optionCardTitle">Create New Game</div>
@@ -280,7 +369,10 @@
 	  <div class="optionCardTitle">Join Existing Game</div>
 	  	<div>Join an existing game room. You will need the five-digit room code from the host to begin.</div>
 	  	<form name="roomCodeInputForm" id="roomCodeInputForm">
-	  	  <div style="text-align: center;">
+	  	  <div id="roomCodeInputLabelDiv">
+	  	    <label for="roomCodeInput">Room Code:</label>
+	  	  </div>
+	  	  <div id="roomCodeInputDiv">
 	  	    <input type="text" name="roomCodeInput" id="roomCodeInput" placeholder="Enter room code" style="width: 12em;">
 	  	  </div>
 	  	  <div id="roomCodeErrorDiv" style="display: none;"></div>
@@ -311,8 +403,8 @@
 	    Use the buttons below to copy this information to your clipboard so you can share it easily.   
 	  </div>
 	  <div id="copyToClipboardContainer">
-	    <button type="button" id="copyGameUrlButton" onclick="GameSetupManager.copyGameUrlClicked()">Copy Game URL</button>
-	    <button type="button" id="copyRoomCodeButton" onclick="GameSetupManager.copyRoomCodeClicked()">Copy Room Code</button>
+	    <button type="button" id="copyGameUrlButton" class="secondary" onclick="GameSetupManager.copyGameUrlClicked()">Copy Game URL</button>
+	    <button type="button" id="copyRoomCodeButton" class="secondary" onclick="GameSetupManager.copyRoomCodeClicked()">Copy Room Code</button>
 	  </div>
 	  <div id="copyResultsContainer" class="centeredContent">
 	  	<input type="text" id="dummyInputForCopy" style="position: fixed; left: -1000px; top: -1000px;" />
@@ -372,7 +464,7 @@
 	      <h4 id="submitResponseErrorMessage" class="collapsed-list" style="display: none; color: FireBrick;"></h4>
 	    </div>
 	  </div>
-	  <div id="responseWaitingSection" style="display: none;" class="basicCard sixtyPercent">
+	  <div id="responseWaitingSection" style="display: none;" class="basicCard">
 	    <div id="responseWaitingBanner"></div>
 	    <div id="editPromptResponsesContainer" style="display: none;">
 	      <div id="editPromptResponsesMessage"></div>
@@ -388,19 +480,21 @@
 	    <div id="votingPrompt" class="prompt"></div>
 	    <div id="votingChoicesContainer">
 	      <div class="votingSubtitle instructions">Your answer was:</div>
-	      <div id="myAnswer"></div>
+	      <div id="myAnswerDiv">
+	        <div id="myAnswer"></div>
+	      </div>
 	      <div class="votingSubtitle instructions">Now, select another player's answer that you like:</div>
 	      <div id="votingChoicesDiv"></div>
 	    </div>
 	  </div>
 
 	  <div class="gameUserStatusSection">
-	    <div class="gameUserStatusCard" style="margin-right: 10px;">
+	    <div class="gameUserStatusCard" id="gamUserStatusCardRight">
 	  	  <div id="userStatusWorkingHeader" class="instructions">Who's still working?</div>
 	  	  <div id="userStatusWorkingEmpty" style="display: none;">Everyone is done!</div>
 	      <ul id="userStatusWorkingList" class="userList"></ul>
 	    </div>
-	    <div class="gameUserStatusCard" style="margin-left: 10px;">
+	    <div class="gameUserStatusCard" id="gamUserStatusCardRight">
 	      <div id="userStatusFinishedHeader" class="instructions">Finished users!</div>
 	      <div id="userStatusFinishedEmpty">Nobody is finished yet.</div>
 	      <ul id="userStatusFinishedList" style="display: none;" class="userList"></ul>
@@ -409,7 +503,7 @@
 	</div>
 	<div id="gameScoresPage" style="display: none;">
 	  <h1 id="gameScoresPageBanner"></h1>
-	  <div class="basicCard eightyPercent">
+	  <div id="gameScoresPageContainer" class="basicCard eightyPercent">
 	    <div id="resultsSection" style="display: none;">
 	      <div id="resultsBanner">
 	        <div id="resultsTitle" class="instructions"></div>
@@ -447,6 +541,9 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
 <script src="resources/checkpoint-7/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
 <script src="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
@@ -466,6 +563,7 @@
 <script src="resources/checkpoint-7/PromptsLibrary.js"></script>
 <script src="resources/checkpoint-7/AppSetup.js"></script>
 <script src="resources/checkpoint-7/UserInfo.js"></script>
+<script src="resources/checkpoint-7/CompletedGamesInfo.js"></script>
 <script src="resources/checkpoint-7/RoomInfo.js"></script>
 <script src="resources/checkpoint-7/GameUsersInfo.js"></script>
 <script src="resources/checkpoint-7/GameStateInfo.js"></script>
@@ -509,9 +607,13 @@
   					UserInfo.setUserEmailLowercase(null);
   				}
   				
-  				// We have the user's info already - go straight to the lobby.
-  				$("#startPage").hide();
-  				AddUserManager.enterLobby(true, "LOAD");
+  				// Load the user's completed games as well.
+  				CompletedGamesInfo.loadFromDatabase(function() {
+  					
+  					// We have the user's info already - go straight to the lobby.
+  	  				$("#startPage").hide();
+  	  				AddUserManager.enterLobby(true, "LOAD");	
+  				});
   			}
   			else {
   				window.localStorage.removeItem("LightQuestUserKey");

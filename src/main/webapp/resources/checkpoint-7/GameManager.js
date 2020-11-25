@@ -466,7 +466,7 @@ GameManager = (function() {
 			var responseUserKey = responseUserKeys[i];
 			var votedForAnswerUserKeys = votingResults[responseUserKey];
 			
-			var responseDiv = $("<div>").attr("id", "vote-response-" + i).css("margin-bottom", "25px").addClass("resultsSectionDiv");
+			var responseDiv = $("<div>").attr("id", "vote-response-" + i).addClass("resultsSectionDiv");
 			
 			var introDiv = $("<div>").addClass("instructions");
 			
@@ -678,6 +678,8 @@ GameManager = (function() {
 						// Save the data locally so we can use it for all the results, as well as the final tally.
 						GameVotingInfo.setVotingResults(responseObj, gameUsersArray);
 						
+						saveGameResultToUserProfile(); 
+						
 						// Done querying. Load the page.
 						populateVotingResultsFromLocal();
 					}
@@ -686,6 +688,30 @@ GameManager = (function() {
 					}
 				});
 		}
+	}
+	
+	function saveGameResultToUserProfile() {
+		var fullGameResults = GameVotingInfo.getVotingResultsForFullGame();
+		var gameResultObj = {};
+		
+		var currentDate = new Date();
+		
+		gameResultObj.gameDate = currentDate.getTime();
+		
+		gameResultObj.roomCode = RoomInfo.getRoomCode();
+		gameResultObj.roomKey = RoomInfo.getRoomKey();
+		
+		var promptsList = GamePromptsInfo.getGamePromptsList();
+		gameResultObj.promptCount = promptsList.length;
+		
+		var gameUsersList = GameUsersInfo.getGameUsersList();
+		gameResultObj.playerCount = gameUsersList.length;
+		
+		var currentUserKey = UserInfo.getUserKey(); 
+		var totalVotes = fullGameResults[currentUserKey];
+		gameResultObj.totalVotes = totalVotes;
+		
+		CompletedGamesInfo.addCompletedGame(gameResultObj);
 	}
 	
 	function displayGameReviewPhasePage() {

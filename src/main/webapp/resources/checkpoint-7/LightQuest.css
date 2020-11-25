@@ -1,31 +1,31 @@
-* {
+body.classic-theme * {
 	font-family: Candara, Constantia, Corbel, Tahoma, Verdana, Arial, sans-serif;
 }
 
-*, *:before, *:after {
+body.classic-theme *, body.classic-theme *:before, body.classic-theme *:after {
   box-sizing: border-box;
 }
 
-html {
+html body.classic-theme  {
 	margin: 0;
 	padding: 0;
 }
 
-body {
+body.classic-theme {
   margin: 0;
   padding: 0;
   background-color: white; /*#C5C5C5;*/
   overflow-x: hidden;
 }
 
-#headerContent {
+body.classic-theme #headerContent {
 	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
 }
 
-#navigationBar {
+body.classic-theme #navigationBar {
   width: 100%;
   /* background-color: #888888; */
   background-image: linear-gradient(to bottom, #585858, #828282 35%, #b5b5b5 80%, #a0a0a0);
@@ -39,14 +39,14 @@ body {
   z-index: 10;
 }
 
-#statusBar {
+body.classic-theme #statusBar {
 	width: 100%;
 	background: #c0d0e0; /*#c5c5c5; /*#dcdcdc; #b5b5b5; #a1d79d;*/ /*#dcdcdc;*/
 	padding: 0;
 	border-bottom: 1px solid #585858;
 }
 
-#statusBarContainer {
+body.classic-theme #statusBarContainer {
 	display: flex;
 	align-items: stretch;
 	flex-direction: row;
@@ -54,7 +54,7 @@ body {
 	justify-content: flex-start;
 }
 
-.statusBarSection {
+body.classic-theme .statusBarSection {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
@@ -64,7 +64,7 @@ body {
 	margin-right: 1.5em;
 }
 
-.statusBarRoomCode {
+body.classic-theme .statusBarRoomCode {
 	background: RebeccaPurple; /*darkgreen;*/
     padding: 0.15em .4em;
     /* border: 2px solid black; */
@@ -77,18 +77,18 @@ body {
     letter-spacing: 0.1em;
 }
 
-.statusBarSection > span {
+body.classic-theme .statusBarSection > span {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
 	font-size: 1em;
 }
 
-.statusBarCenter {
+body.classic-theme .statusBarCenter {
 	flex-grow: 1;
 	flex-shrink: 1;
 }
 
-.statusBarLeft {
+body.classic-theme .statusBarLeft {
 	flex-grow: 0;
 	flex-shrink: 0;
 }
@@ -110,31 +110,31 @@ body {
 
 */
 
-.statusBarRoomCodeLabel {
+body.classic-theme .statusBarRoomCodeLabel {
 	font-weight: bold;
 	/*margin-left: 0.25em;*/
 	margin-right: 0.75em;
 }
 
-.statusBarGameState {
+body.classic-theme .statusBarGameState {
 	padding: 0.25em 0.5em;
 	border-radius: 5px;
 	/*font-size: 1.1em;*/
 }
 
-.statusBarGameState.completedState {
+body.classic-theme .statusBarGameState.completedState {
 	background: #a1d79d; /* palegreen; */
 	border: 1px solid black;
 }
 
-.statusBarGameState.activeState {
+body.classic-theme .statusBarGameState.activeState {
 	background: DarkGreen;
     font-weight: bold;
     color: white;
     border: 2px solid black;
 }
 
-.statusBarGameState.futureState {
+body.classic-theme .statusBarGameState.futureState {
 	background: #b5b5b5;
 	color: #585858;
 	border: 1px solid #585858;
@@ -142,7 +142,7 @@ body {
 
 
 
-img.separator {
+body.classic-theme img.separator {
 	width: 0.5em;
 	margin-left: 0.5em;
 	margin-right: 0.5em;
@@ -153,12 +153,12 @@ img.separator {
 }
 */
 
-#navigationBar > div {
+body.classic-theme #navigationBar > div {
   margin-left: 10px;
   margin-right: 15px;
 }
 
-#transitionMessage {
+body.classic-theme #transitionMessage {
 	font-weight: bold;
 	margin-top: 3em;
 	font-size: 2.5em;
@@ -168,7 +168,7 @@ img.separator {
 	margin-right: auto;
 }
 
-input[type=text] {
+body.classic-theme input[type=text] {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid black;
@@ -180,7 +180,7 @@ input[type=text] {
   
 }
 
-button {
+body.classic-theme button {
   padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid black;
@@ -195,24 +195,24 @@ button {
   transition-duration: 0.4s;
 }
 
-button:hover {
+body.classic-theme button:hover {
 	background: linear-gradient(to bottom, #215aff 5%, #0F2FFF 100%);
 	cursor: pointer;
 }
 
-.sixtyPercent {
+body.classic-theme .sixtyPercent {
 	width: 60%;
 }
 
-.eightyPercent {
+body.classic-theme .eightyPercent {
 	width: 80%;
 }
 
-.ninetyPercent {
+body.classic-theme .ninetyPercent {
 	width: 90%;
 }
 
-.pageContainer {
+body.classic-theme .pageContainer {
 	padding: 20px;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -224,22 +224,22 @@ button:hover {
 	box-shadow: 5px 5px #888888;
 }
 
-#gameContainer.pageContainer {
+body.classic-theme #gameContainer.pageContainer {
 	background: #a1d79d; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
 }
 
-#roomCodeDisplay, #gameUrlDisplay {
+body.classic-theme #roomCodeDisplay, #gameUrlDisplay {
 	text-align: center;
 	margin: 1em;
 }
 
-#gameUrlDisplay {
+body.classic-theme #gameUrlDisplay {
 	font-family: Consolas, "Courier New", monospace;
 	font-size: 0.9em;
 	font-weight: bold;
 }
 
-#gameRoomSetupRoomCode {
+body.classic-theme #gameRoomSetupRoomCode {
     background: RebeccaPurple; /*darkgreen;*/
     padding: 0.15em .4em;
     /* border: 2px solid black; */
@@ -252,7 +252,7 @@ button:hover {
     letter-spacing: 0.1em;
 }
 
-#copyToClipboardContainer {
+body.classic-theme #copyToClipboardContainer {
 	display: flex;
 	width: 100%;
 	flex-direction: row;
@@ -263,22 +263,22 @@ button:hover {
 	margin-bottom: 0.25em;
 }
 
-#copyToClipboardContainer button {
+body.classic-theme #copyToClipboardContainer button {
 	margin-left: 1em;
 	margin-right: 1em;
 }
 
-#copyToClipboardContainer button,
-#sendChatDiv button {
+body.classic-theme #copyToClipboardContainer button,
+body.classic-theme #sendChatDiv button {
 	padding: 0.5em 1em;
 	font-size: 1em;
 }
 
-#copyResultsContainer {
+body.classic-theme #copyResultsContainer {
 	height: 2.5em;
 }
 
-#copyResults {
+body.classic-theme #copyResults {
 	background: skyblue;
 	border-radius: 0.5em;
 	font-size: 1.1em;
@@ -286,55 +286,70 @@ button:hover {
 	font-weight: bold;
 }
 
-.pageContainer h1 {
+body.classic-theme .pageContainer h1 {
 	text-align: center;
 	margin-top: 0px;
 }
 
-.welcomeFormSection {
+body.classic-theme .welcomeFormSection {
 	margin-top: 1em;
 }
 
-.welcomeFormSection label {
+body.classic-theme .welcomeFormSection label {
 	font-weight: bold;
 }
 
-#skipEmailLabel {
+body.classic-theme #skipEmailLabel {
 	font-weight: normal;
 }
 
-.welcomeFormSection input[type=text] {
+body.classic-theme .welcomeFormSection input[type=text] {
 	min-width: 10em;
 }
 
-.startPageFormContainer {
+body.classic-theme .startPageFormContainer {
 	width: 20em;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.instructions {
+body.classic-theme .instructions {
 	font-size: 1.5em;
 	color: MediumBlue;
 	font-weight: bold;
 }
 
-.startPageInstructions {
+body.classic-theme .startPageInstructions {
 	margin-top: 1.5em;
 	text-align: center;
 }
 
-.lobbyPageInstructions {
+body.classic-theme #lobbyPage {
+	width: 80%;
+}
+
+body.classic-theme .lobbyPageInstructions {
 	margin-top: 0.75em;
 	margin-bottom: 1em;
 	text-align: center;
 }
 
-#gamePromptsInstructions {
+body.classic-theme .lobbyPageInstructions2 {
+	display: none;
+}
+
+body.classic-theme #gamePromptsInstructions {
 	text-align: center;
 }
 
-.lobbyOptionsContainer, .welcomeOptionsContainer {
+body.classic-theme .welcomeFormContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+body.classic-theme .lobbyOptionsContainer, 
+body.classic-theme .welcomeOptionsContainer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -342,7 +357,8 @@ button:hover {
 	justify-content: space-evenly;
 }
 
-.lobbyOptionCard, .welcomeOptionCard {
+body.classic-theme .lobbyOptionCard, 
+body.classic-theme .welcomeOptionCard {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 100%;
@@ -357,7 +373,15 @@ button:hover {
 	box-shadow: 5px 5px #888888;
 }
 
-#roomCodeErrorDiv {
+body.classic-theme #roomCodeInputLabelDiv {
+	display: none;	
+}
+
+body.classic-theme #roomCodeInputDiv {
+	text-align: center;	
+}
+
+body.classic-theme #roomCodeErrorDiv {
 	margin-bottom: 1em;
 	font-weight: bold;
 	color: FireBrick;
@@ -367,7 +391,7 @@ button:hover {
 	text-align: center;
 }
 
-#overlay {
+body.classic-theme #overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -377,7 +401,7 @@ button:hover {
 	z-index: 20;
 }
 
-.overlayCard {
+body.classic-theme .overlayCard {
 	width: 45em;
 	background: #dcdcdc; /*#a2a2a2;*/
 	margin-top: 10%;
@@ -388,41 +412,91 @@ button:hover {
 	/*box-shadow: 5px 5px #888888;*/
 }
 
-.overlayBottomCell {
+body.classic-theme #overlayHamburgerMenu {
+	display: none;
+	position: fixed;
+	background: white;
+	border-radius: 5px;
+}
+
+body.classic-theme #hamburgerMenuContent {
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+body.classic-theme .hamburgerItem {
+	/*margin-bottom: 10px;
+	border-radius: 5px;*/
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 10px;
+}
+
+body.classic-theme .hamburgerItem .hamburgerMenuItemLabel {
+	flex-grow: 1;
+	text-align: left;
+}
+
+body.classic-theme .hamburgerItem .hamburgerMenuItemIcon {
+	width: 25px;
+	margin-right: 20px;
+}
+
+/*
+body.checkpoint7-theme .hamburgerItem:last-child {
+	margin-bottom: 0;
+}*/
+
+body.classic-theme .hamburgerItem:hover {
+	background: #f4f4f4; /* #dcdcdc;*/
+	color: var(--button-color);
+	cursor: pointer;
+}
+
+body.classic-theme .overlayBottomCell {
 	display: flex;
 	width: 25%; 
 	flex-direction: column; 
 	justify-content: center;
 }
 
-.leftRightCell {
+body.classic-theme .leftRightCell {
 	width: 25%;
 }
 
-.centerCell {
+body.classic-theme .centerCell {
 	width: 40%;
 }
 
-.rightCell {
+body.classic-theme .rightCell {
 	align-items: flex-end;
 }
 
-.overlayBottomContainer {
+body.classic-theme .overlayBottomContainer {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
 }
 
-a.overlayCancelLink, a.overlayCancelLink:visited {
+body.classic-theme a.overlayCancelLink, 
+body.classic-theme a.overlayCancelLink:visited {
 	color: MediumBlue;
 	font-size: 1.25em;
 }
 
-.overlayErrorDiv {
+body.classic-theme .overlayErrorDiv {
 	color: FireBrick;
 }
 
-.gameSetupOptionsContainer {
+body.classic-theme .gameSetupOptionsContainer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -433,17 +507,17 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
 	margin-right: -20px;
 }
 
-.centered {
+body.classic-theme .centered {
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.centeredContent {
+body.classic-theme .centeredContent {
 	text-align: center;
 }
 
 
-.gameSetupOptionsSection {
+body.classic-theme .gameSetupOptionsSection {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 100%;
@@ -458,7 +532,7 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
 }
 
 
-.gameSetupOptionsCard {
+body.classic-theme .gameSetupOptionsCard {
 	background: #dcdcdc; /*#a2a2a2;*/
 	padding: 15px;
 	border-radius: 10px;
@@ -471,7 +545,12 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
 	flex-shrink: 1;
 }
 
-#responseWaitingBanner {
+body.classic-theme #responseWaitingSection {
+	width: 60%;
+}
+
+
+body.classic-theme #responseWaitingBanner {
 	text-align: center;
     color: MediumBlue;
     font-weight: bold;
@@ -480,11 +559,15 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
     margin-top: 0.5em;
 }
 
-#votingTitle {
+body.classic-theme.votingSection {
+	width: 80%;
+}
+
+body.classic-theme #votingTitle {
 	margin-bottom: 0.5em;
 }
 
-.prompt {
+body.classic-theme .prompt {
     text-align: center;
     font-size: 1.75em;
     font-weight: bold;
@@ -495,22 +578,22 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
     margin-bottom: 0.75em;
 }
 
-.instructions.votingSubtitle {
+body.classic-theme .instructions.votingSubtitle {
 	font-size: 1.25em;
 	margin-bottom: 0.25em;
 }
 
-.resultsSectionDiv .instructions {
+body.classic-theme .resultsSectionDiv .instructions {
     font-size: 1.25em;
     color: black;
 }
 
-#votingChoicesContainer {
+body.classic-theme #votingChoicesContainer {
 	margin: 0 auto;
 	width: 90%;
 }
 
-#myAnswer {
+body.classic-theme #myAnswer {
 	font-family: consolas;
     color: white;
     font-size: 1.5em;
@@ -528,12 +611,12 @@ a.overlayCancelLink, a.overlayCancelLink:visited {
     margin-right: auto;
 }
 
-#votingChoicesDiv {
+body.classic-theme #votingChoicesDiv {
 	margin: 0;
 	padding: 0;
 }
 
-button.vote-button {
+body.classic-theme button.vote-button {
 	display: block;
 	background: linear-gradient(to bottom, #678eff 5%, #0000cd 100%);
     padding: 0.5em;
@@ -552,19 +635,19 @@ button.vote-button {
     white-space: pre-wrap;
 }
 
-button.vote-button:hover {
+body.classic-theme button.vote-button:hover {
 	background: linear-gradient(to bottom, #4275ee 5%, #0000aa 100%);
 }
 
-.gameSetupOptionsCard .instructions, 
-.gameUserStatusCard .instructions, 
-#finalGameSummaryBanner {
+body.classic-theme .gameSetupOptionsCard .instructions, 
+body.classic-theme .gameUserStatusCard .instructions, 
+body.classic-theme #finalGameSummaryBanner {
 	text-align: center;
 	margin-top: 0.5em;
 	margin-bottom: 1em;
 }
 
-#gameSetupStatusContainer {
+body.classic-theme #gameSetupStatusContainer {
 	display: block;
 	flex-grow: 1;
 	flex-shrink: 0;
@@ -577,7 +660,7 @@ button.vote-button:hover {
 	padding: 10px;
 }
 
-.roomUpdateMessage {
+body.classic-theme .roomUpdateMessage {
 	padding: 0.5em;
 	border-radius: 5px;
 	/*font-family: monospace;*/
@@ -585,30 +668,30 @@ button.vote-button:hover {
 	background: #b0b0b0;
 }
 
-.userChatDiv {
+body.classic-theme .userChatDiv {
 	text-align: left;
 	margin-bottom: 0.5em;
 	margin-right: 20%;
 	margin-left: 0%;
 }
 
-.userChatDiv.mine {
+body.classic-theme .userChatDiv.mine {
 	text-align: right;
 	margin-left: 20%;
 	margin-right: 0%;
 }
 
-.messageText {
+body.classic-theme .messageText {
 	display: inline-block;
 	text-align: left;
 }
 
-.userChatName {
+body.classic-theme .userChatName {
 	display: inline-block;
 	font-size: 0.8em;
 }
 
-.userChatMessage {
+body.classic-theme .userChatMessage {
 	margin-top: 0.1em;
 	padding: 0.5em;
     border-radius: 5px;
@@ -622,11 +705,11 @@ button.vote-button:hover {
 	font-weight: bold;
 }*/
 
-.roomUpdateMessage .preserve-spaces {
+body.classic-theme .roomUpdateMessage .preserve-spaces {
 	font-family: monospace;
 }
 
-.optionCardTitle {
+body.classic-theme .optionCardTitle {
 	text-align: center;
 	font-size: 1.25em;
 	font-weight: bold;
@@ -638,20 +721,20 @@ button.vote-button:hover {
 	
 }
 
-#gamePromptsDiv {
+body.classic-theme #gamePromptsDiv {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.promptNumberDiv {
+body.classic-theme .promptNumberDiv {
 	font-weight: bold;
 	font-size: 1.25em;
 	color: MediumBlue;
 	/*text-decoration: underline;*/
 }
 
-.promptTextDiv {
+body.classic-theme .promptTextDiv {
 	font-size: 1.5em;
 	/*color: MediumBlue;*/
 	font-weight: bold;
@@ -662,18 +745,18 @@ button.vote-button:hover {
 	width: 90%;
 }
 
-.promptResponseDiv {
+body.classic-theme .promptResponseDiv {
 	margin-left: auto;
 	margin-right: auto;
 	width: 90%;
 	text-align: center;
 }
 
-input.promptResponse {
+body.classic-theme input.promptResponse {
 	width: 100%;
 }
 
-.gamePromptSectionCard {
+body.classic-theme .gamePromptSectionCard {
 	background: #dcdcdc; /*#a2a2a2;*/
 	padding: 15px;
 	border-radius: 10px;
@@ -682,7 +765,7 @@ input.promptResponse {
 	margin-bottom: 2em;
 }
 
-.gameUserStatusSection {
+body.classic-theme .gameUserStatusSection {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -693,7 +776,7 @@ input.promptResponse {
 	margin-right: auto;
 }
 
-.basicCard {
+body.classic-theme .basicCard {
 	background: #dcdcdc; /*#a2a2a2;*/
 	margin: 1em auto; 
 	padding: 1em;
@@ -702,7 +785,7 @@ input.promptResponse {
 	box-shadow: 5px 5px #888888;
 }
 
-.gameUserStatusCard {
+body.classic-theme .gameUserStatusCard {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 100%;
@@ -716,7 +799,16 @@ input.promptResponse {
 	box-shadow: 5px 5px #888888;
 }
 
-#userStatusWorkingEmpty, #userStatusFinishedEmpty {
+body.classic-theme #gamUserStatusCardLeft {
+	margin-right: 10px;
+}
+
+body.classic-theme #gamUserStatusCardRight {
+	margin-left: 10px;
+}
+
+body.classic-theme #userStatusWorkingEmpty, 
+body.classic-theme #userStatusFinishedEmpty {
 	margin-top: 0.5em;
 	text-align: center;
 	font-size: 1.25em;
@@ -724,58 +816,58 @@ input.promptResponse {
 	color: #353535;
 }
 
-.logoWrapper {
+body.classic-theme .logoWrapper {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.fullWidth {
+body.classic-theme .fullWidth {
 	width: 100%;
 }
 
-#nameBox {
+body.classic-theme #nameBox {
   margin-top: auto;
   margin-bottom: auto;
 }
 
-.align-right {
+body.classic-theme .align-right {
 	text-align: right;
 }
 
-#navBarName, #changeNameLinkContainer {
+body.classic-theme #navBarName, 
+body.classic-theme #changeNameLinkContainer {
 	text-align: right;
 }
 
-.preserve-spaces {
+body.classic-theme .preserve-spaces {
 	white-space: pre-wrap;
 }
 
-.option-header {
+body.classic-theme .option-header {
 	margin-bottom: 5px;
 }
 
-.collapsed-list {
+body.classic-theme .collapsed-list {
 	margin-top: 5px;
 }
 
-.userList {
+body.classic-theme .userList {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: center;
-	
-		    
     list-style-type: none;
     margin-block-start: 0;
     margin-block-end: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
     padding-inline-start: 0;
+    text-align: center;
 }
 
-.userList li, 
-table.finalScoresTable td.playerName div {
+body.classic-theme .userList li, 
+body.classic-theme table.finalScoresTable td.playerName div {
     display: inline-block;
     background: mediumturquoise;
     font-size: 1.25em;
@@ -788,21 +880,22 @@ table.finalScoresTable td.playerName div {
     color: #353535;
 }
 
-#completeGameSetupDiv {
+body.classic-theme #completeGameSetupDiv {
 	text-align: center;
 }
 
-#completeGameSetupButton {
+body.classic-theme #completeGameSetupButton {
 	font-size: 1.25em;
 }
 
-button.disabled-waiting, button.disabled-waiting:hover {
+body.classic-theme button.disabled-waiting, 
+body.classic-theme button.disabled-waiting:hover {
 	background: #555555;
     color: #cdcdcd;
     cursor: default;
 }
 
-#navBarName {
+body.classic-theme #navBarName {
 	font-weight: bold;
 	font-size: 2.25em;
 	
@@ -813,54 +906,54 @@ button.disabled-waiting, button.disabled-waiting:hover {
 	*/
 }
 
-#navBarEmail {
+body.classic-theme #navBarEmail {
 	font-size: 1.25em;
 }
 
-#navTools {
+body.classic-theme #navTools {
 	display: flex;
 	justify-content: flex-end;
 	align-items: stretch;
 	padding: 0.25em;
 }
 
-#navAccountContainer {
+body.classic-theme #navAccountContainer {
 	align-items: flex-end;
 	justify-content: center;
 	margin-right: 1em;
 }
 
-.navContainer {
+body.classic-theme .navContainer {
 	display:flex;
 	height: 100%;
 	flex-direction: column;
 }
 
-.navButtonContainer {
+body.classic-theme .navButtonContainer {
 	align-items: center;
 	justify-content: space-evenly;
 	margin-left: 0.75em;
 }
 
-button.navButton {
+body.classic-theme button.navButton {
 	padding: 0.75em;
 	font-size: 0.75em;
 }
 
-button.navButton img {
+body.classic-theme button.navButton img {
 	width: 40px;
 }
 
-#changeNameOptionsContainer {
+body.classic-theme #changeNameOptionsContainer {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-#gameSetupLeaveContainer {
+body.classic-theme #gameSetupLeaveContainer {
 	margin-top: 50px;
 }
 
-#lobbyUserMessageContainer {
+body.classic-theme #lobbyUserMessageContainer {
 	margin: 1em auto;
     border: 1px solid black;
     padding: 1em;
@@ -870,53 +963,64 @@ button.navButton img {
     border-radius: 5px;
 }
 
-#lobbyUserMessage {
+body.classic-theme #lobbyUserMessage {
 	text-align: center;
 }
 
-#lobbyUserDismissLinkDiv {
+body.classic-theme #lobbyUserDismissLinkDiv {
 	text-align: center;
 	margin-top: 1em;
 }
 
-#resultsNavDiv, #finalGameSummaryNavDiv {
+body.classic-theme #resultsNavDiv, 
+body.classic-theme #finalGameSummaryNavDiv {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: stretch;
 }
 
-.logoImage {
+body.classic-theme #logo1 {
+	display: inline-block;
+}
+
+body.classic-theme #logo2 {
+	display: none;
+}
+
+
+body.classic-theme .logoImage {
   max-width: 300px;
   height: auto;
 }
 
-#changeNameSubmitButton, #changeNameInput {
+body.classic-theme #changeNameSubmitButton, 
+body.classic-theme #changeNameInput {
 	margin-left: 10px;
 }
 
-.noVotes {
+body.classic-theme .noVotes {
 	text-align: center;
     margin: 0.5em 0.5em;
 }
 
-.noVotes span {
+body.classic-theme .noVotes span {
 	font-size: 1.25em;
     font-family: tahoma;
     color: Black;
 }
 
-.resultsSectionDiv {
+body.classic-theme .resultsSectionDiv {
     width: 90%;
     background: #b1d5ff;
     border-radius: 10px;
     box-shadow: 5px 5px #888888;
-    margin: 2em auto;
+    margin: 2em auto 25px auto;
     padding: 1em;
     border: 1px solid black;
 }
 
-.resultAnswer {
+body.classic-theme .resultAnswer {
     font-weight: bold;
     text-align: center;
     /* width: 80%; */
@@ -929,35 +1033,35 @@ button.navButton img {
     padding: 0.5em;
 }
 
-#gameScoresPage .userList li, 
-#gameScoresPage .userList li span {
+body.classic-theme #gameScoresPage .userList li, 
+body.classic-theme #gameScoresPage .userList li span {
 	font-size: 1.25em;
 	font-weight: normal;
 }
 
-#returnToLobbyDiv {
+body.classic-theme #returnToLobbyDiv {
 	text-align: center;
 }
 
-#reviewPhaseNavDiv {
+body.classic-theme #reviewPhaseNavDiv {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 }
 
-#reviewPhaseNavDiv.oneLeftButton {
+body.classic-theme #reviewPhaseNavDiv.oneLeftButton {
 	justify-content: flex-start;
 }
 
-#reviewPhaseNavDiv.oneRightButton {
+body.classic-theme #reviewPhaseNavDiv.oneRightButton {
 	justify-content: flex-end;
 }
 
-#reviewPhaseNavDiv.twoButtons {
+body.classic-theme #reviewPhaseNavDiv.twoButtons {
 	justify-content: space-between;
 }
 
-table.finalScoresTable {
+body.classic-theme table.finalScoresTable {
 	width: 60%;
     margin: 1em auto;
     border-collapse: collapse;
@@ -965,37 +1069,37 @@ table.finalScoresTable {
     
 }
 
-table.finalScoresTable td {
+body.classic-theme table.finalScoresTable td {
 	background-color: #b1d5ff;
 }
 
-table.finalScoresTable th {
+body.classic-theme table.finalScoresTable th {
 	background-color: #a1a1a1;
 	font-size: 1.75em;
     font-weight: bold;
 }
 
-table.finalScoresTable td, 
-table.finalScoresTable th {
+body.classic-theme table.finalScoresTable td, 
+body.classic-theme table.finalScoresTable th {
     border: 2px solid #575757;
     padding: 0.25em;
     text-align: center;
     vertical-align: middle;
 }
 
-table.finalScoresTable td.playerName div {
+body.classic-theme table.finalScoresTable td.playerName div {
     border: 2px solid #575757;
     padding: 0.5em;
     font-size: 1.5em;
     font-weight: bold;
 }
 
-table.finalScoresTable td.playerScore div {
+body.classic-theme table.finalScoresTable td.playerScore div {
     font-size: 1.75em;
     font-weight: normal;
 }
 
-#outerChatContainer {
+body.classic-theme #outerChatContainer {
 	width: 0;
 	flex-grow: 1;
 	/*
@@ -1008,11 +1112,11 @@ table.finalScoresTable td.playerScore div {
 	*/
 }
 
-#contentContainer {
+body.classic-theme #contentContainer {
 	flex-grow: 1;
 }
 
-#smallChatContainerDiv {
+body.classic-theme #smallChatContainerDiv {
 	position: fixed;
 	background: #a1d79d;
 	border-radius: 0 10px 10px 0;
@@ -1022,11 +1126,11 @@ table.finalScoresTable td.playerScore div {
 	padding: 20px;
 }
 
-#sendChatDiv {
+body.classic-theme #sendChatDiv {
 	margin-top: 0.25em;
 }
 
-#chatHistoryArea {
+body.classic-theme #chatHistoryArea {
 	flex-grow: 1;
 	background: white;
 	border: 1px solid black;
@@ -1035,7 +1139,7 @@ table.finalScoresTable td.playerScore div {
 	padding: 5px;
 }
 
-#smallChatContainer {
+body.classic-theme #smallChatContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -1044,7 +1148,12 @@ table.finalScoresTable td.playerScore div {
 	height: 100%;
 }
 
-#bodyContent {
+body.classic-theme #smallChatContainer h1 {
+	text-align: center;
+	margin-top: 0;
+}
+
+body.classic-theme #bodyContent {
 	display: flex;
 	margin: 0;
 	padding: 0;
@@ -1075,7 +1184,7 @@ table.finalScoresTable td.playerScore div {
 }
 */
 
-#minChatSection {
+body.classic-theme #minChatSection {
 	position: fixed;
 	top: 130px;
 	left: 0;
@@ -1083,11 +1192,11 @@ table.finalScoresTable td.playerScore div {
 	width: 5%;
 }
 
-#minChatContainer {
+body.classic-theme #minChatContainer {
 	
 }
 
-#smallChatSection {
+body.classic-theme #smallChatSection {
 	position: fixed;
 	top: 130px;
 	left: 0;

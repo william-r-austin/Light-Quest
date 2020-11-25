@@ -1,0 +1,1394 @@
+body.checkpoint7-theme * {
+	font-family: "Trebuchet MS", Corbel, Tahoma, Verdana, Arial, sans-serif, Candara, Constantia;
+}
+
+body.checkpoint7-theme *, body.checkpoint7-theme *:before, body.checkpoint7-theme *:after {
+  box-sizing: border-box;
+}
+
+/*
+html body.checkpoint7-theme  {
+	margin: 0;
+	padding: 0;
+	background: rgb(240 243 247);
+}*/
+
+body.checkpoint7-theme {
+  margin: 0;
+  padding: 0;
+  
+  overflow-x: hidden;
+  --main-bg-color:  rgb(222 242 251);
+  --button-color: #0062ff; /*#3ec3ff;*/
+  
+  --container-bg-color: white;
+  --container-title-color: rgba(0, 0, 0, 65%);
+  --container-padding: 30px;
+  
+  
+  --hover-button-color: rgb(0, 34, 255);
+  --secondary-hover-button-color: rgba(0, 34, 255, 15%);
+  
+  
+  --card-title-color: rgba(0, 31, 230, 80%); /*rgba(0, 0, 0, 75%);*/
+  --card-title-align: left;
+  --card-title-font-size: 1.25em;
+  --card-title-font-weight: bold;
+  
+  --card-color: white;
+  --card-border-top: 6px solid #74d084;
+  --card-padding: 15px;
+  --card-border-radius: 5px;
+  --card-box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  
+  --prompt-label-color: black; /* rgba(0, 0, 0, 65%); */
+  --prompt-label-font-size: 1em;
+  --prompt-label-font-weight: normal;
+  
+  --prompt-font-size: 1.5em;
+  --prompt-font-style: italic;
+  --prompt-color: rgba(0, 0, 0, 65%);
+  --prompt-font-weight: normal;
+  --prompt-text-align: center;
+  --prompt-width: 90%;
+
+  --response-text-align: center;
+  --response-background: rgba(0, 0, 0, 10%);
+  --response-border-radius: 5px;
+  --response-width: 90%;
+  --response-padding: 0.5em 1em;
+  --response-font-weight: normal;
+  --response-font-size: 1.1em;
+  --response-color: black;
+  
+  
+  --form-label-color: #666;
+  
+  --status-bar-bg-color: white;
+  
+  /* Same as the hover button color */
+  --copy-results-color: rgb(0, 34, 255);
+  
+  --transition-color: rgba(0, 31, 230, 80%);
+  
+  --game-code-bg-color: #9364c1; /* Rebecca Purple */
+  
+  
+  background-color: var(--main-bg-color); /*white; */ /*#C5C5C5;*/
+}
+
+body.checkpoint7-theme #headerContent {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+body.checkpoint7-theme #navigationBar {
+  width: 100%;
+  /*background-color: #a5a5a5;*/
+  background-image: linear-gradient(to bottom, #777, #aaa 35%, #ccc 85%, #bbb);
+  /*background-image: linear-gradient(to bottom, #585858, #828282 35%, #b5b5b5 80%, #a0a0a0);*/
+  /*background-image: linear-gradient(to bottom, #585858, #a0a0a0 100%);*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  /*border-bottom: 1px solid #585858;*/
+  margin: 0;
+  z-index: 10;
+}
+
+body.checkpoint7-theme #statusBar {
+	width: 100%;
+	background: var(--status-bar-bg-color); /*#c5c5c5; /*#dcdcdc; #b5b5b5; #a1d79d;*/ /*#dcdcdc;*/
+	padding: 0;
+	border-bottom: 1px solid #585858;
+}
+
+body.checkpoint7-theme #statusBarContainer {
+	display: flex;
+	align-items: stretch;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+
+
+body.checkpoint7-theme .statusBarSection {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+}
+
+body.checkpoint7-theme .statusBarRoomCode {
+	background: var(--game-code-bg-color); /*RebeccaPurple; /*darkgreen;*/
+    padding: 0.15em .4em;
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 5px 5px #585858; */
+    font-weight: bold;
+    color: white;
+    font-family: Consolas, "Courier New", monospace;
+    /*font-size: 1em;*/
+    letter-spacing: 0.1em;
+}
+
+body.checkpoint7-theme .statusBarSection > span {
+	/* margin-top: 0.5em; */
+	/* margin-bottom: 0.5em; */
+	font-size: 1em;
+}
+
+body.checkpoint7-theme .statusBarCenter {
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+body.checkpoint7-theme .statusBarLeft {
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+/*
+.statusBarRight, .statusBarLeft {
+	width: 15%;
+}
+
+.statusBarLeft {
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.statusBarCenter {
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+*/
+
+body.checkpoint7-theme .statusBarRoomCodeLabel {
+	/*font-weight: bold;*/
+	/*margin-left: 0.25em;*/
+	margin-right: 0.75em;
+}
+
+body.checkpoint7-theme .statusBarGameState {
+	padding: 0.25em 0.5em;
+	/*border-radius: 5px;*/
+	/*font-size: 1.1em;*/
+}
+
+body.checkpoint7-theme .statusBarGameState.completedState {
+	/* background: #b5b5b5; */
+    color: #585858;
+    /* border: 1px solid #585858;*/
+}
+
+body.checkpoint7-theme .statusBarGameState.activeState {
+	/*background: #74d084;*/
+    font-weight: bold;
+    color: black;
+    /* border: 1px solid rgb(0 0 0 / 0.5); */
+    border-bottom: 3px solid #0062ff; /*rgb(0 34 255 / 1);*/
+    border-top: 3px solid #d0747400;
+}
+
+body.checkpoint7-theme .statusBarGameState.futureState {
+	/* background: #b5b5b5; */
+    color: #585858;
+    /* border: 1px solid #585858;*/
+}
+
+
+
+body.checkpoint7-theme img.separator {
+	width: 0.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+/*
+.statusBarCenter {
+	width: 65%;
+}
+*/
+
+body.checkpoint7-theme #navigationBar > div {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+body.checkpoint7-theme #transitionMessage {
+	font-weight: bold;
+	margin-top: 3em;
+	font-size: 2.5em;
+	text-align: center;
+	color: var(--transition-color);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.checkpoint7-theme input[type=text] {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0; /*1px solid black;*/
+  /*box-shadow:0 0 15px 4px rgba(0,0,0,0.06);*/
+  font-size: 1.1em;
+  /*
+  font-family: "Lucida Console", sans-serif;*/
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  border: 1px solid rgb(200, 200, 200);
+  box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.08);
+  
+}
+
+body.checkpoint7-theme button {
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  border: 0;
+  /*border: 1px solid black;*/
+  /*box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);*/
+  /* ox-shadow: 3px 3px #828282; */
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  background-color: var(--button-color);
+  /*background: linear-gradient(to bottom, #1133ff 5%, #0000cd 100%);*/
+  color: white;
+  transition-duration: 0.4s;
+}
+
+body.checkpoint7-theme button.secondary {
+  background: hsla(0, 0%, 0%, 0%); /*#dcdcdc; /*var(--button-color);*/
+  font-weight: bold;
+  color: var(--button-color);
+  border: 1px solid var(--button-color);
+  /*background: linear-gradient(to bottom, #1133ff 5%, #0000cd 100%);*/
+  /*color: white;*/
+  transition-duration: 0.4s;
+}
+
+body.checkpoint7-theme button.secondary:hover {
+  background: var(--secondary-hover-button-color); /*hsla(0, 0%, 0%, 15%); /*#dcdcdc; /*var(--button-color);*/
+  font-weight: bold;
+  color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+  /*background: linear-gradient(to bottom, #1133ff 5%, #0000cd 100%);*/
+  cursor: pointer;
+}
+
+body.checkpoint7-theme button:hover {
+	background: var(--hover-button-color);
+	/*background: linear-gradient(to bottom, #215aff 5%, #0F2FFF 100%);*/
+	cursor: pointer;
+}
+
+body.checkpoint7-theme .sixtyPercent {
+	width: 60%;
+}
+
+body.checkpoint7-theme .eightyPercent {
+	width: 80%;
+}
+
+body.checkpoint7-theme .ninetyPercent {
+	width: 90%;
+}
+
+body.checkpoint7-theme .pageContainer {
+	padding: var(--container-padding);
+	/*border: 2px solid black;*/
+	border-radius: 5px;
+	background: var(--container-bg-color); /*rgb(222 235 245); /*rgb(240 243 247); /*white; /*#ffe566; */ /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+	margin-bottom: 1.5em;
+	background: var(--container-bg-color);
+	/*box-shadow: 5px 5px #888888;*/
+}
+
+body.checkpoint7-theme #gameContainer.pageContainer {
+	background: var(--container-bg-color); /*#a1d79d; /*Gold; /*#c5c5c5; /*#99b9ff; Khaki;*/
+}
+
+body.checkpoint7-theme #roomCodeDisplay, #gameUrlDisplay {
+	text-align: center;
+	margin: 1em;
+}
+
+body.checkpoint7-theme #gameUrlDisplay {
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+body.checkpoint7-theme #gameRoomSetupRoomCode {
+    background: var(--game-code-bg-color); /*RebeccaPurple; /*darkgreen;*/
+    padding: 0.15em .4em;
+    /* border: 2px solid black; */
+    border-radius: 5px;
+    /* box-shadow: 5px 5px #585858; */
+    font-weight: bold;
+    color: white;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1.75em;
+    letter-spacing: 0.1em;
+}
+
+body.checkpoint7-theme #copyToClipboardContainer {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+body.checkpoint7-theme #copyToClipboardContainer button {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+body.checkpoint7-theme #copyToClipboardContainer button,
+body.checkpoint7-theme button#userChatSubmitButton {
+	padding: 0.5em 1em;
+	font-size: 1em;
+}
+
+body.checkpoint7-theme #copyResultsContainer {
+	height: 2.5em;
+}
+
+body.checkpoint7-theme #copyResults {
+	/*background: skyblue;
+	border-radius: 0.5em;*/
+	font-size: 1.1em;
+	padding: 0.25em 0.75em;
+	font-weight: bold;
+	color: var(--copy-results-color);
+}
+
+body.checkpoint7-theme .pageContainer h1 {
+	text-align: center;
+	margin-top: 0;
+	color: var(--container-title-color);
+}
+
+body.checkpoint7-theme div#gameContainer.pageContainer h1 {
+	margin-bottom: 0;
+}
+
+body.checkpoint7-theme .welcomeFormSection {
+	margin-top: 1em;
+}
+
+body.checkpoint7-theme .welcomeFormSection label,
+body.checkpoint7-theme .lobbyOptionCard label {
+	font-weight: bold;
+	color: var(--form-label-color);
+}
+
+body.checkpoint7-theme #skipEmailLabel {
+	font-weight: normal;
+	color: black;
+}
+
+body.checkpoint7-theme .welcomeFormSection input[type=text] {
+	min-width: 10em;
+}
+
+body.checkpoint7-theme .startPageFormContainer {
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.checkpoint7-theme .instructions {
+	font-size: var(--card-title-font-size);
+	color: var(--card-title-color); /* MediumBlue;*/
+	font-weight: var(--card-title-font-weight);
+}
+
+body.checkpoint7-theme .startPageInstructions {
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+body.checkpoint7-theme #lobbyPage {
+	width: 60%;
+}
+
+body.checkpoint7-theme .lobbyPageInstructions {
+	display: none;
+	margin-top: 0.75em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+body.checkpoint7-theme #gamePromptsInstructions {
+	text-align: left;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+body.checkpoint7-theme .welcomeFormContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+body.checkpoint7-theme .pageContainer > p {
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+body.checkpoint7-theme .lobbyOptionsContainer, 
+body.checkpoint7-theme .welcomeOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*width: 100%;*/
+	justify-content: space-between;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+body.checkpoint7-theme .lobbyOptionCard, 
+body.checkpoint7-theme .welcomeOptionCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	background: var(--card-color); /*white; /*#dcdcdc; /*#a2a2a2;*/
+	/*margin-left: 1.5em; 
+	margin-right: 1.5em;*/
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 15px; 
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	/*border: 2px solid #464646;*/
+	box-shadow: var(--card-box-shadow);
+	/*box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2); */ /*#888888;*/
+	border-top: var(--card-border-top);
+}
+
+body.checkpoint7-theme #roomCodeInputLabelDiv {
+	margin-top: 1em;	
+}
+
+body.checkpoint7-theme #roomCodeInputDiv {
+	text-align: left;
+}
+
+body.checkpoint7-theme #roomCodeErrorDiv {
+	margin-bottom: 1em;
+	font-weight: bold;
+	color: FireBrick;
+	width: 20em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+body.checkpoint7-theme #overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(30, 30, 30, 0.85);
+	z-index: 20;
+}
+
+body.checkpoint7-theme #overlay .overlayCard .instructions {
+	color: var(--card-title-color);
+	text-align: var(--card-title-align);
+	font-size: var(--card-title-font-size);
+	font-weight: var(--card-title-font-weight);
+}
+
+body.checkpoint7-theme #overlayStatisticsCard.overlayCard {
+	width: 680px;
+}
+
+body.checkpoint7-theme .overlayCard {
+	width: 45em;
+	background: var(--card-color); /*#dcdcdc; /*#a2a2a2;*/
+	margin-top: 10%;
+	margin-bottom: 15%; 
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	border-top: var(--card-border-top);
+	box-shadow: var(--card-box-shadow);
+	/*border: 2px solid black;*/
+	/*box-shadow: 5px 5px #888888;*/
+}
+
+body.checkpoint7-theme #overlayHamburgerMenu {
+	display: none;
+	position: fixed;
+	background: white;
+	border-radius: 5px;
+}
+
+body.checkpoint7-theme #hamburgerMenuContent {
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+body.checkpoint7-theme .hamburgerItem {
+	/*margin-bottom: 10px;
+	border-radius: 5px;*/
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 10px;
+}
+
+body.checkpoint7-theme .hamburgerItem .hamburgerMenuItemLabel {
+	flex-grow: 1;
+	text-align: left;
+}
+
+body.checkpoint7-theme .hamburgerItem .hamburgerMenuItemIcon {
+	width: 25px;
+	margin-right: 20px;
+}
+
+/*
+body.checkpoint7-theme .hamburgerItem:last-child {
+	margin-bottom: 0;
+}*/
+
+body.checkpoint7-theme .hamburgerItem:hover {
+	background: #f4f4f4; /* #dcdcdc;*/
+	color: var(--button-color);
+	cursor: pointer;
+}
+
+body.checkpoint7-theme .overlayBottomCell {
+	display: flex;
+	width: 25%; 
+	flex-direction: column; 
+	justify-content: center;
+}
+
+body.checkpoint7-theme .leftRightCell {
+	width: 25%;
+}
+
+body.checkpoint7-theme .centerCell {
+	width: 40%;
+}
+
+body.checkpoint7-theme .rightCell {
+	align-items: flex-end;
+}
+
+body.checkpoint7-theme .overlayBottomContainer {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+body.checkpoint7-theme a.overlayCancelLink, 
+body.checkpoint7-theme a.overlayCancelLink:visited {
+	color: var(--button-color);
+	font-size: 1em;
+	font-weight: bold;
+}
+
+body.checkpoint7-theme a.overlayCancelLink:hover {
+	color: var(--hover-button-color);
+	font-size: 1em;
+	font-weight: bold;
+}
+
+body.checkpoint7-theme .overlayErrorDiv {
+	color: FireBrick;
+}
+
+body.checkpoint7-theme #navSkipEmailLabel {
+	color: black;
+	font-weight: normal;
+}
+
+body.checkpoint7-theme .gameSetupOptionsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*width: 100%;*/
+	justify-content: space-between;
+	align-items: stretch;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+body.checkpoint7-theme .centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.checkpoint7-theme .centeredContent {
+	text-align: center;
+}
+
+
+body.checkpoint7-theme .gameSetupOptionsSection {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	/*background: #dcdcdc; /*#a2a2a2;*/
+	/*margin-left: auto; 
+	margin-right: auto;*/ 
+	/*padding: 10px;
+	border-radius: 10px;*/
+	/*border: 1px solid #464646;
+	box-shadow: 5px 5px #888888;*/
+}
+
+
+body.checkpoint7-theme .gameSetupOptionsCard {
+	background: var(--card-color); /*#dcdcdc; */ /*#a2a2a2;*/
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	/*border: 1px solid #464646;*/
+	box-shadow: var(--card-box-shadow);
+    border-top: var(--card-border-top);
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: var(--container-padding);
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+body.checkpoint7-theme #responseWaitingSection {
+	width: 100%;
+}
+
+body.checkpoint7-theme #responseWaitingBanner {
+	text-align: var(--card-title-align);
+    color: var(--card-title-color);
+    font-weight: var(--card-title-font-weight);
+    font-size: var(--card-title-font-size);
+    margin-bottom: var(--card-padding);
+    /* margin-top: 0.5em;*/
+}
+
+body.checkpoint7-theme #votingSection {
+	width: 100%;
+}
+
+body.checkpoint7-theme #votingTitle {
+	margin-bottom: 0.5em;
+}
+
+
+
+body.checkpoint7-theme .prompt {
+    text-align: var(--prompt-text-align);
+    font-size: var(--prompt-font-size);
+    font-weight: var(--prompt-font-weight);
+    font-style: var(--prompt-font-style);
+    width: var(--prompt-width);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 0.75em;
+    color: var(--prompt-color);
+}
+
+body.checkpoint7-theme .instructions.votingSubtitle {
+	font-size: 1em;
+	font-weight: normal;
+	text-align: left;
+	color: black;
+	margin-bottom: 0.25em;
+}
+
+body.checkpoint7-theme .resultsSectionDiv .instructions {
+    font-size: var(--prompt-label-font-size);
+    color: var(--prompt-label-color);
+    font-weight: var(--prompt-label-font-weight);
+}
+
+body.checkpoint7-theme #votingChoicesContainer {
+	margin: 0 auto;
+	width: 100%;
+}
+
+body.checkpoint7-theme #myAnswerDiv {
+	text-align: center;
+}
+
+body.checkpoint7-theme #myAnswer {
+	display: inline-block;
+	width: var(--response-width);
+    /* font-family: consolas; */
+    /* color: white; */
+    /* font-size: 1.1em; */
+    margin-top: 0.25em;
+    margin-bottom: 2em;
+    color: var(--response-color);
+    font-weight: var(--response-font-weight);
+    font-size: var(--response-font-size);
+    text-align: var(--response-text-align);
+    /* font-weight: bold; */
+    background: var(--response-background);
+    padding: var(--response-padding);
+    border-radius: var(--response-border-radius);
+    /* border: 1px solid black; */
+    white-space: pre-wrap;
+    /* width: 80%; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+body.checkpoint7-theme #votingChoicesDiv {
+	margin: 0;
+	padding: 0;
+}
+
+body.checkpoint7-theme button.vote-button {
+	display: block;
+    /* background: linear-gradient(to bottom, #678eff 5%, #0000cd 100%); */
+    /* padding: 0.5em; */
+    text-align: center;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+    margin-right: auto;
+    font-size: 1.1em;
+    /* border-radius: 25px; */
+    /* font-family: Consolas; */
+    /* font-weight: bold; */
+    /* letter-spacing: 0.02em; */
+    white-space: pre-wrap;
+}
+
+body.checkpoint7-theme button.vote-button:hover {
+	/*background: linear-gradient(to bottom, #4275ee 5%, #0000aa 100%);*/
+}
+
+
+
+body.checkpoint7-theme .gameSetupOptionsCard .instructions {
+	text-align: var(--card-title-align);
+	margin-bottom: 0.5em;
+	margin-top: 0;
+}
+
+body.checkpoint7-theme .gameUserStatusCard .instructions, 
+body.checkpoint7-theme #finalGameSummaryBanner {
+	text-align: var(--card-title-align);
+	margin-bottom: 0.5em;
+	margin-top: 0;
+	/*margin-bottom: var(--card-padding);*/
+}
+
+body.checkpoint7-theme #gameSetupStatusContainer {
+	display: block;
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: auto;	
+	overflow-y: scroll;
+	border-radius: 5px;
+	/*font-family: "Lucida Console", monospace;*/
+	background: white;
+	border: 1px solid #464646;
+	padding: 10px;
+}
+
+body.checkpoint7-theme .roomUpdateMessage {
+	padding: 0.5em;
+	border-radius: 5px;
+	/*font-family: monospace;*/
+	margin-bottom: 0.5em;
+	background: #b0b0b0;
+}
+
+body.checkpoint7-theme .userChatDiv {
+	text-align: left;
+	margin-bottom: 0.5em;
+	margin-right: 20%;
+	margin-left: 0%;
+}
+
+body.checkpoint7-theme .userChatDiv.mine {
+	text-align: right;
+	margin-left: 20%;
+	margin-right: 0%;
+}
+
+body.checkpoint7-theme .messageText {
+	display: inline-block;
+	text-align: left;
+}
+
+body.checkpoint7-theme .userChatName {
+	display: inline-block;
+	font-size: 0.8em;
+}
+
+body.checkpoint7-theme .userChatMessage {
+	margin-top: 0.1em;
+	padding: 0.5em;
+    border-radius: 5px;
+    background: skyblue;
+    display: inline-block;
+}
+
+
+/*
+.roomUpdateMessage:last-child {
+	font-weight: bold;
+}*/
+
+body.checkpoint7-theme .roomUpdateMessage .preserve-spaces {
+	/*font-family: monospace;*/
+}
+
+body.checkpoint7-theme .optionCardTitle {
+	text-align: var(--card-title-align);
+	font-size: var(--card-title-font-size);
+	font-weight: var(--card-title-font-weight);
+	/*text-decoration: underline;*/
+		
+	
+	color: var(--card-title-color); /* hsla(0, 0%, 0%, 75%); /*color: MediumBlue;*/
+	margin-bottom: 0.5em;
+	
+}
+
+body.checkpoint7-theme #gamePromptsDiv {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.checkpoint7-theme .promptNumberDiv {
+    font-weight: var(--card-title-font-weight);
+    font-size: var(--card-title-font-size);
+    color: var(--card-title-color);
+}
+
+body.checkpoint7-theme .promptTextDiv {
+	font-size: var(--prompt-font-size);
+    font-style: var(--prompt-font-style);
+    color: var(--prompt-color);
+    /* font-weight: bold; */
+    margin-top: 0.5em;
+    text-align: var(--prompt-text-align);
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--prompt-width);
+}
+
+body.checkpoint7-theme .promptResponseDiv {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	text-align: center;
+}
+
+body.checkpoint7-theme input.promptResponse {
+	width: 100%;
+}
+
+body.checkpoint7-theme .gamePromptSectionCard {
+	background: var(--card-color);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    border-top: var(--card-border-top);
+    box-shadow: var(--card-box-shadow);
+    margin-bottom: var(--container-padding);
+}
+
+body.checkpoint7-theme .gameUserStatusSection {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+body.checkpoint7-theme .basicCard {
+	background: var(--card-color);
+    margin: 1em auto;
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    border-top: var(--card-border-top);
+    box-shadow: var(--card-box-shadow);
+}
+
+body.checkpoint7-theme .gameUserStatusCard {
+	display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    background: var(--card-color);
+    margin-left: var(--card-padding);
+    margin-right: var(--card-padding);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    border-top: var(--card-border-top);
+    box-shadow: var(--card-box-shadow);
+}
+
+body.checkpoint7-theme #userStatusWorkingEmpty, 
+body.checkpoint7-theme #userStatusFinishedEmpty {
+	margin-top: 0.5em;
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #353535;
+}
+
+body.checkpoint7-theme .logoWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body.checkpoint7-theme .fullWidth {
+	width: 100%;
+}
+
+body.checkpoint7-theme #nameBox {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+body.checkpoint7-theme .align-right {
+	text-align: right;
+}
+
+body.checkpoint7-theme #navBarName, 
+body.checkpoint7-theme #changeNameLinkContainer {
+	text-align: right;
+}
+
+body.checkpoint7-theme .preserve-spaces {
+	white-space: pre-wrap;
+}
+
+body.checkpoint7-theme .option-header {
+	margin-bottom: 5px;
+}
+
+body.checkpoint7-theme .collapsed-list {
+	margin-top: 5px;
+}
+
+body.checkpoint7-theme .userList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    text-align: center;
+}
+
+body.checkpoint7-theme .userList li, 
+body.checkpoint7-theme table.finalScoresTable td.playerName div {
+    display: inline-block;
+    background: #ffdc7b;
+    font-size: 1em;
+    /* font-family: tahoma; */
+    font-weight: bold;
+    padding: 0.5em 1em;
+    margin: 0.25em 0.5em;
+    border-radius: 5px;
+    /* border: 1px solid #353535; */
+    color: #353535;
+
+}
+
+body.checkpoint7-theme #completeGameSetupDiv {
+	text-align: center;
+}
+
+body.checkpoint7-theme #completeGameSetupButton {
+	/*font-size: 1.25em;*/
+}
+
+body.checkpoint7-theme button.disabled-waiting, 
+body.checkpoint7-theme button.disabled-waiting:hover {
+	background: hsla(0, 0%, 0%, 15%);
+    color: hsla(0, 0%, 0%, 75%);
+    border-color: hsla(0, 0%, 0%, 75%);
+    cursor: default;
+}
+
+body.checkpoint7-theme #navBarName {
+	font-weight: bold;
+	font-size: 1.75em;
+	
+	/*
+	font-size: xx-large;
+	font-weight: bold;
+	margin-bottom: 10px;
+	*/
+}
+
+body.checkpoint7-theme #navBarEmail {
+	font-size: 1.1em;
+}
+
+body.checkpoint7-theme #navTools {
+	display: flex;
+	justify-content: flex-end;
+	align-items: stretch;
+	padding: 0.25em;
+}
+
+body.checkpoint7-theme #navAccountContainer {
+	align-items: flex-end;
+	justify-content: center;
+	margin-right: 1em;
+}
+
+body.checkpoint7-theme .navContainer {
+	display:flex;
+	height: 100%;
+	flex-direction: column;
+}
+
+body.checkpoint7-theme .navButtonContainer {
+	align-items: center;
+	justify-content: space-evenly;
+	margin-left: 0.75em;
+}
+
+body.checkpoint7-theme button.navButton {
+	padding: 0.75em;
+	font-size: 0.75em;
+}
+
+body.checkpoint7-theme button.navButton img {
+	width: 25px;
+}
+
+body.checkpoint7-theme #changeNameOptionsContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+body.checkpoint7-theme #gameSetupLeaveContainer {
+	margin-top: var(--container-padding);
+}
+
+body.checkpoint7-theme #leaveGameRoomButton {
+	margin-bottom: 0;
+}
+
+body.checkpoint7-theme #lobbyUserMessageContainer {
+	margin: 1em auto;
+    border: 1px solid black;
+    padding: 1em;
+    background-color: LightSkyBlue;
+    width: 40%;
+    box-shadow: 5px 5px #888888;
+    border-radius: 5px;
+}
+
+body.checkpoint7-theme #lobbyUserMessage {
+	text-align: center;
+}
+
+body.checkpoint7-theme #lobbyUserDismissLinkDiv {
+	text-align: center;
+	margin-top: 1em;
+}
+
+body.checkpoint7-theme #resultsNavDiv, 
+body.checkpoint7-theme #finalGameSummaryNavDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: stretch;
+}
+
+body.checkpoint7-theme #logo1 {
+	display: none;
+}
+
+body.checkpoint7-theme #logo2 {
+	display: inline-block;
+}
+
+
+body.checkpoint7-theme .logoImage {
+  max-width: 300px;
+  height: auto;
+}
+
+body.checkpoint7-theme #changeNameSubmitButton, 
+body.checkpoint7-theme #changeNameInput {
+	margin-left: 10px;
+}
+
+body.checkpoint7-theme .noVotes {
+	text-align: center;
+    margin: 0.5em 0.5em;
+}
+
+body.checkpoint7-theme .noVotes span {
+	font-size: 1em;
+    /*font-family: tahoma;*/
+    color: #353535;
+}
+
+body.checkpoint7-theme .resultsSectionDiv {
+    /*width: 90%;*/
+    background: var(--card-color);
+    /*border-radius: 10px;*/
+    /*box-shadow: 5px 5px #888888;*/
+    margin: 2em auto;
+    /*padding: 1em;*/
+    /*border: 1px solid black;*/
+}
+
+body.checkpoint7-theme .resultAnswer {
+    font-weight: var(--response-font-weight);
+    text-align: var(--response-text-align);
+    /* width: 80%; */
+    /*font-family: Consolas;*/
+    background: var(--response-background);
+    color: var(--response-color);
+    margin: 0.25em auto;
+    border-radius: var(--response-border-radius);
+    font-size: var(--response-font-size);
+    padding: var(--response-padding);
+    width: var(--response-width);
+}
+
+body.checkpoint7-theme #gameScoresPage .userList li, 
+body.checkpoint7-theme #gameScoresPage .userList li span {
+	/*font-size: 1.25em;
+	font-weight: normal;*/
+}
+
+body.checkpoint7-theme #gameScoresPageContainer {
+	margin-bottom: var(--container-padding);
+	width: 100%;
+}
+
+body.checkpoint7-theme #returnToLobbyContainer {
+	margin-bottom: 0;
+	width: 100%;
+}
+
+body.checkpoint7-theme #returnToLobbyDiv {
+	text-align: center;
+}
+
+body.checkpoint7-theme #reviewPhaseNavDiv {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+body.checkpoint7-theme #reviewPhaseNavDiv.oneLeftButton {
+	justify-content: flex-start;
+}
+
+body.checkpoint7-theme #reviewPhaseNavDiv.oneRightButton {
+	justify-content: flex-end;
+}
+
+body.checkpoint7-theme #reviewPhaseNavDiv.twoButtons {
+	justify-content: space-between;
+}
+
+body.checkpoint7-theme table.finalScoresTable {
+	width: 60%;
+    margin: 1em auto;
+    border-collapse: collapse;
+    /* border: 2px solid #575757; */
+    /* border-radius: 5px;*/
+    
+}
+
+body.checkpoint7-theme table.finalScoresTable td {
+	background-color: #f4f4f4;
+}
+
+body.checkpoint7-theme table.finalScoresTable th {
+	background-color: #b0b0b0;
+    font-size: 1.25em;
+    /* font-weight: bold;*/
+}
+
+body.checkpoint7-theme table.finalScoresTable td, 
+body.checkpoint7-theme table.finalScoresTable th {
+    /*border: 2px solid #dcdcdc;*/
+    /* border-radius: 5px; */
+    border-bottom: 2px solid #b0b0b0;
+    padding: 0.25em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+body.checkpoint7-theme table.finalScoresTable td.playerName div {
+    /*border: 2px solid #575757;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-weight: bold;*/
+}
+
+body.checkpoint7-theme table.finalScoresTable td.playerScore div {
+    font-size: 1em;
+    font-weight: bold;
+    color: #353535;
+}
+
+body.checkpoint7-theme #outerChatContainer {
+	width: 0;
+	flex-grow: 1;
+	/*
+	position: relative;
+	top: 30px;
+	left: 0;
+	height: 500px;
+	background: #a1d79d;
+	width: 100%;
+	*/
+}
+
+body.checkpoint7-theme #contentContainer {
+	flex-grow: 1;
+}
+
+body.checkpoint7-theme #smallChatContainerDiv {
+	position: fixed;
+	background: var(--card-color); /*#a1d79d;*/
+	border-radius: 0 5px 5px 0;
+	/*border-top: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;*/
+	box-shadow: var(--card-box-shadow);
+	padding: var(--card-padding);
+	border-top: var(--card-border-top);
+}
+
+body.checkpoint7-theme #sendChatDiv {
+	margin-top: 0.25em;
+}
+
+body.checkpoint7-theme #chatHistoryArea {
+	flex-grow: 1;
+	background: white;
+	border: 1px solid #a0a0a0;
+	border-radius: 5px;
+	overflow-y: scroll;
+	padding: 5px;
+}
+
+body.checkpoint7-theme #smallChatContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: stretch;
+	width: 100%;
+	height: 100%;
+}
+
+body.checkpoint7-theme #smallChatContainer h1 {
+	text-align: var(--card-title-align);
+	margin-top: 0;
+	font-size: var(--card-title-font-size);
+	font-weight: var(--card-title-font-weight);
+	color: var(--card-title-color);
+}
+
+body.checkpoint7-theme #bodyContent {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	flex-direction: rows;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+/*
+#bodyContent.no-chat #chatContainer {
+	display: none;
+}
+
+#bodyContent.no-chat #contentContainer {
+	display: block;
+	width: 100%;
+}
+
+#bodyContent.small-chat #chatContainer {
+	display: block;
+	width: 35%;
+}
+
+#bodyContent.small-chat #contentContainer {
+	display: block;
+	width: 65%;
+}
+*/
+
+body.checkpoint7-theme #minChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	width: 5%;
+}
+
+body.checkpoint7-theme #minChatContainer {
+	
+}
+
+body.checkpoint7-theme #smallChatSection {
+	position: fixed;
+	top: 130px;
+	left: 0;
+	height: 100px;
+	
+}
+
+/*
+button.review-nav-button.reviewPrevious {
+	margin-left: 1em;
+	margin-right: auto;
+}
+
+button.review-nav-button.reviewNext {
+	margin-left: auto;
+	margin-right: 1em;
+}
+*/

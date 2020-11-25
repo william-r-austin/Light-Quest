@@ -148,14 +148,16 @@ AddUserManager = (function() {
 										
 										// Save the user key in local storage
 										window.localStorage.setItem("LightQuestUserKey", userKey);
+										
+										// Load the user's completed games as well.
+  										CompletedGamesInfo.loadFromDatabase(function() {
+											startLobbyTransition();
+										});
 									}
 								});
 							}
 							
-							if(foundUserAccount) {
-								startLobbyTransition();
-							}
-							else {
+							if(!foundUserAccount) {
 								$("#returningUserErrorDiv").text("Could not find account for that email. Did you type it correctly?").show();
 							}
 						});

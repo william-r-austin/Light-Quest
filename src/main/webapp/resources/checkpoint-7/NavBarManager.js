@@ -4,22 +4,45 @@ NavBarManager = (function() {
 	
 	function refreshForLobby() {
 		setNavBarUserInfo();
-		$("#navLogoutContainer").show();
+		$("#hamburgerChangeNameContainer").show();
+		$("#hamburgerChangeEmailContainer").show();
+		$("#hamburgerLogoutContainer").show();
+		refreshViewStatisticsItem();
+		
 		$("#navTools").show();
 	}
 	
 	function refreshForGame() {
 		setNavBarUserInfo();
-		$("#navLogoutContainer").hide();
+		$("#hamburgerChangeNameContainer").show();
+		$("#hamburgerChangeEmailContainer").show();
+		$("#hamburgerLogoutContainer").hide();
+		refreshViewStatisticsItem();
 		$("#navTools").show();
+	}
+	
+	function refreshViewStatisticsItem() {
+		if(CompletedGamesInfo.getCompletedGamesCount() > 0) {
+			$("#hamburgerViewStatisticsContainer").show();			
+		}
+		else {
+			$("#hamburgerViewStatisticsContainer").hide();
+		}
 	}
 	
 	function refreshForWelcome() {
 		$("#navBarName").text("").hide();
 		$("#navBarEmail").text("").hide();
 		
-		$("#navTools").hide();
+		$("#hamburgerChangeNameContainer").hide();
+		$("#hamburgerChangeEmailContainer").hide();
+		$("#hamburgerViewStatisticsContainer").hide();
+		$("#hamburgerLogoutContainer").hide();
+		
+		$("#navTools").show();
 	}
+	
+	
 	
 	function setNavBarUserInfo() {
 		// Set the username
@@ -38,9 +61,13 @@ NavBarManager = (function() {
 		if(!initialized) {
 			
 			// Set up the main buttons	
-			$("#navShowChangeNameCardButton").on("click", showChangeNameCard);
-			$("#navShowChangeEmailCardButton").on("click", showChangeEmailCard);
-			$("#navShowLogoutCardButton").on("click", showLogoutCard);
+			$("#hamburgerChangeNameContainer").on("click", showChangeNameCard);
+			$("#hamburgerChangeEmailContainer").on("click", showChangeEmailCard);
+			$("#hamburgerViewStatisticsContainer").on("click", showViewStatisticsCard);
+			$("#hamburgerSwitchThemesContainer").on("click", showSwitchThemesCard);
+			$("#hamburgerLogoutContainer").on("click", showLogoutCard);
+			
+			$("#navShowHamburgerMenuButton").on("click", showHamburgerMenu);
 		
 			// Set up the "Cancel" links
 			$("a.overlayCancelLink").on("click", cancelOverlay);
@@ -53,9 +80,20 @@ NavBarManager = (function() {
 			// Set up the "skip email" listener
 			$("#navSkipEmailInput").change(navSkipEmailChanged);
 			
+			// Theme Switch Listener
+			setupSwitchThemeRadioButtonHandler();
+			
 			initialized = true;
 		}
 	}
+	
+	function setupSwitchThemeRadioButtonHandler() {
+		$("input[type='radio'][name='themeOptionInput']").change(function() {
+		    var themeValue = $(this).val();
+			setTheme(themeValue);
+		});
+	}
+	
 	
 	function navSkipEmailChanged() {
 		var isVisible = $("#navEmailInputDiv").is(":visible");
@@ -74,10 +112,12 @@ NavBarManager = (function() {
 	};
 	
 	function showChangeNameCard() {
-		$("#overlayChangeNameCard").show();
+		$("#overlayHamburgerMenu").hide();
+		$("#overlay").off("click");
+		
 		$("#navUsernameInput").val(UserInfo.getUserName());
 		$("#navUsernameErrorDiv").text("").hide();
-		$("#overlay").fadeIn(OVERLAY_FADE_TIME);
+		$("#overlayChangeNameCard").fadeIn(OVERLAY_FADE_TIME);
 	}
 	
 	function showChangeEmailCard() {
@@ -86,17 +126,150 @@ NavBarManager = (function() {
 			currentUserEmail = UserInfo.getUserEmail();
 		}
 		
-		$("#overlayChangeEmailCard").show();
+		$("#overlayHamburgerMenu").hide();
+		$("#overlay").off("click");
+		
 		$("#navEmailInputDiv").show();
 		$("#navEmailInput").val(currentUserEmail);
 		$("#navSkipEmailInput").prop("checked", false);
 		$("#navEmailErrorDiv").text("").hide();
+		$("#overlayChangeEmailCard").fadeIn(OVERLAY_FADE_TIME);
+	}
+	
+	function computeGameScore(promptCount, playerCount, totalVotes) {
+		var totalPossible = promptCount * (playerCount - 1);
+		var expected = promptCount;
+		var expectedFrac = expected / totalPossible;
+		
+		
+		var exp = Math.log(0.5) / Math.log(expectedFrac);
+		
+		var actualFrac = totalVotes / totalPossible;
+		
+		var gameScore = Math.pow(actualFrac, exp);
+		return Math.round(gameScore * 1000) / 10;
+	}
+	
+	function showViewStatisticsCard() {
+		$("#overlayHamburgerMenu").hide();
+		$("#overlay").off("click");
+		
+		var gamesList = CompletedGamesInfo.getCompletedGamesList();
+		
+		var gameScoreLabels = [];
+		var gameScoresData = [];
+		var gameScoresColor = [];
+		
+		var i = 0; 
+		while(i < gamesList.length) {
+			var current = gamesList[i];
+			
+			
+			var date1 = new Date();
+			date1.setTime(current.gameDate);
+			date1.toLocaleString('en-US', {timeZone: 'America/New_York'});
+			
+			var str = "votes";
+			if(current.totalVotes == 1) {
+				str = "vote";
+			}
+			
+			var label = [current.roomCode + ": " + current.totalVotes + " " + str, date1.toLocaleString()]; 
+			
+			gameScoreLabels.push(label);
+			gameScoresColor.push("#0062ff");
+			var gameScore = computeGameScore(current.promptCount, current.playerCount, current.totalVotes);
+			gameScoresData.push(gameScore);
+			i++;
+		}
+		
+		new Chart(document.getElementById("bar-chart"), {
+		    type: 'bar',
+		    data: {
+		      labels: gameScoreLabels,
+		      datasets: [
+		        {
+		          label: "Game Score for Room Code and Date",
+		          backgroundColor: gameScoresColor, /*["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],*/
+		          data: gameScoresData/*[2478,5267,734,784,433]*/
+		        }
+		      ]
+		    },
+		    options: {
+		      legend: { display: false },
+		      title: {
+		        display: true,
+		        text: 'Your Light Quest Game Scores over Time'
+		      }
+		    }
+		});
+		
+		
+		$("#overlayStatisticsCard").fadeIn(OVERLAY_FADE_TIME);
+	}
+	
+	function getCurrentTheme() {
+		if($("body").hasClass("classic-theme")) {
+			return "classic-theme";
+		}
+		
+		return "checkpoint7-theme";
+	}
+	
+	function setTheme(newTheme) {
+		$("body")
+			.removeClass("classic-theme")
+			.removeClass("checkpoint7-theme")
+			.addClass(newTheme);
+	}
+	
+	function showSwitchThemesCard() {
+		$("#overlayHamburgerMenu").hide();
+		$("#overlay").off("click");
+		
+		var currentTheme = getCurrentTheme();
+		$("input[value='" + currentTheme + "']").prop("checked", true);
+		
+		$("#overlaySwitchThemeCard").fadeIn(OVERLAY_FADE_TIME);
+	}
+	
+	function showHamburgerMenu() {
+		//$("#overlayLogoutCard").show();
+		
+		//$("#hamburgerMenuContainer").show();
+		
+		var buttonPosition = $("#navShowHamburgerMenuButton").position();
+		var buttonWidth = $("#navShowHamburgerMenuButton").width();
+		var buttonHeight = $("#navShowHamburgerMenuButton").innerHeight();
+		var windowWidth = $(window).width();
+		
+		$("#overlayHamburgerMenu")
+			.css("right", windowWidth - (buttonPosition.left + (buttonWidth / 2)))
+			.css("top", buttonPosition.top + buttonHeight)
+			.show();
+			
 		$("#overlay").fadeIn(OVERLAY_FADE_TIME);
+		
+		$("#overlay").on("click", overlayClicked);
+	}
+	
+	function overlayClicked(clickEvent) {
+		clickEvent.preventDefault();
+		clickEvent.returnValue = false;
+		
+		$("#overlay").fadeOut(OVERLAY_FADE_TIME, function() {
+			$("#overlayHamburgerMenu").hide();
+		});
+		
+		$("#overlay").off("click");
+		return false;
 	}
 	
 	function showLogoutCard() {
-		$("#overlayLogoutCard").show();
-		$("#overlay").fadeIn(OVERLAY_FADE_TIME);
+		$("#overlayHamburgerMenu").hide();
+		$("#overlay").off("click");
+		
+		$("#overlayLogoutCard").fadeIn(OVERLAY_FADE_TIME);
 	}
 	
 	function cancelOverlay(clickEvent) {
@@ -111,7 +284,10 @@ NavBarManager = (function() {
 		$("#overlay").fadeOut(OVERLAY_FADE_TIME, function() {
 			$("#overlayChangeNameCard").hide();
 			$("#overlayChangeEmailCard").hide();
+			$("#overlayStatisticsCard").hide();
+			$("#overlaySwitchThemeCard").hide();
 			$("#overlayLogoutCard").hide();
+			$("#overlayHamburgerMenu").hide();
 			
 			if(customFunc) {
 				customFunc();

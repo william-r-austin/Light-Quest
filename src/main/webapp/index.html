@@ -7,133 +7,23 @@
   </head>
 
   <body>
-  <h3 style="margin-bottom: 5px;">Final Version: Project Presentation (December 1st, 2020)</h3>
-  <div><a href="/project-presentation">https://light-quest-288022.appspot.com/project-presentation</a></div>
+    <h3 style="margin-bottom: 5px;">Final Version: Project Presentation (December 1st, 2020)</h3>
+    <div><a href="/project-presentation">https://light-quest-288022.appspot.com/project-presentation</a></div>
 
-  <h3 style="margin-bottom: 5px;">Project Checkpoint 7: Visual Design Critique and Iteration (November 24th, 2020)</h3>
-  <div><a href="/checkpoint-7">https://light-quest-288022.appspot.com/checkpoint-7</a></div>
+    <h3 style="margin-bottom: 5px;">Project Checkpoint 7: Visual Design Critique and Iteration (November 24th, 2020)</h3>
+    <div><a href="/checkpoint-7">https://light-quest-288022.appspot.com/checkpoint-7</a></div>
   
-  <h3 style="margin-bottom: 5px;">Project Checkpoint 6: Interaction Design Critique and Iteration (November 17th, 2020)</h3>
-  <div><a href="/checkpoint-6">https://light-quest-288022.appspot.com/checkpoint-6</a></div>
+    <h3 style="margin-bottom: 5px;">Project Checkpoint 6: Interaction Design Critique and Iteration (November 17th, 2020)</h3>
+    <div><a href="/checkpoint-6">https://light-quest-288022.appspot.com/checkpoint-6</a></div>
   
-  <h3 style="margin-bottom: 5px;">Project Checkpoint 5: Interaction Design Iteration 2 (October 27th, 2020)</h3>
-  <div><a href="/interaction-design-iteration-2">https://light-quest-288022.appspot.com/interaction-design-iteration-2</a></div>
+    <h3 style="margin-bottom: 5px;">Project Checkpoint 5: Interaction Design Iteration 2 (October 27th, 2020)</h3>
+    <div><a href="/interaction-design-iteration-2">https://light-quest-288022.appspot.com/interaction-design-iteration-2</a></div>
     
-  <h3 style="margin-bottom: 5px;">Project Checkpoint 3: Interaction Design Iteration (September 29th, 2020)</h3>
-  <div><a href="/interaction-design-iteration">https://light-quest-288022.appspot.com/interaction-design-iteration</a></div>
+    <h3 style="margin-bottom: 5px;">Project Checkpoint 3: Interaction Design Iteration (September 29th, 2020)</h3>
+    <div><a href="/interaction-design-iteration">https://light-quest-288022.appspot.com/interaction-design-iteration</a></div>
   
-  <h3 style="margin-bottom: 5px;">Project Checkpoint 1: Initial Prototype (September 15th, 2020)</h3>
-  <div><a href="/initial-prototype">https://light-quest-288022.appspot.com/initial-prototype</a></div>
+    <h3 style="margin-bottom: 5px;">Project Checkpoint 1: Initial Prototype (September 15th, 2020)</h3>
+    <div><a href="/initial-prototype">https://light-quest-288022.appspot.com/initial-prototype</a></div>
 
-  <!-- 
-    <div id="startPage">
-      <h2>Welcome to Light Quest!</h2>
-      <div>This is a collaborative game that you can play with a group. You'll be presented with a series of prompts to answer
-        and then vote on who gave the best responses. The winner is the player that receives the most votes!
-      </div>
-      <h4>To get started, provide your name:</h4>
-	  <div>
-        <input type="text" name="usernameInput" id="usernameInput" />
-        <button type="button" id="usernameInputButton">Begin Light Quest!</button>
-	  </div>
-	  <div id="usernameErrorDiv" style="display: none; color: FireBrick;"></div>
-	</div>
-	<div id="lobbyPage" style="display: none;">
-	  <h2 id="lobbyWelcomeBanner"></h2>
-	  <div>
-	    <h4>Option 1: Create a new room to play Light Quest with your group.</h4>
-	    <button type="button" id="createRoomButton">Create Game Room</button>
-	  </div>
-	  <div>
-	  	<h4>Option 2: Join an existing room. Enter the room code to begin.</h4>
-	  	<input type="text" name="roomCodeInput" id="roomCodeInput">
-	  	<button type="button" id="joinRoomButton">Join Existing Room</button>
-	  </div>
-	  <div id="roomCodeErrorDiv" style="display: none; color: FireBrick;"></div>
-	</div>
-	<div id="gameRoomSetupPage" style="display: none;">
-	  <h2 id="gameRoomSetupBanner"></h2>
-	  <h4 id="gameRoomSetupMessage"></h4>
-	  <div>
-	  	<h4>Here are the users that have already joined!</h4>
-	      <ul id="gameRoomSetupUsersList"></ul>
-	  </div>
-	</div>
-	<div id="gamePage" style="display: none;">
-	  <h2 id="gamePageBanner"></h2>
-	  <div id="gamePromptsSection">
-	    <h4 id="gamePromptsInstructions">Enter your responses below. When everyone is done, you can vote for the best answers. Good luck!</h4>
-	    <div id="gamePromptsDiv"></div>
-	    <div>
-	      <button type="button" id="submitResponsesButton">Submit Your Answers</button>
-	    </div>
-	  </div>
-	  <div id="responseWaitingSection" style="display: none;">
-	    <h4 id="responseWaitingBanner"></h4>
-	  </div>
-	  <div id="votingSection" style="display: none;">
-	    <div id="votingInstructions"></div>
-	    <h4 id="votingPrompt"></h4>
-	    <div id="votingChoicesDiv"></div>
-	  </div>
-	  <div id="resultsSection" style="display: none;">
-	    <h4 id="resultsBanner"></h4>
-	    <div id="resultsContentDiv"></div>
-	  </div>
-	  <div id="gameUserStatusSection">
-	  	<h4 id="userStatusWorkingHeader">Who's still working?</h4>
-	    <ul id="userStatusWorkingList"></ul>
-	    <h4 id="userStatusFinishedHeader">Finished users!</h4>
-	    <ul id="userStatusFinishedList"></ul>
-	  </div>
-	</div>
-	<div id="finalGameSummaryPage" style="display: none;">
-	  <h2 id="finalGameSummaryBanner"></h2>
-	  <div id="finalGameSummaryDetails"></div>
-	  <button type="button" id="returnToLobbyButton">Return to the Lobby</button>
-	</div>
-
--->
   </body>
-
-
-
-<!-- Include the jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-
-<!-- The Firebase Authentication JS SDK -->
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-
-<!-- The Firebase Realtime Database JS SDK -->
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
-
-<!-- 
-<script src="PromptsLibrary.js"></script>
-<script src="AppSetup.js"></script>
-<script src="UserInfo.js"></script>
-<script src="RoomInfo.js"></script>
-<script src="GameUsersInfo.js"></script>
-<script src="GameStateInfo.js"></script>
-<script src="GamePromptsInfo.js"></script>
-<script src="GameResponsesInfo.js"></script>
-<script src="GameVotingInfo.js"></script>
-<script src="AddUserManager.js"></script>
-<script src="LobbyManager.js"></script>
-<script src="GameSetupManager.js"></script>
-<script src="GameManager.js"></script>
-
-<script>
-  $(window).on("load", function() {
-	console.log("DOM is ready.");
-	AddUserManager.setupListener();
-  });
-</script>
-  -->
 </html>

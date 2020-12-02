@@ -77,6 +77,10 @@ body.classic-theme .statusBarRoomCode {
     letter-spacing: 0.1em;
 }
 
+body.classic-theme .statusBarGameType {
+    font-weight: bold;
+}
+
 body.classic-theme .statusBarSection > span {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -110,11 +114,33 @@ body.classic-theme .statusBarLeft {
 
 */
 
-body.classic-theme .statusBarRoomCodeLabel {
-	font-weight: bold;
+body.classic-theme .statusBarRoomCodeLabel,
+body.classic-theme .statusBarGameTypeLabel {
+	/*font-weight: bold;*/
 	/*margin-left: 0.25em;*/
-	margin-right: 0.75em;
+	margin-right: 0.5em;
 }
+
+body.classic-theme .statusBarChatModeLabel {
+	/*font-weight: bold;*/
+	/*margin-left: 0.25em;*/
+	margin-right: 0.25em;
+}
+
+
+body.classic-theme img.chatControlImg {
+	width: 20px;
+	margin: 0;
+}
+
+body.classic-theme button.chatControlButton {
+	padding: 4px;
+	text-align: center;
+	margin-left: 0.25em;
+	width: 28px;
+	height: 28px;
+}
+
 
 body.classic-theme .statusBarGameState {
 	padding: 0.25em 0.5em;
@@ -451,7 +477,7 @@ body.classic-theme .hamburgerItem .hamburgerMenuItemIcon {
 }
 
 /*
-body.checkpoint7-theme .hamburgerItem:last-child {
+body.classic-theme .hamburgerItem:last-child {
 	margin-bottom: 0;
 }*/
 
@@ -589,6 +615,29 @@ body.classic-theme #votingChoicesContainer {
 	width: 90%;
 }
 
+body.classic-theme #myAnswer.drawingGameType {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+}
+
+body.classic-theme div.responseImageDiv {
+	text-align: center;
+	margin: 0.25em auto;
+}
+
+body.classic-theme .vote-button.drawing-vote-button {
+	width: auto;
+}
+
+body.classic-theme img.drawingImg {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #666;
+}
+
 body.classic-theme #myAnswer {
 	font-family: consolas;
     color: white;
@@ -717,6 +766,23 @@ body.classic-theme .optionCardTitle {
 	
 }
 
+body.classic-theme .cardSubtitle {
+	font-size: 1em;
+	color: MediumBlue;
+	font-weight: bold;
+	margin-top: 1.5em;
+}
+
+body.classic-theme .gameTypeDescription {
+	margin-top: 0.25em;
+	margin-bottom: 0;
+}
+
+body.classic-theme .gameTypeButtonContainer {
+	text-align: center;
+}
+
+
 body.classic-theme #gamePromptsDiv {
 	width: 80%;
 	margin-left: auto;
@@ -750,6 +816,162 @@ body.classic-theme .promptResponseDiv {
 
 body.classic-theme input.promptResponse {
 	width: 100%;
+}
+
+body.classic-theme canvas.drawingCanvas {
+	border: 1px solid #666;
+    /*width: 400px;
+    height: 400px;*/
+}
+
+body.classic-theme .drawing-controls {
+	width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #cdcdcd;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+body.classic-theme div.color-palatte {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+body.classic-theme .tools-label {
+	font-weight: bold;
+	text-align: left;
+}
+
+body.classic-theme .brush-size-label,
+body.classic-theme div.clear-canvas-container {
+	margin-top: 0.75em;
+}
+
+body.classic-theme div.clear-canvas-container button {
+	font-size: 1em;
+	margin: 0.25em 0.75em;
+}
+
+body.classic-theme div.color-choice {
+	width: 23px;
+	height: 23px;
+	margin: 6px;
+	border-radius: 3px;
+}
+
+body.classic-theme .black-square {
+	background-color: black;
+}
+
+body.classic-theme .green-square {
+	background-color: green;
+}
+
+body.classic-theme .blue-square {
+	background-color: blue;
+}
+
+body.classic-theme .red-square {
+	background-color: red;
+}
+
+body.classic-theme .yellow-square {
+	background-color: yellow;
+}
+
+body.classic-theme .orange-square {
+	background-color: orange;
+}
+
+body.classic-theme .brown-square {
+	background-color: brown;
+}
+
+body.classic-theme .cyan-square {
+	background-color: cyan;
+}
+
+body.classic-theme .purple-square {
+	background-color: purple;
+}
+
+body.classic-theme .gray-square {
+	background-color: gray;
+}
+
+
+body.classic-theme .white-square {
+	background-color: white;
+}
+
+body.classic-theme div.color-choice-container:hover div.color-choice {
+	cursor: pointer;
+}
+
+body.classic-theme div.color-choice-container:hover div.color-choice,
+body.classic-theme div.color-choice-container.selected-color div.color-choice {
+	width: 27px;
+	height: 27px;
+	margin: 4px;
+	border-radius: 3px;
+}
+
+body.classic-theme div.size-choice-container {
+	width: 35px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+body.classic-theme div.size-choice {
+	font-size: 1em;
+	text-align: center;
+	font-weight: normal;
+	color: var(--form-label-color);
+	margin-top: 0.15em;
+	margin-bottom: 0.15em;
+}
+
+body.classic-theme div.size-choice-container:hover div.size-choice,
+body.classic-theme div.size-choice-container.selected-size div.size-choice {
+	font-weight: bold;
+	color: black;
+}
+
+/*
+body.classic-theme div.color-choice-container  {
+	margin-top: 2px;
+}*/
+
+body.classic-theme div.color-choice-container .arrow-container,
+body.classic-theme div.size-choice-container .arrow-container  {
+	display:none;
+}
+
+body.classic-theme div.color-choice-container.selected-color .arrow-container,
+body.classic-theme div.size-choice-container.selected-size .arrow-container  {
+	display: block;
+	text-align: center;
+}
+
+/*
+body.classic-theme div.color-choice-container.selected-color  {
+	margin-top: 0px;
+}*/
+
+body.classic-theme div.brush-size {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+body.classic-theme div.size-choice:hover {
+	cursor: pointer;
 }
 
 body.classic-theme .gamePromptSectionCard {
@@ -1119,6 +1341,14 @@ body.classic-theme #smallChatContainerDiv {
 	border-top: 2px solid black;
 	border-right: 2px solid black;
 	border-bottom: 2px solid black;
+	padding: 20px;
+}
+
+body.classic-theme.full-chat #smallChatContainerDiv {
+	position: static;
+	background: #a1d79d;
+	border-radius: 10px;
+	border: 2px solid black;
 	padding: 20px;
 }
 

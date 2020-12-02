@@ -3,13 +3,13 @@
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <title>Welcome to the Light Quest Game Application</title>
-    <link rel="stylesheet" href="resources/checkpoint-7/LightQuest.css">
-    <link rel="stylesheet" href="resources/checkpoint-7/LightQuest2.css">
+    <link rel="stylesheet" href="resources/project-presentation/LightQuest.css">
+    <link rel="stylesheet" href="resources/project-presentation/LightQuest2.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-	<link rel="stylesheet" href="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.css">
+	<link rel="stylesheet" href="resources/project-presentation/jquery-ui-1.12.1/jquery-ui.min.css">
   </head>
 
-  <body class="checkpoint7-theme">
+  <body class="checkpoint7-theme no-chat">
     <div id="overlay" style="display: none;">
       <div id="overlayChangeNameCard" class="overlayCard centered" style="display: none;">
         <div class="instructions centeredContent">Change Name</div>
@@ -159,23 +159,23 @@
       <div id="overlayHamburgerMenu">
         <div id="hamburgerMenuContent">
            <div id="hamburgerChangeNameContainer" class="hamburgerItem">
-            <img src="resources/checkpoint-7/user.png" alt="Change Name Icon" class="hamburgerMenuItemIcon" />
+            <img src="resources/project-presentation/user.png" alt="Change Name Icon" class="hamburgerMenuItemIcon" />
             <div class="hamburgerMenuItemLabel">Change Name</div>
           </div>
           <div id="hamburgerChangeEmailContainer" class="hamburgerItem">
-            <img src="resources/checkpoint-7/email.png" alt="Change Email Icon" class="hamburgerMenuItemIcon" />
+            <img src="resources/project-presentation/email.png" alt="Change Email Icon" class="hamburgerMenuItemIcon" />
             <div class="hamburgerMenuItemLabel">Change Email</div>
           </div>
           <div id="hamburgerViewStatisticsContainer" class="hamburgerItem">
-            <img src="resources/checkpoint-7/statistics.png" alt="View Statistics Icon" class="hamburgerMenuItemIcon" />
+            <img src="resources/project-presentation/statistics.png" alt="View Statistics Icon" class="hamburgerMenuItemIcon" />
             <div class="hamburgerMenuItemLabel">View Statistics</div>
           </div>
           <div id="hamburgerSwitchThemesContainer" class="hamburgerItem">
-            <img src="resources/checkpoint-7/themeSwitcher.png" alt="Switch Themes Icon" class="hamburgerMenuItemIcon" />
+            <img src="resources/project-presentation/themeSwitcher.png" alt="Switch Themes Icon" class="hamburgerMenuItemIcon" />
             <div class="hamburgerMenuItemLabel">Switch Themes</div>
           </div>
           <div id="hamburgerLogoutContainer" class="hamburgerItem">
-            <img src="resources/checkpoint-7/exit.png" alt="Logout Icon" class="hamburgerMenuItemIcon" />
+            <img src="resources/project-presentation/exit.png" alt="Logout Icon" class="hamburgerMenuItemIcon" />
             <div class="hamburgerMenuItemLabel">Logout</div>
           </div>
         </div>
@@ -184,8 +184,8 @@
     <div id="headerContent">
       <div id="navigationBar">
         <div class="logoWrapper">
-          <img class="logoImage" id="logo1" src="resources/checkpoint-7/LightQuestLogo.png" alt=" Original Light Quest logo, with light bulb" />
-          <img class="logoImage" id="logo2" src="resources/checkpoint-7/Logo2.png" alt="Updated Light Quest logo, with light bulb" />
+          <img class="logoImage" id="logo1" src="resources/project-presentation/LightQuestLogo.png" alt=" Original Light Quest logo, with light bulb" />
+          <img class="logoImage" id="logo2" src="resources/project-presentation/Logo2.png" alt="Updated Light Quest logo, with light bulb" />
         </div>
         <div id="navTools">
           <div id="navAccountContainer" class="navContainer">
@@ -194,17 +194,17 @@
           </div>
           <!-- 
           <div id="navChangeNameContainer" class="navContainer navButtonContainer">
-            <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/user.png" alt="Change Name Icon"/><br/>Change Name</button>
+            <button id="navShowChangeNameCardButton" class="navButton" type="button"><img src="resources/project-presentation/user.png" alt="Change Name Icon"/><br/>Change Name</button>
           </div>
           <div id="navChangeEmailContainer" class="navContainer navButtonContainer">
-            <button id="navShowChangeEmailCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/email.png" alt="Change Email Icon" /><br/>Change Email</button>
+            <button id="navShowChangeEmailCardButton" class="navButton" type="button"><img src="resources/project-presentation/email.png" alt="Change Email Icon" /><br/>Change Email</button>
           </div>
           <div id="navLogoutContainer" class="navContainer navButtonContainer">
-            <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/checkpoint-7/exit.png" alt="Logout Icon" /><br/>Logout</button>
+            <button id="navShowLogoutCardButton" class="navButton" type="button"><img src="resources/project-presentation/exit.png" alt="Logout Icon" /><br/>Logout</button>
           </div>
           -->
           <div id="navHamburgerContainer" class="navContainer navButtonContainer">
-            <button id="navShowHamburgerMenuButton" class="navButton" type="button"><img src="resources/checkpoint-7/hamburger.png" alt="Hamburger Icon"/></button>
+            <button id="navShowHamburgerMenuButton" class="navButton" type="button"><img src="resources/project-presentation/hamburger.png" alt="Hamburger Icon"/></button>
             <!-- 
             <div id="hamburgerMenuContainer" style="position: relative; width: 0; height: 0; display: none;">
               <div id="hamburgerContent" style="position: absolute; display: block; top: 0; right: 0; background: red; width: 200px; height: 200px; z-index: 40;">
@@ -221,18 +221,28 @@
              <span class="statusBarRoomCodeLabel">Room Code:</span>
              <span class="statusBarRoomCode"></span>
            </div>
+           <div class="statusBarSection statusBarLeft">
+             <span class="statusBarChatModeLabel">Chat Mode:</span>
+             <button type="button" id="minimize-chat-button" class="chatControlButton"><img class="chatControlImg" src="resources/project-presentation/chat-minimized.png" alt="Minimized Chat Mode" /></button>
+             <button type="button" id="split-chat-button" class="chatControlButton active-chat-mode"><img class="chatControlImg" src="resources/project-presentation/chat-split.png" alt="Split Chat Mode" /></button>
+             <button type="button" id="maximize-chat-button" class="chatControlButton"><img class="chatControlImg" src="resources/project-presentation/chat-maximized.png" alt="Maximized Chat Mode" /></button>
+           </div>
+           <div class="statusBarSection statusBarLeft">
+             <span class="statusBarGameTypeLabel">Game Type:</span>
+             <span class="statusBarGameType"></span>
+           </div>
            <div class="statusBarSection statusBarCenter">
               <span class="statusBarRoomCodeLabel">Game Progress:</span>
               <span id="setupState" class="statusBarGameState completedState">Setup</span>
-              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" />
+              <img class="separator" src="resources/project-presentation/separator.png" alt="Game status separator" />
               <span id="promptsState" class="statusBarGameState completedState">Answer Prompts</span>
-              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <img class="separator" src="resources/project-presentation/separator.png" alt="Game status separator" /> 
               <span id="votingState1" class="statusBarGameState activeState">Voting Round #1</span>
-              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <img class="separator" src="resources/project-presentation/separator.png" alt="Game status separator" /> 
               <span id="votingState2" class="statusBarGameState futureState">Voting Round #2</span>
-              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <img class="separator" src="resources/project-presentation/separator.png" alt="Game status separator" /> 
               <span id="votingState3" class="statusBarGameState futureState">Voting Round #3</span>
-              <img class="separator" src="resources/checkpoint-7/separator.png" alt="Game status separator" /> 
+              <img class="separator" src="resources/project-presentation/separator.png" alt="Game status separator" /> 
               <span id="resultsState" class="statusBarGameState futureState">Review Results</span>
            </div>
            <!-- <div class="statusBarSection statusBarRight"></div>-->
@@ -361,9 +371,16 @@
 	  <div class="lobbyOptionsContainer">
 	  <div class="lobbyOptionCard">
 	    <div class="optionCardTitle">Create New Game</div>
-	    <div>Create a new room to play Light Quest with your group. You will be the host for the game.</div>
-	    <div style="text-align: center;">
-	      <button type="button" id="createRoomButton">Create New Game Room</button>
+	    <div>Create a new room to play Light Quest with your group. You will be the host for the game. Choose one of the game types below to get started.</div>
+	    <div class="cardSubtitle">Original</div>
+	    <p class="gameTypeDescription">In this type of game, you will be given a series of prompts, and the players will type in the best answers they can think of.</p>
+	    <div class="gameTypeButtonContainer">
+	      <button type="button" id="createTextBasedRoomButton">Create Game - Original</button>
+	    </div>
+	    <div class="cardSubtitle">Drawing</div>
+	    <p class="gameTypeDescription">For this option, the players will draw their responses to the prompts and vote on the resulting pictures.</p>
+	    <div class="gameTypeButtonContainer">
+	      <button type="button" id="createDrawingBasedRoomButton">Create Game - Drawing</button>
 	    </div>
 	  </div>
 	  <div class="lobbyOptionCard">
@@ -371,7 +388,7 @@
 	  	<div>Join an existing game room. You will need the five-digit room code from the host to begin.</div>
 	  	<form name="roomCodeInputForm" id="roomCodeInputForm">
 	  	  <div id="roomCodeInputLabelDiv">
-	  	    <label for="roomCodeInput">Room Code:</label>
+	  	    <label for="roomCodeInput">Room Code</label>
 	  	  </div>
 	  	  <div id="roomCodeInputDiv">
 	  	    <input type="text" name="roomCodeInput" id="roomCodeInput" placeholder="Enter room code" style="width: 12em;">
@@ -421,7 +438,7 @@
 	      <div class="instructions" >Game Status</div>
 	      <div id="gameStatusSetupMessage"></div>
 	    </div>
-	    <div style="text-align: center;"><img src="resources/checkpoint-7/LoadingDots3.gif" alt="GIF with three dots, for waiting pages"></div>
+	    <div style="text-align: center;"><img src="resources/project-presentation/LoadingDots3.gif" alt="GIF with three dots, for waiting pages"></div>
 	  </div>
 	  <div class="gameSetupOptionsCard"> <!-- style="margin-top: 1em;"> -->
 	  <div class="instructions" >These are the users that have already joined</div>
@@ -472,7 +489,7 @@
 	      <div style="text-align: center;"><button id="editPromptResponsesButton" type="button">Edit Responses</button></div>
 	    </div>
 	    <div style="text-align: center;">
-	      <img src="resources/checkpoint-7/LoadingDots3.gif" alt="GIF with three dots, for waiting pages" />
+	      <img src="resources/project-presentation/LoadingDots3.gif" alt="GIF with three dots, for waiting pages" />
 	    </div>
 	  </div>
 	  <div id="votingSection" style="display: none;" class="basicCard eightyPercent">
@@ -540,8 +557,8 @@
 
 <!-- Include the jQuery library -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-<script src="resources/checkpoint-7/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-<script src="resources/checkpoint-7/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="resources/project-presentation/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script src="resources/project-presentation/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
 <!-- Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -559,26 +576,27 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
 
-<script src="resources/checkpoint-7/Constants.js"></script>
-<script src="resources/checkpoint-7/Util.js"></script>
-<script src="resources/checkpoint-7/PromptsLibrary.js"></script>
-<script src="resources/checkpoint-7/AppSetup.js"></script>
-<script src="resources/checkpoint-7/UserInfo.js"></script>
-<script src="resources/checkpoint-7/CompletedGamesInfo.js"></script>
-<script src="resources/checkpoint-7/RoomInfo.js"></script>
-<script src="resources/checkpoint-7/GameUsersInfo.js"></script>
-<script src="resources/checkpoint-7/GameStateInfo.js"></script>
-<script src="resources/checkpoint-7/GameReviewStateInfo.js"></script>
-<script src="resources/checkpoint-7/GamePromptsInfo.js"></script>
-<script src="resources/checkpoint-7/GameResponsesInfo.js"></script>
-<script src="resources/checkpoint-7/GameVotingInfo.js"></script>
-<script src="resources/checkpoint-7/NavBarManager.js"></script>
-<script src="resources/checkpoint-7/AddUserManager.js"></script>
-<script src="resources/checkpoint-7/LobbyManager.js"></script>
-<script src="resources/checkpoint-7/GameSetupManager.js"></script>
-<script src="resources/checkpoint-7/GameManager.js"></script>
-<script src="resources/checkpoint-7/DisplayManager.js"></script>
-<script src="resources/checkpoint-7/ChatManager.js"></script>
+<script src="resources/project-presentation/Constants.js"></script>
+<script src="resources/project-presentation/Util.js"></script>
+<script src="resources/project-presentation/PromptsLibrary.js"></script>
+<script src="resources/project-presentation/AppSetup.js"></script>
+<script src="resources/project-presentation/UserInfo.js"></script>
+<script src="resources/project-presentation/CompletedGamesInfo.js"></script>
+<script src="resources/project-presentation/RoomInfo.js"></script>
+<script src="resources/project-presentation/GameUsersInfo.js"></script>
+<script src="resources/project-presentation/GameStateInfo.js"></script>
+<script src="resources/project-presentation/GameReviewStateInfo.js"></script>
+<script src="resources/project-presentation/GamePromptsInfo.js"></script>
+<script src="resources/project-presentation/GameResponsesInfo.js"></script>
+<script src="resources/project-presentation/GameVotingInfo.js"></script>
+<script src="resources/project-presentation/NavBarManager.js"></script>
+<script src="resources/project-presentation/AddUserManager.js"></script>
+<script src="resources/project-presentation/LobbyManager.js"></script>
+<script src="resources/project-presentation/GameSetupManager.js"></script>
+<script src="resources/project-presentation/GameManager.js"></script>
+<script src="resources/project-presentation/DisplayManager.js"></script>
+<script src="resources/project-presentation/ChatManager.js"></script>
+<script src="resources/project-presentation/DrawingWidget.js"></script>
 
 
 <script>

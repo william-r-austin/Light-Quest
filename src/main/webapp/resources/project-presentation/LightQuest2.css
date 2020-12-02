@@ -71,7 +71,7 @@ body.checkpoint7-theme {
   --status-bar-bg-color: white;
   
   /* Same as the hover button color */
-  --copy-results-color: rgb(0, 34, 255);
+  --copy-results-color: #0062ff; /* rgb(0, 34, 255);*/
   
   --transition-color: rgba(0, 31, 230, 80%);
   
@@ -118,8 +118,6 @@ body.checkpoint7-theme #statusBarContainer {
 	justify-content: flex-start;
 }
 
-
-
 body.checkpoint7-theme .statusBarSection {
 	display: flex;
 	align-items: center;
@@ -141,6 +139,10 @@ body.checkpoint7-theme .statusBarRoomCode {
     font-family: Consolas, "Courier New", monospace;
     /*font-size: 1em;*/
     letter-spacing: 0.1em;
+}
+
+body.checkpoint7-theme .statusBarGameType {
+    font-weight: bold;
 }
 
 body.checkpoint7-theme .statusBarSection > span {
@@ -176,11 +178,42 @@ body.checkpoint7-theme .statusBarLeft {
 
 */
 
-body.checkpoint7-theme .statusBarRoomCodeLabel {
+
+/*body.checkpoint7-them.no-chat*/ 
+
+body.checkpoint7-theme .statusBarRoomCodeLabel,
+body.checkpoint7-theme .statusBarGameTypeLabel {
 	/*font-weight: bold;*/
 	/*margin-left: 0.25em;*/
-	margin-right: 0.75em;
+	margin-right: 0.5em;
 }
+
+body.checkpoint7-theme .statusBarChatModeLabel {
+	/*font-weight: bold;*/
+	/*margin-left: 0.25em;*/
+	margin-right: 0.25em;
+}
+
+
+body.checkpoint7-theme img.chatControlImg {
+	width: 20px;
+	margin: 0;
+}
+
+body.checkpoint7-theme button.chatControlButton {
+	padding: 4px;
+	text-align: center;
+	margin-left: 0.25em;
+	width: 28px;
+	height: 28px;
+}
+
+body.checkpoint7-theme button.chatControlButton.active-chat-mode,
+body.checkpoint7-theme button.chatControlButton.active-chat-mode:hover {
+	background-color: hsla(0, 0%, 0%, 15%);;
+	cursor: default;
+}
+
 
 body.checkpoint7-theme .statusBarGameState {
 	padding: 0.25em 0.5em;
@@ -208,8 +241,6 @@ body.checkpoint7-theme .statusBarGameState.futureState {
     color: #585858;
     /* border: 1px solid #585858;*/
 }
-
-
 
 body.checkpoint7-theme img.separator {
 	width: 0.5em;
@@ -756,6 +787,29 @@ body.checkpoint7-theme #myAnswerDiv {
 	text-align: center;
 }
 
+body.checkpoint7-theme #myAnswer.drawingGameType {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+}
+
+body.checkpoint7-theme div.responseImageDiv {
+	text-align: center;
+	margin: 0.25em auto;
+}
+
+body.checkpoint7-theme .vote-button.drawing-vote-button {
+	width: auto;
+}
+
+body.checkpoint7-theme img.drawingImg {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #666;
+}
+
 body.checkpoint7-theme #myAnswer {
 	display: inline-block;
 	width: var(--response-width);
@@ -842,7 +896,8 @@ body.checkpoint7-theme .roomUpdateMessage {
 	border-radius: 5px;
 	/*font-family: monospace;*/
 	margin-bottom: 0.5em;
-	background: #b0b0b0;
+	background: #ddd;
+	color: #555;
 }
 
 body.checkpoint7-theme .userChatDiv {
@@ -895,7 +950,22 @@ body.checkpoint7-theme .optionCardTitle {
 	
 	color: var(--card-title-color); /* hsla(0, 0%, 0%, 75%); /*color: MediumBlue;*/
 	margin-bottom: 0.5em;
-	
+}
+
+body.checkpoint7-theme .cardSubtitle {
+	/*font-size: 1.1em;*/
+	color: var(--form-label-color);
+	font-weight: bold;
+	margin-top: 1.5em;
+}
+
+body.checkpoint7-theme .gameTypeDescription {
+	margin-top: 0.25em;
+	margin-bottom: 0;
+}
+
+body.checkpoint7-theme .gameTypeButtonContainer {
+	text-align: center;
 }
 
 body.checkpoint7-theme #gamePromptsDiv {
@@ -932,6 +1002,225 @@ body.checkpoint7-theme .promptResponseDiv {
 body.checkpoint7-theme input.promptResponse {
 	width: 100%;
 }
+
+body.checkpoint7-theme canvas.drawingCanvas {
+	border: 1px solid #666;
+    /*width: 400px;
+    height: 400px;*/
+}
+
+body.checkpoint7-theme .drawing-controls {
+	width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #cdcdcd;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+body.checkpoint7-theme div.color-palatte {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+body.checkpoint7-theme .tools-label {
+	font-weight: bold;
+	text-align: left;
+}
+
+body.checkpoint7-theme .brush-size-label,
+body.checkpoint7-theme div.clear-canvas-container {
+	margin-top: 0.75em;
+}
+
+body.checkpoint7-theme div.clear-canvas-container button {
+	font-size: 1em;
+	margin: 0.25em 0.75em;
+}
+
+body.checkpoint7-theme div.color-choice {
+	width: 23px;
+	height: 23px;
+	margin: 6px;
+	border-radius: 3px;
+}
+
+body.checkpoint7-theme .black-square {
+	background-color: black;
+}
+
+body.checkpoint7-theme .green-square {
+	background-color: green;
+}
+
+body.checkpoint7-theme .blue-square {
+	background-color: blue;
+}
+
+body.checkpoint7-theme .red-square {
+	background-color: red;
+}
+
+body.checkpoint7-theme .yellow-square {
+	background-color: yellow;
+}
+
+body.checkpoint7-theme .orange-square {
+	background-color: orange;
+}
+
+body.checkpoint7-theme .brown-square {
+	background-color: brown;
+}
+
+body.checkpoint7-theme .cyan-square {
+	background-color: cyan;
+}
+
+body.checkpoint7-theme .purple-square {
+	background-color: purple;
+}
+
+body.checkpoint7-theme .gray-square {
+	background-color: gray;
+}
+
+
+body.checkpoint7-theme .white-square {
+	background-color: white;
+}
+
+body.checkpoint7-theme div.color-choice-container:hover div.color-choice {
+	cursor: pointer;
+}
+
+body.checkpoint7-theme div.color-choice-container:hover div.color-choice,
+body.checkpoint7-theme div.color-choice-container.selected-color div.color-choice {
+	width: 27px;
+	height: 27px;
+	margin: 4px;
+	border-radius: 3px;
+}
+
+body.checkpoint7-theme div.size-choice-container {
+	width: 35px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+body.checkpoint7-theme div.size-choice {
+	font-size: 1em;
+	text-align: center;
+	font-weight: normal;
+	color: var(--form-label-color);
+	margin-top: 0.15em;
+	margin-bottom: 0.15em;
+}
+
+body.checkpoint7-theme div.size-choice-container:hover div.size-choice,
+body.checkpoint7-theme div.size-choice-container.selected-size div.size-choice {
+	font-weight: bold;
+	color: black;
+}
+
+/*
+body.checkpoint7-theme div.color-choice-container  {
+	margin-top: 2px;
+}*/
+
+body.checkpoint7-theme div.color-choice-container .arrow-container,
+body.checkpoint7-theme div.size-choice-container .arrow-container  {
+	display:none;
+}
+
+body.checkpoint7-theme div.color-choice-container.selected-color .arrow-container,
+body.checkpoint7-theme div.size-choice-container.selected-size .arrow-container  {
+	display: block;
+	text-align: center;
+}
+
+/*
+body.checkpoint7-theme div.color-choice-container.selected-color  {
+	margin-top: 0px;
+}*/
+
+body.checkpoint7-theme div.brush-size {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+body.checkpoint7-theme div.size-choice:hover {
+	cursor: pointer;
+}
+
+/*
+body.checkpoint7-theme div.clear-canvas-container {
+	cursor: pointer;
+}*/
+
+/*
+body.checkpoint7-theme .size-2 {
+	width: 2px;
+	height: 2px;
+	border-radius: 1px;
+}
+
+body.checkpoint7-theme .size-4 {
+	width: 4px;
+	height: 4px;
+	border-radius: 2px;
+}
+
+body.checkpoint7-theme .size-6 {
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+}
+
+body.checkpoint7-theme .size-8 {
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+}
+
+body.checkpoint7-theme .size-10 {
+	width: 10px;
+	height: 10px;
+	border-radius: 5px;
+}
+
+body.checkpoint7-theme .size-14 {
+	width: 14px;
+	height: 14px;
+	border-radius: 7px;
+}
+
+body.checkpoint7-theme .size-18 {
+	width: 18px;
+	height: 18px;
+	border-radius: 9px;
+}
+
+body.checkpoint7-theme .size-24 {
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+}
+
+body.checkpoint7-theme .size-30 {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+}
+
+*/
+
 
 body.checkpoint7-theme .gamePromptSectionCard {
 	background: var(--card-color);
@@ -1309,6 +1598,18 @@ body.checkpoint7-theme #smallChatContainerDiv {
 	position: fixed;
 	background: var(--card-color); /*#a1d79d;*/
 	border-radius: 0 5px 5px 0;
+	/*border-top: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;*/
+	box-shadow: var(--card-box-shadow);
+	padding: var(--card-padding);
+	border-top: var(--card-border-top);
+}
+
+body.checkpoint7-theme.full-chat #smallChatContainerDiv {
+	position: static;
+	background: var(--card-color); /*#a1d79d;*/
+	border-radius: 5px;
 	/*border-top: 2px solid black;
 	border-right: 2px solid black;
 	border-bottom: 2px solid black;*/
